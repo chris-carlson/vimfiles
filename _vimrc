@@ -7,33 +7,39 @@ ab imp import
 ab ret return
 
 " Java
-ab logi LOGGER.info
-ab logw LOGGER.warning
-ab logs LOGGER.severe
 ab psvm public static void main(String[] args)
-ab Sys System.out.println
+ab Syst System.out.println
 
 " Javascript
-ab ang angular
 ab clog console.log
-ab Comp Component
-ab exp export
 ab fun function
-ab mod module
+ab jstr JSON.stringify
 
 " Python
 ab pr print
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Typescript
+ab boo boolean
+ab cl class
+ab con constructor
+ab exp export
+ab imp import
+ab impl implements
+ab num number
+ab pri private
+ab pub public
+ab str string
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto commands
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Turn off search highlighting when loading source
 autocmd SourcePre * :let @/ = ""
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backups
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Turn backup off before writing file
 set nobackup
@@ -44,15 +50,34 @@ set nowritebackup
 " Turn swap files off
 set noswapfile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Braces
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Change text from current position to the end of the next pair of matching braces
+nnoremap <leader>c( vf(%c
+nnoremap <leader>c[ vf[%c
+nnoremap <leader>c{ vf{%c
+
+" Delete text from current position to the end of the next pair of matching braces
+nnoremap <leader>d( vf(%d
+nnoremap <leader>d[ vf[%d
+nnoremap <leader>d{ vf{%d
+
+" Yank text from current position to the end of the next pair of matching braces
+nnoremap <leader>y( vf(%y
+nnoremap <leader>y[ vf[%y
+nnoremap <leader>y{ vf{%y
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Switch to next buffer
-nnoremap <silent> <leader>bn :bn!<CR>
+nnoremap <silent> <leader>bn :bn<CR>
 
 " Switch to previous buffer
-nnoremap <silent> <leader>bp :bp!<CR>
+nnoremap <silent> <leader>bp :bp<CR>
 
 " Delete buffer
 nnoremap <silent> <leader>bd :bd<CR>
@@ -91,7 +116,35 @@ set wildignore=*~,*.class,*.pyc,*.jar,*.map,*node_modules*
 nnoremap <silent> <leader>cd :cd %:p:h<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" File Commands
+" Comments
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Add/delete slash comment on the current line
+nnoremap <leader>/a @='I//<space><C-V><esc>j^'<CR>
+nnoremap <leader>/d @='^3xj^'<CR>
+
+" Add/delete pound comment on the current line
+nnoremap <leader>#a @='I#<space><C-V><esc>j^'<CR>
+nnoremap <leader>#d @='^2xj^'<CR>
+
+" Add/delete markup comment on the current line
+nnoremap <leader>!a @='I<!--<C-V><esc>A--><C-V><esc>j^'<CR>
+nnoremap <leader>!d @='^4x$2h3xj^'<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Delete
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Delete last plain/surrounded item in a comma list
+nnoremap <leader>d, de2h2xb
+nnoremap <leader>D, xdwx2h2xB
+
+" Delete last plain/surrounded item in a plus list
+nnoremap <leader>d+ de3h3xb
+nnoremap <leader>D+ xdwx3h3xB
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Files
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Allow for capital letters when saving and/or closing the file
@@ -129,49 +182,10 @@ set autoindent
 set smartindent
 
 " Load filetype-specific indent files
-filetype indent on
+filetype plugin indent on
 
 " Convert 2-space indents to 4-space indents
 nnoremap <silent> <leader><tab> :%s/  /    /g<CR>:noh<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Jumps
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Jump to Java class
-nnoremap <silent> <leader>jvC /\(public\\|protected\\|private\)\sclass\s\w\+.*\s{<CR>:noh<CR>
-
-" Jump to Java constructor
-nnoremap <silent> <leader>jvc /\(public\\|protected\\|private\)\s\w\+(.*)\s{<CR>:noh<CR>
-
-" Jump to next Java method
-nnoremap <silent> <leader>jvm /\(public\\|protected\\|private\)\s\w\+\s\w\+(.*)\s{<CR>:noh<CR>
-
-" Jump to next Java interface method
-nnoremap <silent> <leader>jvM /\s\+\w\+\s\w\+(.*);<CR>:noh<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Line operations
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Yank to end of line
-nnoremap Y y$
-
-" Add two new lines above/below current line
-nnoremap 2O O<esc>O
-nnoremap 2o o<esc>o
-
-" Add/delete comment the current line
-nnoremap <leader>/a @='I//<space><C-V><esc>j^'<CR>
-nnoremap <leader>/d @='^3xj^'<CR>
-nnoremap <leader>#a @='I#<space><C-V><esc>j^'<CR>
-nnoremap <leader>#d @='^2xj^'<CR>
-
-" Wrap the next word in parentheses
-nnoremap <leader>( a(<esc>Ea)<esc>
-
-" Double up backslashes in a line
-nnoremap <silent> <leader>\ :s/\\/\\\\/g<CR>
 
 " Indent curly brace block
 nnoremap <leader>>{ v$%><lt><lt>$%<lt><lt>
@@ -179,6 +193,23 @@ nnoremap <leader>>} v%><lt><lt>$%<lt><lt>
 
 " Indent colon block
 nnoremap <silent> <leader>>: v?<C-V>:<CR>><lt><lt>:noh<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Line operations
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Add two new lines above/below current line
+nnoremap 2O O<esc>O
+nnoremap 2o o<esc>o
+
+" Wrap the next Word in parentheses
+nnoremap <leader>( a(<esc>Ea)<esc>
+
+" Double up backslashes in a line
+nnoremap <silent> <leader>\ :s/\\/\\\\/g<CR>:noh<CR>
+
+" Add closing brace and indent one-line body
+nnoremap <leader>}> jo}<esc>k>>
 
 " Clear line, but don't delete it
 nnoremap <leader>dc @='S<C-V><esc>j'<CR>
@@ -189,6 +220,10 @@ nnoremap <leader>oc o<esc>S<esc>i
 " Add semicolon to end of line
 nnoremap <leader>; A;<esc>
 
+" Increment next number
+nnoremap <silent> <leader>= /\d<CR><C-A>:noh<CR>
+nnoremap <silent> <leader>- /\d<CR><C-X>:noh<CR>
+
 " Join next line to current line and delete space
 nnoremap <leader>J @='Jx'<CR>
 
@@ -196,19 +231,17 @@ nnoremap <leader>J @='Jx'<CR>
 nnoremap <leader>x xp
 nnoremap <leader>X xP
 
-" Move line up/down
-nnoremap <leader>k @='ddkP'<CR>
-nnoremap <leader>j @='ddp'<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markup
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Swap two items in a comma list
-nnoremap <leader>s,f dwwPldw2bpb
-nnoremap <leader>s,m dwwPldw2bPb
-nnoremap <leader>s,l dwwPldw2bPb
+" Add closing tag inline/below for element with no attributes
+nnoremap <leader>ti> ^yf>$pF<a/<esc>
+nnoremap <leader>tb> yyp^a/<esc>
 
-" Swap two items in a sign list
-nnoremap <leader>s=f dwwPldw2bpb
-nnoremap <leader>s=m dwwPldw2bPb
-nnoremap <leader>s=l de2wPldw2bhPb
+" Add closing tag inline/below for element with attributes
+nnoremap <leader>ti<space> ^yt<space>$pa><esc>F<a/<esc>
+nnoremap <leader>tb<space> ^yt<space>o_<esc>p^xa/<esc>A><esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -249,19 +282,27 @@ inoremap <silent> <C-L> <esc>lli
 inoremap <silent> <C-Enter> <esc>o
 inoremap <silent> <S-Enter> <esc>O
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Move to next/previous word that matches the regex \w+
+nnoremap <silent> <leader>W /\W<CR>/\w<CR>:noh<CR>
+nnoremap <silent> <leader>B ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pasting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Delete word/line under cursor and paste yanked word/line
-nnoremap <leader>dp Pldebye
-nnoremap <leader>dP Pkddyy
+nnoremap <leader>dp de"0P
+nnoremap <leader>dP dd"0P
 
-" Add a new line above/below, then paste above/below
+" Add a new line above/below, then paste line above/below
 nnoremap <leader>op o<esc>p
 nnoremap <leader>Op O<esc>p
 nnoremap <leader>oP o<esc>P
 nnoremap <leader>OP O<esc>P
+
+" Add a new line above/below, then paste above/below with indentation
+nnoremap <leader><tab>op o_<esc>p^x
+nnoremap <leader><tab>Op O_<esc>p^x
 
 " Paste then move up/down a line
 nnoremap <leader>pj @='pjB'<CR>
@@ -273,30 +314,20 @@ nnoremap <leader>Pk @='PkB'<CR>
 nnoremap <leader>ip I<esc>p
 nnoremap <leader>ap A<esc>p
 
+" Paste to a comma/plus separated list
+nnoremap <leader>p, a,<space><esc>p
+nnoremap <leader>p+ a<space>+<space><esc>p
+
 " External paste
 nnoremap <leader>p "+gp
 nnoremap <leader>P "+gP
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
+" Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Airline
-" function! AirlineInit()
-    " let g:airline_section_a = airline#section#create(['mode'])
-    " let g:airline_section_b = airline#section#create(['%t'])
-    " let g:airline_section_c = airline#section#create(['%y'])
-    " let g:airline_section_x = airline#section#create([''])
-    " let g:airline_section_y = airline#section#create(['%c'])
-    " let g:airline_section_z = airline#section#create(['%l/%L'])
-" endfunction
-" autocmd VimEnter * call AirlineInit()
-
-" Ctrl-P
-" let g:ctrlp_max_files = 100
-
-" Pathogen
-" call pathogen#infect()
+" Start Pathogen
+call pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
@@ -325,11 +356,51 @@ nnoremap <silent> <leader>hi :noh<CR>
 set laststatus=2
 
 " Format the status line
-set statusline=%t\ %y\ %m%=Col:\ %c,\ Line:\ %l/%L
+set statusline=%f\ %y\ %m%=Col:\ %c,\ Line:\ %l/%L
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Swapping
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Swap line with the one above/below
+nnoremap <leader>k @='ddkP'<CR>
+nnoremap <leader>j @='ddp'<CR>
+
+" Swap two items in a plain comma list forwards/backwards
+nnoremap <leader>s,f dWWPB
+nnoremap <leader>s,m dWWPB
+nnoremap <leader>s,l bdt,epB
+nnoremap <leader>S,f dW2bP2b
+nnoremap <leader>S,m dW2bP2b
+nnoremap <leader>S,l bde2bPB
+
+" Swap two items in a surrounded comma list forwards/backwards
+nnoremap <leader>s,F dWWPB
+nnoremap <leader>s,M dWWPB
+nnoremap <leader>s,L bldt,3wpB
+nnoremap <leader>S,F dW2bhP2bh
+nnoremap <leader>S,M dW2bhP2bh
+nnoremap <leader>S,L bd3w3bPB
+
+" Swap two items in a plain plus list forwards/backwards
+nnoremap <leader>s+f d2w2wP2b
+nnoremap <leader>s+m d2w2wP2b
+nnoremap <leader>s+l bhd2e2epb
+nnoremap <leader>S+f d2w2bP2b
+nnoremap <leader>S+m d2w2bP2b
+nnoremap <leader>S+l bhd2e2bhPb
+
+" Swap two items in a surrounded plus list forwards/backwards
+nnoremap <leader>s+F d2W2WP2B
+nnoremap <leader>s+M d2W2WP2B
+nnoremap <leader>s+L bhd2E4wpB
+nnoremap <leader>S+F d2W3bhP3bh
+nnoremap <leader>S+M d2W3bhP3bh
+nnoremap <leader>S+L b2hd4w2B2hPB
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Open a new tab
 nnoremap <silent> <leader>tn :tabnew<CR>
@@ -367,6 +438,9 @@ set cursorline
 " Show line numbers
 set number
 
+" Show relative line numbers
+set relativenumber
+
 " Redraw the screen only when needed
 set lazyredraw
 
@@ -383,10 +457,10 @@ set wrap
 set mouse=a
 
 " Stop the window from resizing when opening a new tab
-set guioptions=egmrtT
+set guioptions=gmrtT
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" _vimrc
+" vimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Edit vimrc
@@ -395,11 +469,11 @@ command! Erc e $MYVIMRC
 " Reload vimrc
 command! Lrc source $MYVIMRC
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Open windows below
+" Open windows below instead of above
 set splitbelow
 
 " Open new window
@@ -434,8 +508,12 @@ nnoremap <silent> <leader>wr <C-W>r
 nnoremap <silent> <leader>wR <C-W>R
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Workspaces
+" Yanking
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Switch to Documents folder
-command! WsDoc cd C:\Users\CAC\Documents
+" Yank to end of line
+nnoremap Y y$
+
+" Yank word and delete comma/plus
+nnoremap <leader>y, yeF,pwdWbde
+nnoremap <leader>y+ yeF+pwd2Wbde
