@@ -70,20 +70,6 @@ nnoremap <leader>y[ vf[%y
 nnoremap <leader>y{ vf{%y
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Buffers
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Switch to next buffer
-nnoremap <silent> <leader>bn :bn<CR>
-
-" Switch to previous buffer
-nnoremap <silent> <leader>bp :bp<CR>
-
-" Delete buffer
-nnoremap <silent> <leader>bd :bd<CR>
-nnoremap <silent> <leader>bD :bd!<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -110,26 +96,26 @@ set cmdheight=1
 set wildmenu
 
 " Ignore compiled files in autocomplete
-set wildignore=*~,*.class,*.pyc,*.jar,*.map,*node_modules*
+set wildignore=*~,*.class,*.jar,*.map,*.pyc,*dist*,*node_modules*
 
 " Switch to the directory of the open buffer
-nnoremap <silent> <leader>cd :cd %:p:h<CR>
+command! Cdbuffer :cd %:p:h<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Comments
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Add/delete slash comment on the current line
-nnoremap <leader>/a @='I//<space><C-V><esc>j^'<CR>
-nnoremap <leader>/d @='^3xj^'<CR>
+nnoremap <leader>i/+ @='I//<space><C-V><esc>j^'<CR>
+nnoremap <leader>i/- @='^3xj^'<CR>
 
 " Add/delete pound comment on the current line
-nnoremap <leader>#a @='I#<space><C-V><esc>j^'<CR>
-nnoremap <leader>#d @='^2xj^'<CR>
+nnoremap <leader>i#+ @='I#<space><C-V><esc>j^'<CR>
+nnoremap <leader>i#- @='^2xj^'<CR>
 
 " Add/delete markup comment on the current line
-nnoremap <leader>!a @='I<!--<C-V><esc>A--><C-V><esc>j^'<CR>
-nnoremap <leader>!d @='^4x$2h3xj^'<CR>
+nnoremap <leader>i!+ @='I<!--<C-V><esc>A--><C-V><esc>j^'<CR>
+nnoremap <leader>i!- @='^4x$2h3xj^'<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Delete
@@ -155,6 +141,9 @@ command! WQ wq
 
 " Allow for capital letters when opening a blank file
 command! Enew enew
+
+" Allow for capital letters when clearing search highlighting
+command! Noh noh
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
@@ -185,7 +174,7 @@ set smartindent
 filetype plugin indent on
 
 " Convert 2-space indents to 4-space indents
-nnoremap <silent> <leader><tab> :%s/  /    /g<CR>:noh<CR>
+nnoremap <silent> <leader>>24 :%s/  /    /g<CR>:noh<CR>
 
 " Indent curly brace block
 nnoremap <leader>>{ v$%><lt><lt>$%<lt><lt>
@@ -203,10 +192,10 @@ nnoremap 2O O<esc>O
 nnoremap 2o o<esc>o
 
 " Wrap the next Word in parentheses
-nnoremap <leader>( a(<esc>Ea)<esc>
+nnoremap <leader>a( a(<esc>Ea)<esc>
 
 " Double up backslashes in a line
-nnoremap <silent> <leader>\ :s/\\/\\\\/g<CR>:noh<CR>
+nnoremap <silent> <leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 
 " Add closing brace and indent one-line body
 nnoremap <leader>}> jo}<esc>k>>
@@ -218,11 +207,13 @@ nnoremap <leader>dc @='S<C-V><esc>j'<CR>
 nnoremap <leader>oc o<esc>S<esc>i
 
 " Add semicolon to end of line
-nnoremap <leader>; A;<esc>
+nnoremap <leader>a; A;<esc>
 
-" Increment next number
-nnoremap <silent> <leader>= /\d<CR><C-A>:noh<CR>
-nnoremap <silent> <leader>- /\d<CR><C-X>:noh<CR>
+" Increment next/previous number
+nnoremap <silent> <leader>/<C-A> /\d<CR><C-A>:noh<CR>
+nnoremap <silent> <leader>/<C-X> /\d<CR><C-X>:noh<CR>
+nnoremap <silent> <leader>?<C-A> ?\d<CR><C-A>:noh<CR>
+nnoremap <silent> <leader>?<C-X> ?\d<CR><C-X>:noh<CR>
 
 " Join next line to current line and delete space
 nnoremap <leader>J @='Jx'<CR>
@@ -230,18 +221,6 @@ nnoremap <leader>J @='Jx'<CR>
 " Swap two characters
 nnoremap <leader>x xp
 nnoremap <leader>X xP
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Markup
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Add closing tag inline/below for element with no attributes
-nnoremap <leader>ti> ^yf>$pF<a/<esc>
-nnoremap <leader>tb> yyp^a/<esc>
-
-" Add closing tag inline/below for element with attributes
-nnoremap <leader>ti<space> ^yt<space>$pa><esc>F<a/<esc>
-nnoremap <leader>tb<space> ^yt<space>o_<esc>p^xa/<esc>A><esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -260,31 +239,13 @@ set scrolloff=7
 nnoremap j gj
 nnoremap k gk
 
-" Perform 5 movements in normal mode
-nnoremap <silent> <C-H> @='5h'<CR>
-nnoremap <silent> <C-J> @='5j'<CR>
-nnoremap <silent> <C-K> @='5k'<CR>
-nnoremap <silent> <C-L> @='5l'<CR>
-
-" Perform 5 movements in visual mode
-vnoremap <silent> <C-H> @='5h'<CR>
-vnoremap <silent> <C-J> @='5j'<CR>
-vnoremap <silent> <C-K> @='5k'<CR>
-vnoremap <silent> <C-L> @='5l'<CR>
-
-" Move the cursor in insertion mode
-inoremap <silent> <C-H> <esc>i
-inoremap <silent> <C-J> <esc>ji
-inoremap <silent> <C-K> <esc>ki
-inoremap <silent> <C-L> <esc>lli
-
 " Add a line above/below in insertion mode
 inoremap <silent> <C-Enter> <esc>o
 inoremap <silent> <S-Enter> <esc>O
 
 " Move to next/previous word that matches the regex \w+
-nnoremap <silent> <leader>W /\W<CR>/\w<CR>:noh<CR>
-nnoremap <silent> <leader>B ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
+nnoremap <silent> <leader>w /\W<CR>/\w<CR>:noh<CR>
+nnoremap <silent> <leader>b ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pasting
@@ -303,12 +264,6 @@ nnoremap <leader>OP O<esc>P
 " Add a new line above/below, then paste above/below with indentation
 nnoremap <leader><tab>op o_<esc>p^x
 nnoremap <leader><tab>Op O_<esc>p^x
-
-" Paste then move up/down a line
-nnoremap <leader>pj @='pjB'<CR>
-nnoremap <leader>Pj @='PjB'<CR>
-nnoremap <leader>pk @='pkB'<CR>
-nnoremap <leader>Pk @='PkB'<CR>
 
 " Paste at the start/end of a line
 nnoremap <leader>ip I<esc>p
@@ -345,8 +300,6 @@ set ignorecase
 " Allow for the special character to be changed
 set magic
 
-" Turn off search highlight
-nnoremap <silent> <leader>hi :noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Status line
@@ -367,63 +320,36 @@ nnoremap <leader>k @='ddkP'<CR>
 nnoremap <leader>j @='ddp'<CR>
 
 " Swap two items in a plain comma list forwards/backwards
-nnoremap <leader>s,f dWWPB
-nnoremap <leader>s,m dWWPB
-nnoremap <leader>s,l bdt,epB
-nnoremap <leader>S,f dW2bP2b
-nnoremap <leader>S,m dW2bP2b
-nnoremap <leader>S,l bde2bPB
+nnoremap <leader>dp,f dWWPB
+nnoremap <leader>dp,m dWWPB
+nnoremap <leader>dp,l bdt,epB
+nnoremap <leader>dp,f dW2bP2b
+nnoremap <leader>dp,m dW2bP2b
+nnoremap <leader>dp,l bde2bPB
 
 " Swap two items in a surrounded comma list forwards/backwards
-nnoremap <leader>s,F dWWPB
-nnoremap <leader>s,M dWWPB
-nnoremap <leader>s,L bldt,3wpB
-nnoremap <leader>S,F dW2bhP2bh
-nnoremap <leader>S,M dW2bhP2bh
-nnoremap <leader>S,L bd3w3bPB
+nnoremap <leader>dp,F dWWPB
+nnoremap <leader>dp,M dWWPB
+nnoremap <leader>dp,L bldt,3wpB
+nnoremap <leader>dp,F dW2bhP2bh
+nnoremap <leader>dp,M dW2bhP2bh
+nnoremap <leader>dp,L bd3w3bPB
 
 " Swap two items in a plain plus list forwards/backwards
-nnoremap <leader>s+f d2w2wP2b
-nnoremap <leader>s+m d2w2wP2b
-nnoremap <leader>s+l bhd2e2epb
-nnoremap <leader>S+f d2w2bP2b
-nnoremap <leader>S+m d2w2bP2b
-nnoremap <leader>S+l bhd2e2bhPb
+nnoremap <leader>dp+f d2w2wP2b
+nnoremap <leader>dp+m d2w2wP2b
+nnoremap <leader>dp+l bhd2e2epb
+nnoremap <leader>dp+f d2w2bP2b
+nnoremap <leader>dp+m d2w2bP2b
+nnoremap <leader>dp+l bhd2e2bhPb
 
 " Swap two items in a surrounded plus list forwards/backwards
-nnoremap <leader>s+F d2W2WP2B
-nnoremap <leader>s+M d2W2WP2B
-nnoremap <leader>s+L bhd2E4wpB
-nnoremap <leader>S+F d2W3bhP3bh
-nnoremap <leader>S+M d2W3bhP3bh
-nnoremap <leader>S+L b2hd4w2B2hPB
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tabs
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Open a new tab
-nnoremap <silent> <leader>tn :tabnew<CR>
-
-" Close tab
-nnoremap <silent> <leader>tc :tabclose<CR>
-nnoremap <silent> <leader>tC :tabclose!<CR>
-
-" Close all tabs but current tab
-nnoremap <silent> <leader>to :tabonly<CR>
-nnoremap <silent> <leader>tO :tabonly!<CR>
-
-" Move to next tab
-nnoremap <silent> <leader>tt :tabnext<CR>
-
-" Move to previous tab
-nnoremap <silent> <leader>tT :tabprevious<CR>
-
-" Move current tab to the right
-nnoremap <silent> <leader>tm :tabmove<space>+1<CR>
-
-" Move current tab to the left
-nnoremap <silent> <leader>tM :tabmove<space>-1<CR>
+nnoremap <leader>dp+F d2W2WP2B
+nnoremap <leader>dp+M d2W2WP2B
+nnoremap <leader>dp+L bhd2E4wpB
+nnoremap <leader>dp+F d2W3bhP3bh
+nnoremap <leader>dp+M d2W3bhP3bh
+nnoremap <leader>dp+L b2hd4w2B2hPB
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
@@ -468,44 +394,6 @@ command! Erc e $MYVIMRC
 
 " Reload vimrc
 command! Lrc source $MYVIMRC
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Windows
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Open windows below instead of above
-set splitbelow
-
-" Open new window
-nnoremap <silent> <leader>wn :new<CR>
-
-" Split current window horizontally/vertically
-nnoremap <silent> <leader>wsh :split<CR>
-nnoremap <silent> <leader>wsv :vsplit<CR>
-
-" Close current window
-nnoremap <silent> <leader>wc :close<CR>
-nnoremap <silent> <leader>wC :close!<CR>
-
-" Close all but current window
-nnoremap <silent> <leader>wo :only<CR>
-nnoremap <silent> <leader>wO :only!<CR>
-
-" Move between windows
-nnoremap <silent> <leader>wk <C-W>k
-nnoremap <silent> <leader>wj <C-W>j
-nnoremap <silent> <leader>wh <C-W>h
-nnoremap <silent> <leader>wl <C-W>l
-
-" Move windows
-nnoremap <silent> <leader>wK <C-W>K
-nnoremap <silent> <leader>wJ <C-W>J
-nnoremap <silent> <leader>wH <C-W>H
-nnoremap <silent> <leader>wL <C-W>L
-
-" Rotate window orientation
-nnoremap <silent> <leader>wr <C-W>r
-nnoremap <silent> <leader>wR <C-W>R
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Yanking
