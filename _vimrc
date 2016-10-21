@@ -1,36 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Abbreviations
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" General
-ab imp import
-ab ret return
-
-" Java
-ab psvm public static void main(String[] args)
-ab Syst System.out.println
-
-" Javascript
-ab clog console.log
-ab fun function
-ab jstr JSON.stringify
-
-" Python
-ab pr print
-
-" Typescript
-ab boo boolean
-ab cl class
-ab con constructor
-ab exp export
-ab imp import
-ab impl implements
-ab num number
-ab pri private
-ab pub public
-ab str string
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto commands
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -98,9 +66,6 @@ set wildmenu
 " Ignore compiled files in autocomplete
 set wildignore=*~,*.class,*.jar,*.map,*.pyc,*dist*,*node_modules*
 
-" Switch to the directory of the open buffer
-command! Cdbuffer :cd %:p:h<CR>
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Comments
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -128,6 +93,9 @@ nnoremap <leader>D, xdwx2h2xB
 " Delete last plain/surrounded item in a plus list
 nnoremap <leader>d+ de3h3xb
 nnoremap <leader>D+ xdwx3h3xB
+
+" Delete entire file
+nnoremap <leader>dg ggdG
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Files
@@ -172,9 +140,6 @@ set smartindent
 
 " Load filetype-specific indent files
 filetype plugin indent on
-
-" Convert 2-space indents to 4-space indents
-nnoremap <silent> <leader>>24 :%s/  /    /g<CR>:noh<CR>
 
 " Indent curly brace block
 nnoremap <leader>>{ v$%><lt><lt>$%<lt><lt>
@@ -252,8 +217,8 @@ nnoremap <silent> <leader>b ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Delete word/line under cursor and paste yanked word/line
-nnoremap <leader>dp de"0P
-nnoremap <leader>dP dd"0P
+nnoremap <leader>dpy de"0P
+nnoremap <leader>Dpy dd"0P
 
 " Add a new line above/below, then paste line above/below
 nnoremap <leader>op o<esc>p
@@ -274,8 +239,12 @@ nnoremap <leader>p, a,<space><esc>p
 nnoremap <leader>p+ a<space>+<space><esc>p
 
 " External paste
-nnoremap <leader>p "+gp
-nnoremap <leader>P "+gP
+nnoremap <leader>gp "+gp
+nnoremap <leader>gP "+gP
+
+" Paste from yank buffer
+nnoremap <leader>yp "0p
+nnoremap <leader>yP "0P
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen
@@ -401,6 +370,9 @@ command! Lrc source $MYVIMRC
 
 " Yank to end of line
 nnoremap Y y$
+
+" Yank entire file
+nnoremap <leader>yg ggyG
 
 " Yank word and delete comma/plus
 nnoremap <leader>y, yeF,pwdWbde
