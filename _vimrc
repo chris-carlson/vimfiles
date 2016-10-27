@@ -175,17 +175,13 @@ nnoremap <leader>oc o<esc>S<esc>i
 nnoremap <leader>a; A;<esc>
 
 " Increment next/previous number
-nnoremap <silent> <leader>/<C-A> /\d<CR><C-A>:noh<CR>
-nnoremap <silent> <leader>/<C-X> /\d<CR><C-X>:noh<CR>
-nnoremap <silent> <leader>?<C-A> ?\d<CR><C-A>:noh<CR>
-nnoremap <silent> <leader>?<C-X> ?\d<CR><C-X>:noh<CR>
+nnoremap <silent> <leader>/<C-A> l/\d<CR><C-A>:noh<CR>
+nnoremap <silent> <leader>/<C-X> l/\d<CR><C-X>:noh<CR>
+nnoremap <silent> <leader>?<C-A> h?\d<CR><C-A>:noh<CR>
+nnoremap <silent> <leader>?<C-X> h?\d<CR><C-X>:noh<CR>
 
 " Join next line to current line and delete space
 nnoremap <leader>J @='Jx'<CR>
-
-" Swap two characters
-nnoremap <leader>x xp
-nnoremap <leader>X xP
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -288,37 +284,41 @@ set statusline=%f\ %y\ %m%=Col:\ %c,\ Line:\ %l/%L
 nnoremap <leader>k @='ddkP'<CR>
 nnoremap <leader>j @='ddp'<CR>
 
+" Swap two characters
+nnoremap <leader>x xp
+nnoremap <leader>X xP
+
 " Swap two items in a plain comma list forwards/backwards
 nnoremap <leader>dp,f dWWPB
 nnoremap <leader>dp,m dWWPB
 nnoremap <leader>dp,l bdt,epB
-nnoremap <leader>dp,f dW2bP2b
-nnoremap <leader>dp,m dW2bP2b
-nnoremap <leader>dp,l bde2bPB
+nnoremap <leader>dP,f dW2bP2b
+nnoremap <leader>dP,m dW2bP2b
+nnoremap <leader>dP,l bde2bPB
 
 " Swap two items in a surrounded comma list forwards/backwards
 nnoremap <leader>dp,F dWWPB
 nnoremap <leader>dp,M dWWPB
 nnoremap <leader>dp,L bldt,3wpB
-nnoremap <leader>dp,F dW2bhP2bh
-nnoremap <leader>dp,M dW2bhP2bh
-nnoremap <leader>dp,L bd3w3bPB
+nnoremap <leader>dP,F dW2bhP2bh
+nnoremap <leader>dP,M dW2bhP2bh
+nnoremap <leader>dP,L bd3w3bPB
 
 " Swap two items in a plain plus list forwards/backwards
 nnoremap <leader>dp+f d2w2wP2b
 nnoremap <leader>dp+m d2w2wP2b
 nnoremap <leader>dp+l bhd2e2epb
-nnoremap <leader>dp+f d2w2bP2b
-nnoremap <leader>dp+m d2w2bP2b
-nnoremap <leader>dp+l bhd2e2bhPb
+nnoremap <leader>dP+f d2w2bP2b
+nnoremap <leader>dP+m d2w2bP2b
+nnoremap <leader>dP+l bhd2e2bhPb
 
 " Swap two items in a surrounded plus list forwards/backwards
 nnoremap <leader>dp+F d2W2WP2B
 nnoremap <leader>dp+M d2W2WP2B
 nnoremap <leader>dp+L bhd2E4wpB
-nnoremap <leader>dp+F d2W3bhP3bh
-nnoremap <leader>dp+M d2W3bhP3bh
-nnoremap <leader>dp+L b2hd4w2B2hPB
+nnoremap <leader>dP+F d2W3bhP3bh
+nnoremap <leader>dP+M d2W3bhP3bh
+nnoremap <leader>dP+L b2hd4w2B2hPB
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
