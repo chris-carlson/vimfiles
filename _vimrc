@@ -38,6 +38,12 @@ nnoremap <leader>y[ vf[%y
 nnoremap <leader>y{ vf{%y
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Buffers
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+command! Bdn bd | bn
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -179,9 +185,6 @@ nnoremap <silent> <leader>/<C-A> l/\d<CR><C-A>:noh<CR>
 nnoremap <silent> <leader>/<C-X> l/\d<CR><C-X>:noh<CR>
 nnoremap <silent> <leader>?<C-A> h?\d<CR><C-A>:noh<CR>
 nnoremap <silent> <leader>?<C-X> h?\d<CR><C-X>:noh<CR>
-
-" Join next line to current line and delete space
-nnoremap <leader>J @='Jx'<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
