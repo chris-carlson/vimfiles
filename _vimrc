@@ -73,22 +73,6 @@ set wildmenu
 set wildignore=*~,*.class,*.jar,*.map,*.pyc,*dist*,*node_modules*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Comments
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Add/delete slash comment on the current line
-nnoremap <leader>i/+ @='I//<space><C-V><esc>j^'<CR>
-nnoremap <leader>i/- @='^3xj^'<CR>
-
-" Add/delete pound comment on the current line
-nnoremap <leader>i#+ @='I#<space><C-V><esc>j^'<CR>
-nnoremap <leader>i#- @='^2xj^'<CR>
-
-" Add/delete markup comment on the current line
-nnoremap <leader>i!+ @='I<!--<C-V><esc>A--><C-V><esc>j^'<CR>
-nnoremap <leader>i!- @='^4x$2h3xj^'<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Delete
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -203,13 +187,21 @@ set scrolloff=7
 nnoremap j gj
 nnoremap k gk
 
-" Add a line above/below in insertion mode
-inoremap <silent> <C-Enter> <esc>o
-inoremap <silent> <S-Enter> <esc>O
-
 " Move to next/previous word that matches the regex \w+
 nnoremap <silent> <leader>w /\W<CR>/\w<CR>:noh<CR>
 nnoremap <silent> <leader>b ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
+
+" Move to next/previous string concatentation
+" nnoremap <leader>W f+W
+" nnoremap <leader>B 2F+W
+
+" Move to the line after the next/previous blank line
+nnoremap <silent> <leader>] /^\n<CR>:noh<CR>j
+nnoremap <silent> <leader>[ ?^\n<CR>n:noh<CR>j
+
+" Add a line above/below in insertion mode
+inoremap <silent> <C-Enter> <esc>o
+inoremap <silent> <S-Enter> <esc>O
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pasting
