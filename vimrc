@@ -2,7 +2,7 @@
 " Auto commands
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Turn off search highlighting when loading source
+" Turn off last search highlight when loading source
 autocmd SourcePre * :let @/ = ""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -22,17 +22,17 @@ set noswapfile
 " Braces
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Change text from current position to the end of the next pair of matching braces
+" Change text from current position to the end of the next pair of matching parentheses/brackets/braces
 nnoremap <leader>c( vf(%c
 nnoremap <leader>c[ vf[%c
 nnoremap <leader>c{ vf{%c
 
-" Delete text from current position to the end of the next pair of matching braces
+" Delete text from current position to the end of the next pair of matching parentheses/brackets/braces
 nnoremap <leader>d( vf(%d
 nnoremap <leader>d[ vf[%d
 nnoremap <leader>d{ vf{%d
 
-" Yank text from current position to the end of the next pair of matching braces
+" Yank text from current position to the end of the next pair of matching parentheses/brackets/braces
 nnoremap <leader>y( vf(%y
 nnoremap <leader>y[ vf[%y
 nnoremap <leader>y{ vf{%y
@@ -41,6 +41,7 @@ nnoremap <leader>y{ vf{%y
 " Buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+" Delete buffer and move to next buffer
 command! Bdn bd | bn
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -76,11 +77,9 @@ set wildignore=*~,*.class,*.jar,*.map,*.pyc,*dist*,*node_modules*
 " Delete
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Delete last plain/surrounded item in a comma list
+" Delete last plain/surrounded item in a comma/plus list
 nnoremap <leader>d, de2h2xb
 nnoremap <leader>D, xdwx2h2xB
-
-" Delete last plain/surrounded item in a plus list
 nnoremap <leader>d+ de3h3xb
 nnoremap <leader>D+ xdwx3h3xB
 
@@ -139,6 +138,22 @@ nnoremap <leader>>} v%><lt><lt>$%<lt><lt>
 nnoremap <silent> <leader>>: v?<C-V>:<CR>><lt><lt>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Leaders
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set leader key for filetype mappings
+let localmapleader = '_'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Letter case
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Change/delete/yank until next capital letter
+nnoremap <silent> c~ v/\u<CR>hd:noh<CR>i
+nnoremap <silent> d~ v/\u<CR>hd:noh<CR>
+nnoremap <silent> y~ v/\u<CR>hy:noh<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Line operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -152,19 +167,10 @@ nnoremap <leader>a( a(<esc>Ea)<esc>
 " Double up backslashes in a line
 nnoremap <silent> <leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 
-" Add closing brace and indent one-line body
-nnoremap <leader>}> jo}<esc>k>>
-
-" Clear line, but don't delete it
-nnoremap <leader>dc @='S<C-V><esc>j'<CR>
-
-" Open new line with indentation deleted
-nnoremap <leader>oc o<esc>S<esc>i
-
 " Add semicolon to end of line
 nnoremap <leader>a; A;<esc>
 
-" Increment next/previous number
+" Increment/decrement next/previous number
 nnoremap <silent> <leader>/<C-A> l/\d<CR><C-A>:noh<CR>
 nnoremap <silent> <leader>/<C-X> l/\d<CR><C-X>:noh<CR>
 nnoremap <silent> <leader>?<C-A> h?\d<CR><C-A>:noh<CR>
@@ -187,13 +193,9 @@ set scrolloff=7
 nnoremap j gj
 nnoremap k gk
 
-" Move to next/previous word that matches the regex \w+
-nnoremap <silent> <leader>w /\W<CR>/\w<CR>:noh<CR>
-nnoremap <silent> <leader>b ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
-
-" Move to next/previous string concatentation
-" nnoremap <leader>W f+W
-" nnoremap <leader>B 2F+W
+" Move to next/previous word that matches the regex \w
+nnoremap <silent> w /\W<CR>/\w<CR>:noh<CR>
+nnoremap <silent> b ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
 
 " Move to the line after the next/previous blank line
 nnoremap <silent> <leader>] /^\n<CR>:noh<CR>j
@@ -208,18 +210,15 @@ inoremap <silent> <S-Enter> <esc>O
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Delete word/line under cursor and paste yanked word/line
-nnoremap <leader>dpy de"0P
-nnoremap <leader>Dpy dd"0P
+nnoremap <leader>dep de"0P
+nnoremap <leader>dEp dE"0P
+nnoremap <leader>dwp dw"0P
+nnoremap <leader>dWp dW"0P
+nnoremap <leader>Dp dd"0Pj
 
-" Add a new line above/below, then paste line above/below
+" Add a new line below/above then paste line below/above
 nnoremap <leader>op o<esc>p
-nnoremap <leader>Op O<esc>p
-nnoremap <leader>oP o<esc>P
 nnoremap <leader>OP O<esc>P
-
-" Add a new line above/below, then paste above/below with indentation
-nnoremap <leader><tab>op o_<esc>p^x
-nnoremap <leader><tab>Op O_<esc>p^x
 
 " Paste at the start/end of a line
 nnoremap <leader>ip I<esc>p
@@ -245,6 +244,24 @@ nnoremap <leader>yP "0P
 call pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Pairs
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Insert pairs of characters
+nnoremap <leader>i' i''<esc>i
+nnoremap <leader>i" i""<esc>i
+nnoremap <leader>i( i()<esc>i
+nnoremap <leader>i[ i[]<esc>i
+nnoremap <leader>i{ i{}<esc>i
+
+" Append pairs of characters
+nnoremap <leader>a' a''<esc>i
+nnoremap <leader>a" a""<esc>i
+nnoremap <leader>a( a()<esc>i
+nnoremap <leader>a[ a[]<esc>i
+nnoremap <leader>a{ a{}<esc>i
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -259,7 +276,6 @@ set ignorecase
 
 " Allow for the special character to be changed
 set magic
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Status line
@@ -284,36 +300,36 @@ nnoremap <leader>x xp
 nnoremap <leader>X xP
 
 " Swap two items in a plain comma list forwards/backwards
-nnoremap <leader>dp,f dWWPB
-nnoremap <leader>dp,m dWWPB
-nnoremap <leader>dp,l bdt,epB
-nnoremap <leader>dP,f dW2bP2b
-nnoremap <leader>dP,m dW2bP2b
-nnoremap <leader>dP,l bde2bPB
+nnoremap <leader>s,f dWWPB
+nnoremap <leader>s,m dWWPB
+nnoremap <leader>s,l bdt,epB
+nnoremap <leader>s,f dW2bP2b
+nnoremap <leader>s,m dW2bP2b
+nnoremap <leader>s,l bde2bPB
 
 " Swap two items in a surrounded comma list forwards/backwards
-nnoremap <leader>dp,F dWWPB
-nnoremap <leader>dp,M dWWPB
-nnoremap <leader>dp,L bldt,3wpB
-nnoremap <leader>dP,F dW2bhP2bh
-nnoremap <leader>dP,M dW2bhP2bh
-nnoremap <leader>dP,L bd3w3bPB
+nnoremap <leader>s,F dWWPB
+nnoremap <leader>s,M dWWPB
+nnoremap <leader>s,L bldt,3wpB
+nnoremap <leader>s,F dW2bhP2bh
+nnoremap <leader>s,M dW2bhP2bh
+nnoremap <leader>s,L bd3w3bPB
 
 " Swap two items in a plain plus list forwards/backwards
-nnoremap <leader>dp+f d2w2wP2b
-nnoremap <leader>dp+m d2w2wP2b
-nnoremap <leader>dp+l bhd2e2epb
-nnoremap <leader>dP+f d2w2bP2b
-nnoremap <leader>dP+m d2w2bP2b
-nnoremap <leader>dP+l bhd2e2bhPb
+nnoremap <leader>s+f d2w2wP2b
+nnoremap <leader>s+m d2w2wP2b
+nnoremap <leader>s+l bhd2e2epb
+nnoremap <leader>s+f d2w2bP2b
+nnoremap <leader>s+m d2w2bP2b
+nnoremap <leader>s+l bhd2e2bhPb
 
 " Swap two items in a surrounded plus list forwards/backwards
-nnoremap <leader>dp+F d2W2WP2B
-nnoremap <leader>dp+M d2W2WP2B
-nnoremap <leader>dp+L bhd2E4wpB
-nnoremap <leader>dP+F d2W3bhP3bh
-nnoremap <leader>dP+M d2W3bhP3bh
-nnoremap <leader>dP+L b2hd4w2B2hPB
+nnoremap <leader>s+F d2W2WP2B
+nnoremap <leader>s+M d2W2WP2B
+nnoremap <leader>s+L bhd2E4wpB
+nnoremap <leader>s+F d2W3bhP3bh
+nnoremap <leader>s+M d2W3bhP3bh
+nnoremap <leader>s+L b2hd4w2B2hPB
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
@@ -368,7 +384,3 @@ nnoremap Y y$
 
 " Yank entire file
 nnoremap <leader>yg ggyG
-
-" Yank word and delete comma/plus
-nnoremap <leader>y, yeF,pwdWbde
-nnoremap <leader>y+ yeF+pwd2Wbde
