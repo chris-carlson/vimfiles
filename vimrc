@@ -23,19 +23,19 @@ set noswapfile
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Change text from current position to the end of the next pair of matching parentheses/brackets/braces
-nnoremap <leader>c( vf(%c
-nnoremap <leader>c[ vf[%c
-nnoremap <leader>c{ vf{%c
+nnoremap <leader>c) vf(%c
+nnoremap <leader>c] vf[%c
+nnoremap <leader>c} vf{%c
 
 " Delete text from current position to the end of the next pair of matching parentheses/brackets/braces
-nnoremap <leader>d( vf(%d
-nnoremap <leader>d[ vf[%d
-nnoremap <leader>d{ vf{%d
+nnoremap <leader>d) vf(%d
+nnoremap <leader>d] vf[%d
+nnoremap <leader>d} vf{%d
 
 " Yank text from current position to the end of the next pair of matching parentheses/brackets/braces
-nnoremap <leader>y( vf(%y
-nnoremap <leader>y[ vf[%y
-nnoremap <leader>y{ vf{%y
+nnoremap <leader>y) vf(%y
+nnoremap <leader>y] vf[%y
+nnoremap <leader>y} vf{%y
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
@@ -43,6 +43,9 @@ nnoremap <leader>y{ vf{%y
 
 " Delete buffer and move to next buffer
 command! Bdn bd | bn
+
+" Save buffer, close it, and move to next buffer
+command! Wd w | bd | bn
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
@@ -142,7 +145,8 @@ nnoremap <silent> <leader>>: v?<C-V>:<CR>><lt><lt>:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set leader key for filetype mappings
-let localmapleader = '_'
+let mapleader = '\'
+let maplocalleader = '_'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Letter case
@@ -189,17 +193,13 @@ set whichwrap=b,s
 " Keep lines between the cursor and top/bottom of the screen
 set scrolloff=7
 
-" Move onto wrapped lines
-nnoremap j gj
-nnoremap k gk
-
 " Move to next/previous word that matches the regex \w
-nnoremap <silent> w /\W<CR>/\w<CR>:noh<CR>
-nnoremap <silent> b ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
+nnoremap <silent> <leader>w /\W<CR>/\w<CR>:noh<CR>
+nnoremap <silent> <leader>b ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
 
 " Move to the line after the next/previous blank line
-nnoremap <silent> <leader>] /^\n<CR>:noh<CR>j
-nnoremap <silent> <leader>[ ?^\n<CR>n:noh<CR>j
+nnoremap <silent> <leader>] /^\n<CR>:noh<CR>j^
+nnoremap <silent> <leader>[ ?^\n<CR>n:noh<CR>j^
 
 " Add a line above/below in insertion mode
 inoremap <silent> <C-Enter> <esc>o
@@ -252,14 +252,14 @@ nnoremap <leader>i' i''<esc>i
 nnoremap <leader>i" i""<esc>i
 nnoremap <leader>i( i()<esc>i
 nnoremap <leader>i[ i[]<esc>i
-nnoremap <leader>i{ i{}<esc>i
+nnoremap <leader>i{ i{<CR>}<esc>O
 
 " Append pairs of characters
 nnoremap <leader>a' a''<esc>i
 nnoremap <leader>a" a""<esc>i
 nnoremap <leader>a( a()<esc>i
 nnoremap <leader>a[ a[]<esc>i
-nnoremap <leader>a{ a{}<esc>i
+nnoremap <leader>a{ a{<CR>}<esc>O
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
