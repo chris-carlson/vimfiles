@@ -49,7 +49,9 @@ nnoremap <silent> <buffer> ]f /\w\+(.*):<space>\w\+<space>{<CR>:noh<CR>
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Convert anonymous function body with brackets to a single-line body
-" If the body is a return statement, the return can be deleted
+" Convert anonymous function body with brackets to a single-line body and either don't modify the body or delete the return statement
 nnoremap <buffer> <localleader>d{ ^f{xj$xj^x2kJJ
 nnoremap <buffer> <localleader>D{ ^f{xj^dw$xj^x2kJJ
+
+" Add a parameter to the function
+nnoremap <buffer> <localleader>app ^f)i,<space>

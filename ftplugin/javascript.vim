@@ -22,3 +22,10 @@ setlocal shiftwidth=2
 " Go to previous/next function definition
 nnoremap <silent> <buffer> [f ?function.*(.*) {<CR>:noh<CR>
 nnoremap <silent> <buffer> ]f /function.*(.*) {<CR>:noh<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Operations
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Add a parameter to the function
+nnoremap <buffer> <localleader>app ^f)i,<space>

@@ -1,11 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Auto commands
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Turn off last search highlight when loading source
-autocmd SourcePre * :let @/ = ""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backups
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -22,20 +15,13 @@ set noswapfile
 " Braces
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Change text from current position to the end of the next pair of matching parentheses/brackets/braces
-nnoremap <leader>c) vf(%c
-nnoremap <leader>c] vf[%c
-nnoremap <leader>c} vf{%c
+" Change/delete/yank text from current position to the end of the next pair of matching parentheses
+nnoremap <leader>c( vf(%c
+nnoremap <leader>d( vf(%d
+nnoremap <leader>y( vf(%y
 
-" Delete text from current position to the end of the next pair of matching parentheses/brackets/braces
-nnoremap <leader>d) vf(%d
-nnoremap <leader>d] vf[%d
-nnoremap <leader>d} vf{%d
-
-" Yank text from current position to the end of the next pair of matching parentheses/brackets/braces
-nnoremap <leader>y) vf(%y
-nnoremap <leader>y] vf[%y
-nnoremap <leader>y} vf{%y
+" Delete text from current position to the next pair of matching parentheses, preserving the content inside
+nnoremap <leader>D( mmf(lyi(`mvf(%d"0P
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
@@ -44,6 +30,9 @@ nnoremap <leader>y} vf{%y
 " Delete buffer and move to next buffer
 command! Bdn bd | bn
 
+" Save buffer and move to next buffer
+command! Wn w | bn
+"
 " Save buffer, close it, and move to next buffer
 command! Wd w | bd | bn
 
@@ -86,11 +75,8 @@ nnoremap <leader>D, xdwx2h2xB
 nnoremap <leader>d+ de3h3xb
 nnoremap <leader>D+ xdwx3h3xB
 
-" Delete entire file
-nnoremap <leader>dg ggdG
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Files
+" File Commands
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Allow for capital letters when saving and/or closing the file
@@ -104,6 +90,19 @@ command! Enew enew
 
 " Allow for capital letters when clearing search highlighting
 command! Noh noh
+
+" Turn off last search highlight when loading source
+autocmd SourcePre * :let @/ = ""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" File Operations
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Change/delete/highlight/yank entire file
+nnoremap <leader>cg ggcG
+nnoremap <leader>dg ggdG
+nnoremap <leader>vg ggVG
+nnoremap <leader>yg ggyG
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
@@ -157,6 +156,9 @@ nnoremap <silent> c~ v/\u<CR>hd:noh<CR>i
 nnoremap <silent> d~ v/\u<CR>hd:noh<CR>
 nnoremap <silent> y~ v/\u<CR>hy:noh<CR>
 
+" Toggle case of current letter and enter insertion mode
+nnoremap <leader>s~ ~hi
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Line operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -165,20 +167,15 @@ nnoremap <silent> y~ v/\u<CR>hy:noh<CR>
 nnoremap 2O O<esc>O
 nnoremap 2o o<esc>o
 
-" Wrap the next Word in parentheses
-nnoremap <leader>a( a(<esc>Ea)<esc>
+" Wrap the next word/Word in parentheses
+nnoremap <leader>(w a(<esc>ea)<esc>
+nnoremap <leader>(W a(<esc>Ea)<esc>
 
 " Double up backslashes in a line
 nnoremap <silent> <leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 
 " Add semicolon to end of line
 nnoremap <leader>a; A;<esc>
-
-" Increment/decrement next/previous number
-nnoremap <silent> <leader>/<C-A> l/\d<CR><C-A>:noh<CR>
-nnoremap <silent> <leader>/<C-X> l/\d<CR><C-X>:noh<CR>
-nnoremap <silent> <leader>?<C-A> h?\d<CR><C-A>:noh<CR>
-nnoremap <silent> <leader>?<C-X> h?\d<CR><C-X>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -193,9 +190,15 @@ set whichwrap=b,s
 " Keep lines between the cursor and top/bottom of the screen
 set scrolloff=7
 
-" Move to next/previous word that matches the regex \w
-nnoremap <silent> <leader>w /\W<CR>/\w<CR>:noh<CR>
-nnoremap <silent> <leader>b ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
+" Move to next/previous character that matches the regex \w after the next/previous character that matches the regex \W
+nnoremap <silent> <leader>ww /\W<CR>/\w<CR>:noh<CR>
+nnoremap <silent> <leader>bb ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
+
+" Move to start of next/previous single/double quote string concatenation
+nnoremap <leader>w' f+f'
+nnoremap <leader>b' F+2F'
+nnoremap <leader>w" f+f"
+nnoremap <leader>b" F+2F"
 
 " Move to the line after the next/previous blank line
 nnoremap <silent> <leader>] /^\n<CR>:noh<CR>j^
@@ -206,6 +209,19 @@ inoremap <silent> <C-Enter> <esc>o
 inoremap <silent> <S-Enter> <esc>O
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Numbers
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Increment/decrement next/previous number
+nnoremap <silent> <leader>n<C-A> l/\d<CR><C-A>:noh<CR>
+nnoremap <silent> <leader>n<C-X> l/\d<CR><C-X>:noh<CR>
+nnoremap <silent> <leader>N<C-A> h?\d<CR><C-A>:noh<CR>
+nnoremap <silent> <leader>N<C-X> h?\d<CR><C-X>:noh<CR>
+
+" Paste line, increment next number, and yank that line
+nnoremap <silent> <leader>p<C-A> p/\d<CR><C-A>:noh<CR>yy
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pasting
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -214,7 +230,7 @@ nnoremap <leader>dep de"0P
 nnoremap <leader>dEp dE"0P
 nnoremap <leader>dwp dw"0P
 nnoremap <leader>dWp dW"0P
-nnoremap <leader>Dp dd"0Pj
+nnoremap <leader>ddp dd"0Pj
 
 " Add a new line below/above then paste line below/above
 nnoremap <leader>op o<esc>p
@@ -247,19 +263,27 @@ call pathogen#infect()
 " Pairs
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Insert pairs of characters
-nnoremap <leader>i' i''<esc>i
-nnoremap <leader>i" i""<esc>i
-nnoremap <leader>i( i()<esc>i
-nnoremap <leader>i[ i[]<esc>i
-nnoremap <leader>i{ i{<CR>}<esc>O
-
-" Append pairs of characters
-nnoremap <leader>a' a''<esc>i
-nnoremap <leader>a" a""<esc>i
-nnoremap <leader>a( a()<esc>i
-nnoremap <leader>a[ a[]<esc>i
-nnoremap <leader>a{ a{<CR>}<esc>O
+" Insert/append pairs of characters and end in normal/insert mode
+nnoremap <leader>i' i''<esc>
+nnoremap <leader>I' i''<esc>i
+nnoremap <leader>i" i""<esc>
+nnoremap <leader>I" i""<esc>i
+nnoremap <leader>i( i()<esc>
+nnoremap <leader>I( i()<esc>i
+nnoremap <leader>i[ i[]<esc>
+nnoremap <leader>I[ i[]<esc>i
+nnoremap <leader>i{ i{<CR>}<esc>
+nnoremap <leader>I{ i{<CR>}<esc>O
+nnoremap <leader>a' a''<esc>h
+nnoremap <leader>A' a''<esc>i
+nnoremap <leader>a" a""<esc>h
+nnoremap <leader>A" a""<esc>i
+nnoremap <leader>a( a()<esc>h
+nnoremap <leader>A( a()<esc>i
+nnoremap <leader>a[ a[]<esc>h
+nnoremap <leader>A[ a[]<esc>i
+nnoremap <leader>a{ a{<CR>}<esc>
+nnoremap <leader>A{ a{<CR>}<esc>O
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
@@ -299,31 +323,25 @@ nnoremap <leader>j @='ddp'<CR>
 nnoremap <leader>x xp
 nnoremap <leader>X xP
 
-" Swap two items in a plain comma list forwards/backwards
+" Swap first/middle/last two items in a plain/surround comma/plus list forwards/backwards
 nnoremap <leader>s,f dWWPB
 nnoremap <leader>s,m dWWPB
 nnoremap <leader>s,l bdt,epB
 nnoremap <leader>s,f dW2bP2b
 nnoremap <leader>s,m dW2bP2b
 nnoremap <leader>s,l bde2bPB
-
-" Swap two items in a surrounded comma list forwards/backwards
 nnoremap <leader>s,F dWWPB
 nnoremap <leader>s,M dWWPB
 nnoremap <leader>s,L bldt,3wpB
 nnoremap <leader>s,F dW2bhP2bh
 nnoremap <leader>s,M dW2bhP2bh
 nnoremap <leader>s,L bd3w3bPB
-
-" Swap two items in a plain plus list forwards/backwards
 nnoremap <leader>s+f d2w2wP2b
 nnoremap <leader>s+m d2w2wP2b
 nnoremap <leader>s+l bhd2e2epb
 nnoremap <leader>s+f d2w2bP2b
 nnoremap <leader>s+m d2w2bP2b
 nnoremap <leader>s+l bhd2e2bhPb
-
-" Swap two items in a surrounded plus list forwards/backwards
 nnoremap <leader>s+F d2W2WP2B
 nnoremap <leader>s+M d2W2WP2B
 nnoremap <leader>s+L bhd2E4wpB
@@ -381,6 +399,3 @@ command! Lrc source $MYVIMRC
 
 " Yank to end of line
 nnoremap Y y$
-
-" Yank entire file
-nnoremap <leader>yg ggyG
