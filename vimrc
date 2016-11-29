@@ -167,15 +167,19 @@ nnoremap <leader>s~ ~hi
 nnoremap 2O O<esc>O
 nnoremap 2o o<esc>o
 
-" Wrap the next word/Word in parentheses
+" Wrap the next word/Word/function in parentheses
 nnoremap <leader>(w a(<esc>ea)<esc>
 nnoremap <leader>(W a(<esc>Ea)<esc>
+nnoremap <leader>(( a(<esc>f(%a)<esc>
 
 " Double up backslashes in a line
 nnoremap <silent> <leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 
 " Add semicolon to end of line
 nnoremap <leader>a; A;<esc>
+
+" Yank line, comment it out, then paste it below
+nnoremap <leader>ycp yygccp
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -193,12 +197,6 @@ set scrolloff=7
 " Move to next/previous character that matches the regex \w after the next/previous character that matches the regex \W
 nnoremap <silent> <leader>ww /\W<CR>/\w<CR>:noh<CR>
 nnoremap <silent> <leader>bb ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
-
-" Move to start of next/previous single/double quote string concatenation
-nnoremap <leader>w' f+f'
-nnoremap <leader>b' F+2F'
-nnoremap <leader>w" f+f"
-nnoremap <leader>b" F+2F"
 
 " Move to the line after the next/previous blank line
 nnoremap <silent> <leader>] /^\n<CR>:noh<CR>j^
@@ -309,7 +307,7 @@ set magic
 set laststatus=2
 
 " Format the status line
-set statusline=%f\ %y\ %m%=Col:\ %c,\ Line:\ %l/%L
+set statusline=%f\ %y\ %m%=%l:%c
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Swapping
@@ -323,31 +321,42 @@ nnoremap <leader>j @='ddp'<CR>
 nnoremap <leader>x xp
 nnoremap <leader>X xP
 
-" Swap first/middle/last two items in a plain/surround comma/plus list forwards/backwards
-nnoremap <leader>s,f dWWPB
-nnoremap <leader>s,m dWWPB
+" Swap non-last/last two items in a plain/surround comma/plus list forwards/backwards
+nnoremap <leader>s,s dWWPB
 nnoremap <leader>s,l bdt,epB
-nnoremap <leader>s,f dW2bP2b
-nnoremap <leader>s,m dW2bP2b
-nnoremap <leader>s,l bde2bPB
-nnoremap <leader>s,F dWWPB
-nnoremap <leader>s,M dWWPB
+nnoremap <leader>S,s dW2bP2b
+nnoremap <leader>S,l bde2bPB
+nnoremap <leader>s,S dWWPB
 nnoremap <leader>s,L bldt,3wpB
-nnoremap <leader>s,F dW2bhP2bh
-nnoremap <leader>s,M dW2bhP2bh
-nnoremap <leader>s,L bd3w3bPB
-nnoremap <leader>s+f d2w2wP2b
-nnoremap <leader>s+m d2w2wP2b
+nnoremap <leader>S,S dW2bhP2bh
+nnoremap <leader>S,L bd3w3bPB
+nnoremap <leader>s+s d2w2wP2b
 nnoremap <leader>s+l bhd2e2epb
-nnoremap <leader>s+f d2w2bP2b
-nnoremap <leader>s+m d2w2bP2b
-nnoremap <leader>s+l bhd2e2bhPb
-nnoremap <leader>s+F d2W2WP2B
-nnoremap <leader>s+M d2W2WP2B
+nnoremap <leader>S+s d2w2bP2b
+nnoremap <leader>S+l bhd2e2bhPb
+nnoremap <leader>s+S d2W2WP2B
 nnoremap <leader>s+L bhd2E4wpB
-nnoremap <leader>s+F d2W3bhP3bh
-nnoremap <leader>s+M d2W3bhP3bh
-nnoremap <leader>s+L b2hd4w2B2hPB
+nnoremap <leader>S+S d2W3bhP3bh
+nnoremap <leader>S+L b2hd4w2B2hPB
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" String concatenation
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Move to start of next/previous single/double quote string concatenation including/ignoring variables
+nnoremap <leader>w' /\('.\{-}[^\\]'\\|\w\+\)\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+nnoremap <leader>b' ?\('.\{-}[^\\]'\\|\w\+\)\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+nnoremap <leader>W' /'.\{-}[^\\]'\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+nnoremap <leader>B' ?'.\{-}[^\\]'\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+nnoremap <leader>w" /\(".\{-}[^\\]"\\|\w\+\)\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+nnoremap <leader>b" ?\(".\{-}[^\\]"\\|\w\+\)\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+nnoremap <leader>W" /".\{-}[^\\]"\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+nnoremap <leader>B" ?".\{-}[^\\]"\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+
+" Insert plus and nothing/single quote/double quote string
+nnoremap <leader>a+v a<space>+<space>
+nnoremap <leader>a+' a<space>+<space>''<esc>i
+nnoremap <leader>a+" a<space>+<space>""<esc>i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
