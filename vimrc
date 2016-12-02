@@ -15,13 +15,16 @@ set noswapfile
 " Braces
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Change/delete/yank text from current position to the end of the next pair of matching parentheses
+" Change/delete/yank text from current position to the end of the next pair of matching parentheses/brackets
 nnoremap <leader>c( vf(%c
 nnoremap <leader>d( vf(%d
 nnoremap <leader>y( vf(%y
+nnoremap <leader>c[ vf[%c
+nnoremap <leader>d[ vf[%d
+nnoremap <leader>y[ vf[%y
 
 " Delete text from current position to the next pair of matching parentheses, preserving the content inside
-nnoremap <leader>D( mmf(lyi(`mvf(%d"0P
+nnoremap <leader>D( mmf(lyi(`mvf(%d"0p
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
@@ -317,44 +320,40 @@ set statusline=%f\ %y\ %m%=%l:%c
 nnoremap <leader>k @='ddkP'<CR>
 nnoremap <leader>j @='ddp'<CR>
 
-" Swap two characters
+" Swap two characters forwards/backwards
 nnoremap <leader>x xp
 nnoremap <leader>X xP
 
-" Swap non-last/last two items in a plain/surround comma/plus list forwards/backwards
-nnoremap <leader>s,s dWWPB
-nnoremap <leader>s,l bdt,epB
-nnoremap <leader>S,s dW2bP2b
-nnoremap <leader>S,l bde2bPB
-nnoremap <leader>s,S dWWPB
-nnoremap <leader>s,L bldt,3wpB
-nnoremap <leader>S,S dW2bhP2bh
-nnoremap <leader>S,L bd3w3bPB
-nnoremap <leader>s+s d2w2wP2b
-nnoremap <leader>s+l bhd2e2epb
-nnoremap <leader>S+s d2w2bP2b
-nnoremap <leader>S+l bhd2e2bhPb
-nnoremap <leader>s+S d2W2WP2B
-nnoremap <leader>s+L bhd2E4wpB
-nnoremap <leader>S+S d2W3bhP3bh
-nnoremap <leader>S+L b2hd4w2B2hPB
+" Swap two normal or single/double quoted items in a comma/plus list forwards/backwards
+nnoremap <leader>s,s dt,wPldt,F,PW
+nnoremap <leader>S,s dt,2bPldt,wP3b
+nnoremap <silent> <leader>s,' v/[^\\]'<CR>ldwPlvnld2NhPW:noh<CR>
+nnoremap <silent> <leader>S,' v/[^\\]'<CR>ld2NplvnldwP4Nl:noh<CR>
+nnoremap <silent> <leader>s," v/[^\\]"<CR>ldwPlvnld2NhPW:noh<CR>
+nnoremap <silent> <leader>S," v/[^\\]"<CR>ld2NplvnldwP4Nl:noh<CR>
+nnoremap <leader>s+s dE2WPldEF+hP2W
+nnoremap <leader>S+s dE2BPldEwlp3B
+nnoremap <silent> <leader>s+' v/[^\\]'<CR>ld2WPlvnld2N2hP2W:noh<CR>
+nnoremap <silent> <leader>S+' v/[^\\]'<CR>ld2Nplvnldwlp4Nl:noh<CR>
+nnoremap <silent> <leader>s+" v/[^\\]"<CR>ld2WPlvnld2N2hP2W:noh<CR>
+nnoremap <silent> <leader>S+" v/[^\\]"<CR>ld2Nplvnldwlp4Nl:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" String concatenation
+" Strings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Move to start of next/previous single/double quote string concatenation including/ignoring variables
-nnoremap <leader>w' /\('.\{-}[^\\]'\\|\w\+\)\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
-nnoremap <leader>b' ?\('.\{-}[^\\]'\\|\w\+\)\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
-nnoremap <leader>W' /'.\{-}[^\\]'\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
-nnoremap <leader>B' ?'.\{-}[^\\]'\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
-nnoremap <leader>w" /\(".\{-}[^\\]"\\|\w\+\)\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
-nnoremap <leader>b" ?\(".\{-}[^\\]"\\|\w\+\)\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
-nnoremap <leader>W" /".\{-}[^\\]"\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
-nnoremap <leader>B" ?".\{-}[^\\]"\(\s+\s\\|;\\|\n\)<CR>:noh<CR>
+" Move to start of next/previous single/double quote string or variable
+nnoremap <silent> <leader>w' /\('.\{-}[^\\]'\\|\S\+\)\(\s+\s\\|\n\)<CR>:noh<CR>
+nnoremap <silent> <leader>b' ?\('.\{-}[^\\]'\\|\S\+\)\(\s+\s\\|\n\)<CR>:noh<CR>
+nnoremap <silent> <leader>W' /'.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <leader>B' ?'.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <leader>w" /\(".\{-}[^\\]"\\|\S\+\)\(\s+\s\\|\n\)<CR>:noh<CR>
+nnoremap <silent> <leader>b" ?\(".\{-}[^\\]"\\|\S\+\)\(\s+\s\\|\n\)<CR>:noh<CR>
+nnoremap <silent> <leader>W" /".\{-}[^\\]"<CR>:noh<CR>
+nnoremap <silent> <leader>B" ?".\{-}[^\\]"<CR>:noh<CR>
 
-" Insert plus and nothing/single quote/double quote string
-nnoremap <leader>a+v a<space>+<space>
+" Insert plus and nothing or single/double quote string
+nnoremap <leader>a+a a<space>+<space>
 nnoremap <leader>a+' a<space>+<space>''<esc>i
 nnoremap <leader>a+" a<space>+<space>""<esc>i
 
