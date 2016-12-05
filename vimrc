@@ -174,6 +174,7 @@ nnoremap 2o o<esc>o
 nnoremap <leader>(w a(<esc>ea)<esc>
 nnoremap <leader>(W a(<esc>Ea)<esc>
 nnoremap <leader>(( a(<esc>f(%a)<esc>
+nnoremap <leader>($ a(<esc>$a)<esc>
 
 " Double up backslashes in a line
 nnoremap <silent> <leader>2\ :s/\\/\\\\/g<CR>:noh<CR>

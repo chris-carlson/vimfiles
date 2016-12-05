@@ -9,6 +9,7 @@ iabbrev <buffer> init def __init__(self):
 iabbrev <buffer> pr print
 iabbrev <buffer> prop @property
 iabbrev <buffer> ret return
+iabbrev <buffer> stat @staticmethod
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
