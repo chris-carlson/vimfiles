@@ -182,9 +182,6 @@ nnoremap <silent> <leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 " Add semicolon to end of line
 nnoremap <leader>a; A;<esc>
 
-" Yank line, comment it out, then paste it below
-nnoremap <leader>ycp yygccp
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -198,9 +195,11 @@ set whichwrap=b,s
 " Keep lines between the cursor and top/bottom of the screen
 set scrolloff=7
 
-" Move to next/previous character that matches the regex \w after the next/previous character that matches the regex \W
-nnoremap <silent> <leader>ww /\W<CR>/\w<CR>:noh<CR>
-nnoremap <silent> <leader>bb ?\w<CR>?\W<CR>/\w<CR>:noh<CR>
+" Move to next/previous character that matches the regex [A-z0-9]/\w after the next/previous character that matches the regex _|\W/\W
+nnoremap <silent> <leader>ww /_\\|\W\\|\n<CR>/[A-z0-9]<CR>:noh<CR>
+nnoremap <silent> <leader>wW /\W\\|\n<CR>/\w<CR>:noh<CR>
+nnoremap <silent> <leader>bb ?[A-z0-9]<CR>?_\\|\W\\|\n<CR>/[A-z0-9]<CR>:noh<CR>
+nnoremap <silent> <leader>bB ?\w<CR>?\W\\|\n<CR>/\w<CR>:noh<CR>
 
 " Move to the line after the next/previous blank line
 nnoremap <silent> <leader>] /^\n<CR>:noh<CR>j^
