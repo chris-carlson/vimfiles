@@ -53,5 +53,9 @@ nnoremap <silent> <buffer> ]f /\w\+(.*):<space>\w\+<space>{<CR>:noh<CR>
 nnoremap <buffer> <localleader>d{ ^f{xj$xj^x2kJJ
 nnoremap <buffer> <localleader>D{ ^f{xj^dw$xj^x2kJJ
 
+" Convert anonymous function body without brackets to a multi-line body and either don't modify the body or add a return statement
+nnoremap <buffer> <localleader>a{ ^f>wi{<CR><esc>$hi<CR>}<esc>kA;<esc>
+nnoremap <buffer> <localleader>A{ ^f>wi{<CR><esc>$hi<CR>}<esc>kA;<esc>Ireturn<space><esc>$
+
 " Add a parameter to the function
 nnoremap <buffer> <localleader>app ^f)i,<space>
