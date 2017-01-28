@@ -58,4 +58,5 @@ nnoremap <buffer> <localleader>a{ ^f>wi{<CR><esc>$hi<CR>}<esc>kA;<esc>
 nnoremap <buffer> <localleader>A{ ^f>wi{<CR><esc>$hi<CR>}<esc>kA;<esc>Ireturn<space><esc>$
 
 " Add a parameter to the function
+nnoremap <buffer> <localleader>ipp ^f(a
 nnoremap <buffer> <localleader>app ^f)i,<space>

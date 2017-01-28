@@ -28,4 +28,5 @@ nnoremap <silent> <buffer> ]f /function.*(.*) {<CR>:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Add a parameter to the function
+nnoremap <buffer> <localleader>ipp ^f(a
 nnoremap <buffer> <localleader>app ^f)i,<space>

@@ -45,4 +45,5 @@ nnoremap <silent> <buffer> ]m /\(private\\|protected\\|public\)<space>\w\+<space
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Add a parameter to the method
+nnoremap <buffer> <localleader>ipp ^f(a
 nnoremap <buffer> <localleader>app ^f)i,<space>
