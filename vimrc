@@ -24,7 +24,7 @@ nnoremap <leader>d[ vf[%d
 nnoremap <leader>y[ vf[%y
 
 " Delete text from current position to the next pair of matching parentheses, preserving the content inside
-nnoremap <leader>D( mmf(lyi(`mvf(%d"0p
+nnoremap <leader>D( mmf(lyi(`mvf(%d"0P
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
@@ -169,6 +169,9 @@ nnoremap <leader>s~ ~hi
 " Add two new lines above/below current line
 nnoremap 2O O<esc>O
 nnoremap 2o o<esc>o
+
+" Add two new lines and go into insert mode on the first
+nnoremap <leader>oO o<esc>O
 
 " Wrap the next word/Word/function in parentheses
 nnoremap <leader>(w a(<esc>ea)<esc>
@@ -322,35 +325,21 @@ nnoremap <leader>j @='ddp'<CR>
 
 " Swap two characters forwards/backwards
 nnoremap <leader>x xp
-nnoremap <leader>X xP
+nnoremap <leader>X xhP
 
-" Swap two normal or single/double quoted items in a comma/plus list forwards/backwards
-nnoremap <leader>s,s dt,wPldt,F,PW
-nnoremap <leader>S,s dt,2bPldt,wP3b
-nnoremap <silent> <leader>s,' v/[^\\]'<CR>ldwPlvnld2NhPW:noh<CR>
-nnoremap <silent> <leader>S,' v/[^\\]'<CR>ld2NplvnldwP4Nl:noh<CR>
-nnoremap <silent> <leader>s," v/[^\\]"<CR>ldwPlvnld2NhPW:noh<CR>
-nnoremap <silent> <leader>S," v/[^\\]"<CR>ld2NplvnldwP4Nl:noh<CR>
-nnoremap <leader>s+s dE2WPldEF+hP2W
-nnoremap <leader>S+s dE2BPldEwlp3B
-nnoremap <silent> <leader>s+' v/[^\\]'<CR>ld2WPlvnld2N2hP2W:noh<CR>
-nnoremap <silent> <leader>S+' v/[^\\]'<CR>ld2Nplvnldwlp4Nl:noh<CR>
-nnoremap <silent> <leader>s+" v/[^\\]"<CR>ld2WPlvnld2N2hP2W:noh<CR>
-nnoremap <silent> <leader>S+" v/[^\\]"<CR>ld2Nplvnldwlp4Nl:noh<CR>
+" Swap two items in a list forwards/backwards
+nnoremap <silent> <leader>ss v/\(,\\|\s+\s\)<CR>hd/\(\w\\|'\\|"\)<CR>Plv/\(,\\|\s+\s\\|)\\|]\\|}\)<CR>hd?\(,\\|\s+\s\)<CR>P/\(\w\\|'\\|"\)<CR>:noh<CR>
+nnoremap <silent> <leader>Ss v/\(,\\|\s+\s\\|)\\|]\\|}\)<CR>hd?\(,\\|\s+\s\\|(\\|[\\|{\)<CR>n/\(\w\\|'\\|"\)<CR>Plv/\(,\\|\s+\s\)<CR>hd/\s<CR>p?\(,\\|\s+\s\\|(\\|[\\|{\)<CR>n/\(\w\\|'\\|"\)<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Strings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Move to start of next/previous single/double quote string or variable
-nnoremap <silent> <leader>w' /\('.\{-}[^\\]'\\|\S\+\)\(\s+\s\\|\n\)<CR>:noh<CR>
-nnoremap <silent> <leader>b' ?\('.\{-}[^\\]'\\|\S\+\)\(\s+\s\\|\n\)<CR>:noh<CR>
-nnoremap <silent> <leader>W' /'.\{-}[^\\]'<CR>:noh<CR>
-nnoremap <silent> <leader>B' ?'.\{-}[^\\]'<CR>:noh<CR>
-nnoremap <silent> <leader>w" /\(".\{-}[^\\]"\\|\S\+\)\(\s+\s\\|\n\)<CR>:noh<CR>
-nnoremap <silent> <leader>b" ?\(".\{-}[^\\]"\\|\S\+\)\(\s+\s\\|\n\)<CR>:noh<CR>
-nnoremap <silent> <leader>W" /".\{-}[^\\]"<CR>:noh<CR>
-nnoremap <silent> <leader>B" ?".\{-}[^\\]"<CR>:noh<CR>
+" Move to start of next/previous single/double quote string
+nnoremap <silent> <leader>w' /'.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <leader>b' ?'.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <leader>w" /".\{-}[^\\]"<CR>:noh<CR>
+nnoremap <silent> <leader>b" ?".\{-}[^\\]"<CR>:noh<CR>
 
 " Insert plus and nothing or single/double quote string
 nnoremap <leader>a+a a<space>+<space>
