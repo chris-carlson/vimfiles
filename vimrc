@@ -30,6 +30,14 @@ nnoremap <leader>D( mmf(lyi(`mvf(%d"0p
 " Buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+" Allow for capital letters in buffer commands
+command! Bn bn
+command! BN bn
+command! Bp bp
+command! BP bp
+command! Bd bd
+command! BD bd
+"
 " Delete buffer and move to next buffer
 command! Bdn bd | bn
 

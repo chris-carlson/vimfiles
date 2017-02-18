@@ -23,3 +23,7 @@ nnoremap <buffer> <localleader>at ^lyt>$a<lt>/<esc>pa><esc>$
 nnoremap <buffer> <localleader>aT ^lyt<space>$a<lt>/<esc>pa><esc>$
 nnoremap <buffer> <localleader>At ^lyt>o<lt>/<esc>pa><esc>$
 nnoremap <buffer> <localleader>AT ^lyt<space>o<lt>/<esc>pa><esc>$
+
+" Change/delete Angular 2 interpolation
+nnoremap <buffer> c{ c2f}
+nnoremap <buffer> d{ d2f}
