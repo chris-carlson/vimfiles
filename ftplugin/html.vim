@@ -24,6 +24,9 @@ nnoremap <buffer> <localleader>aT ^lyt<space>$a<lt>/<esc>pa><esc>$
 nnoremap <buffer> <localleader>At ^lyt>o<lt>/<esc>pa><esc>$
 nnoremap <buffer> <localleader>AT ^lyt<space>o<lt>/<esc>pa><esc>$
 
-" Change/delete Angular 2 interpolation
-nnoremap <buffer> c{ c2f}
-nnoremap <buffer> d{ d2f}
+" Add/change/delete Angular interpolation
+nnoremap <buffer> <localleader>a{ a{{}}<esc>hi
+nnoremap <buffer> <localleader>ci{ 2lct}
+nnoremap <buffer> <localleader>ca{ c2f}
+nnoremap <buffer> <localleader>di{ 2ldt}
+nnoremap <buffer> <localleader>da{ d2f}
