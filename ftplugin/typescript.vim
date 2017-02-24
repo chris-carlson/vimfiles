@@ -57,9 +57,9 @@ nnoremap <buffer> <localleader>a{ ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>
 nnoremap <buffer> <localleader>A{ ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>Ireturn<space><esc>$
 
 " Add a parameter to the function
-nnoremap <buffer> <localleader>ipp ^f(a
-nnoremap <buffer> <localleader>app ^f)i,<space>
+nnoremap <buffer> <localleader>p ^f(a
+nnoremap <buffer> <localleader>P ^f)i,<space>
 
-" Convert typeless parameter/functino to a typed one
-nnoremap <buffer> <localleader>atp i(<esc>ea:<space>)<esc>i
-nnoremap <buffer> <localleader>atf ^f)a:<space>
+" Convert typeless parameter/function to a typed one
+nnoremap <buffer> <localleader>tp i(<esc>ea:<space>)<esc>i
+nnoremap <buffer> <localleader>tf ^f)a:<space>

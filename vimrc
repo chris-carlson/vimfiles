@@ -41,6 +41,9 @@ command! BD bd
 " Delete buffer and move to next buffer
 command! Bdn bd | bn
 
+" Save buffer and move to previous buffer
+command! Wp w | bp
+
 " Save buffer and move to next buffer
 command! Wn w | bn
 "

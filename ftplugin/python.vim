@@ -40,9 +40,17 @@ nnoremap <silent> <buffer> ]f /def<space>\w\+(.*):<CR>:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Add a parameter to the function
-nnoremap <buffer> <localleader>ipp ^f(a
-nnoremap <buffer> <localleader>app ^f)i,<space>
+nnoremap <buffer> <localleader>p ^f(ea,<space>
+nnoremap <buffer> <localleader>P ^f)i,<space>
 
 " Add a self parameter to the function, then start the body or add another parameter
-nnoremap <buffer> <localleader>aps $a(self):<CR>
-nnoremap <buffer> <localleader>apS $a(self):<esc>hi,<space>
+nnoremap <buffer> <localleader>ss ^f(aself<esc>
+nnoremap <buffer> <localleader>sb ^f(a(self):<CR>
+nnoremap <buffer> <localleader>sp ^f(a(self):<esc>hi,<space>
+
+" Add a range to a list
+nnoremap <buffer> <localleader>r irange(0,<space>len(<esc>ea))<esc>
+nnoremap <buffer> <localleader>R irange(0,<space>len(<esc>Ea))<esc>
+
+" Add a double-underscore function
+nnoremap <buffer> <localleader>_ S<tab>def<space>____(self):<esc>^f_;a
