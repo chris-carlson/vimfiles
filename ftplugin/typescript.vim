@@ -63,3 +63,11 @@ nnoremap <buffer> <localleader>P ^f)i,<space>
 " Convert typeless parameter/function to a typed one
 nnoremap <buffer> <localleader>tp i(<esc>ea:<space>)<esc>i
 nnoremap <buffer> <localleader>tf ^f)a:<space>
+
+" Add import statement
+nnoremap <buffer> <localleader>il oimport<space>{<space><space>}<space>from<space>'';F{la
+nnoremap <buffer> <localleader>iL o<CR>import<space>{<space><space>}<space>from<space>'';F{la
+
+" Change import name/path
+nnoremap <buffer> <localleader>ii ^f{wdt}hi<space>
+nnoremap <buffer> <localleader>if ^f'ci'

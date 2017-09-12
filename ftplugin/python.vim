@@ -2,7 +2,9 @@
 " Abbreviations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+iabbrev <buffer> br break
 iabbrev <buffer> cl class
+iabbrev <buffer> con continue
 iabbrev <buffer> fr from
 iabbrev <buffer> imp import
 iabbrev <buffer> pr print
@@ -25,16 +27,16 @@ setlocal shiftwidth=4
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Go to previous/next class definition
-nnoremap <silent> <buffer> [c ?^class<space>\w\+:<CR>:noh<CR>
-nnoremap <silent> <buffer> ]c /^class<space>\w\+:<CR>:noh<CR>
+nnoremap <silent> <buffer> [c ?^class<space>\w\+:<CR>:noh<CR>w
+nnoremap <silent> <buffer> ]c /^class<space>\w\+:<CR>:noh<CR>w
 
 " Go to previous/next init
-nnoremap <silent> <buffer> [i ?def<space>__init__(.*):<CR>:noh<CR>
-nnoremap <silent> <buffer> ]i /def<space>__init__(.*):<CR>:noh<CR>
+nnoremap <silent> <buffer> [i ?def<space>__init__(.*):<CR>:noh<CR>w
+nnoremap <silent> <buffer> ]i /def<space>__init__(.*):<CR>:noh<CR>w
 
 " Go to previous/next function definition
-nnoremap <silent> <buffer> [f ?def<space>\w\+(.*):<CR>:noh<CR>
-nnoremap <silent> <buffer> ]f /def<space>\w\+(.*):<CR>:noh<CR>
+nnoremap <silent> <buffer> [f ?def<space>\w\+(.*):<CR>:noh<CR>w
+nnoremap <silent> <buffer> ]f /def<space>\w\+(.*):<CR>:noh<CR>w
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations
@@ -65,3 +67,7 @@ nnoremap <buffer> <localleader>_l S<tab>def<space>__len__(self):<esc>
 nnoremap <buffer> <localleader>_it S<tab>def<space>__iter__(self):<esc>
 nnoremap <buffer> <localleader>_gi S<tab>def<space>__getitem__(self):<esc>hi,<space>
 nnoremap <buffer> <localleader>_si S<tab>def<space>__setitem__(self):<esc>hi,<space>
+
+" Add log statement with yanked variable
+nnoremap <buffer> <localleader>l oprint('<esc>pa:<space>'<space>+<space>str(<esc>pa))<esc>
+nnoremap <buffer> <localleader>L Oprint('<esc>pa:<space>'<space>+<space>str(<esc>pa))<esc>
