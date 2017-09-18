@@ -69,5 +69,7 @@ nnoremap <buffer> <localleader>_gi S<tab>def<space>__getitem__(self):<esc>hi,<sp
 nnoremap <buffer> <localleader>_si S<tab>def<space>__setitem__(self):<esc>hi,<space>
 
 " Add log statement with yanked variable
-nnoremap <buffer> <localleader>l oprint('<esc>pa:<space>'<space>+<space>str(<esc>pa))<esc>
-nnoremap <buffer> <localleader>L Oprint('<esc>pa:<space>'<space>+<space>str(<esc>pa))<esc>
+nnoremap <buffer> <localleader>pp oprint('<esc>pa:<space>'<space>+<space>str(<esc>pa))<esc>
+nnoremap <buffer> <localleader>PP Oprint('<esc>pa:<space>'<space>+<space>str(<esc>pa))<esc>
+nnoremap <buffer> <localleader>pl oprint('<esc>pa:<space>'<space>+<space>str(len(<esc>pa)))<esc>
+nnoremap <buffer> <localleader>PL Oprint('<esc>pa:<space>'<space>+<space>str(len(<esc>pa)))<esc>

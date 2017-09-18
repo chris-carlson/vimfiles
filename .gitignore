@@ -1,1 +1,3 @@
 .netrwhist
+bundle/haskell-vim/tests
+bundle/vim-vue/test

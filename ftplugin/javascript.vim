@@ -35,11 +35,18 @@ nnoremap <silent> <buffer> ]F /^function.*(.*) {<CR>:noh<CR>
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+" Insert anonymous function
+nnoremap <buffer> <localleader>nes a()<space>=><space>
+nnoremap <buffer> <localleader>nem a()<space>=><space>{<CR>}<esc>O
+nnoremap <buffer> <localleader>nf afunction<space>()<space>{<CR>}<esc>O
+nnoremap <buffer> <localleader>nv a<space>=><space>{<CR>}<esc>k$F=hi
+nnoremap <buffer> <localleader>nV a()<space>=><space>{<CR>}<esc>k$F(a
+
 " Convert anonymous function body to a single/multi line body and either don't modify the body or delete/add the return statement
-nnoremap <buffer> <localleader>d{ ^f{xj$xj^x2kJJ
-nnoremap <buffer> <localleader>D{ ^f{xj^dw$xj^x2kJJ
-nnoremap <buffer> <localleader>a{ ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>
-nnoremap <buffer> <localleader>A{ ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>Ireturn<space><esc>$
+nnoremap <buffer> <localleader>ns ^f{xj$xj^x2kJJ
+nnoremap <buffer> <localleader>nS ^f{xj^dw$xj^x2kJJ
+nnoremap <buffer> <localleader>nm ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>
+nnoremap <buffer> <localleader>nM ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>Ireturn<space><esc>$
 
 " Add a parameter to the function
 nnoremap <buffer> <localleader>p ^f(a
