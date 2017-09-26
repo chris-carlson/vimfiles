@@ -25,12 +25,16 @@ nnoremap <Leader>y[ vf[%y
 nnoremap <Leader>c{ vf{%c
 nnoremap <Leader>d{ vf{%d
 nnoremap <Leader>y{ vf{%y
-nnoremap <Leader>c< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>c
+nnoremap <Leader>c< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>d:noh<CR>i
 nnoremap <Leader>d< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>d:noh<CR>
 nnoremap <Leader>y< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>y:noh<CR>
 
-" Delete text from current position to the next pair of matching parentheses, preserving the content inside
+
+" Delete text from current position to the next pair of matching characters, preserving the content inside
 nnoremap <Leader>D( dt(di(hPl2xB
+nnoremap <Leader>D[ dt[di[hPl2xB
+nnoremap <Leader>D{ dt{di{hPl2xB
+nnoremap <Leader>D< dt<di<hPl2xB
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
@@ -166,12 +170,11 @@ set cindent
 " Load filetype-specific indent files
 filetype plugin indent on
 
-" Indent curly brace block
-nnoremap <Leader>>{ v$%><lt><lt>$%<lt><lt>
-nnoremap <Leader>>} v%><lt><lt>$%<lt><lt>
-
-" Indent colon block
-nnoremap <silent> <Leader>>: v?<C-V>:<CR>><lt><lt>:noh<CR>
+" Indent/unindent curly brace block
+nnoremap <Leader>>{ $vi{>
+nnoremap <Leader><lt>{ $vi{<lt>
+nnoremap <Leader>>} vi{>
+nnoremap <Leader><lt>} vi{<lt>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Leaders
@@ -191,10 +194,10 @@ nnoremap <silent> d~ v/\u<CR>hd:noh<CR>
 nnoremap <silent> y~ v/\u<CR>hy:noh<CR>
 
 " Toggle case of current letter and enter insertion mode
-nnoremap <Leader>s~ ~hi
+nnoremap <Leader>i~ ~hi
 
 " Delete until next capital letter and make it lowercase
-nnoremap <Leader>S~ v/\u<CR>hd~h:noh<CR>
+nnoremap <Leader>d~ v/\u<CR>hd~h:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Line operations
@@ -214,14 +217,14 @@ nnoremap <Leader>($ v$hda()<Esc>P
 " Select to the end of the line
 vnoremap $ $h
 
+" Delete selection without yanking it
+vnoremap <Leader>d "_d
+
 " Double up backslashes in a line
 nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 
 " Add semicolon to end of line
 nnoremap <Leader>; A;<Esc>
-
-" Open line with semicolon
-nnoremap <Leader>o; o;<Esc>i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " List
@@ -252,22 +255,22 @@ set scrolloff=7
 " Move to next/previous word after the next/previous given character
 nnoremap <silent> <Leader>ww /\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>bb ?\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w_ f_l
-nnoremap <silent> <Leader>b_ F_l
-nnoremap <silent> <Leader>w. f.l
-nnoremap <silent> <Leader>b. F.l
-nnoremap <silent> <Leader>w( f(l
-nnoremap <silent> <Leader>b( F(l
-nnoremap <silent> <Leader>w[ f[l
-nnoremap <silent> <Leader>b[ F[l
-nnoremap <silent> <Leader>w< f<l
-nnoremap <silent> <Leader>b< F<l
-nnoremap <silent> <Leader>w{ f{l
-nnoremap <silent> <Leader>b{ F{l
+nnoremap <silent> <Leader>w_ /_\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b_ ?_\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w. /\.\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b. ?\.\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w( /(\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b( ?(\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w[ /[\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b[ ?[\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w{ /{\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b{ ?{\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w< /<\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b< ?<\zs\w<CR>:noh<CR>
 
 " Move to next/previous part of a file path
-nnoremap <silent> <Leader>wp /\("\\|\\\\\)\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>bp ?\("\\|\\\\\)\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>bp ?\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
 
 " Move to next/previous interpolation
 nnoremap <silent> <Leader>wi /\{\{\zs\w<CR>:noh<CR>
@@ -402,16 +405,16 @@ set laststatus=2
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Swap line with the one above/below
-nnoremap <silent> <Leader>k @='ddkP'<CR>
+nnoremap <silent> <Leader>k @='kddpk'<CR>
 nnoremap <silent> <Leader>j @='ddp'<CR>
 
 " Swap two characters forwards/backwards
-nnoremap <Leader>x xp
-nnoremap <Leader>X xhP
+nnoremap <Leader>x @='xp'<CR>
+nnoremap <Leader>X @='xhP'<CR>
 
 " Swap two items in a list forwards/backwards
 nnoremap <silent> <Leader>ss v/\(,\\|\s+\s\)<CR>hd/\(\w\\|'\\|"\)<CR>Plv/\(,\\|\s+\s\\|)\\|]\\|}\)<CR>hd?\(,\\|\s+\s\)<CR>P/\(\w\\|'\\|"\)<CR>:noh<CR>
-nnoremap <silent> <Leader>Ss v/\(,\\|\s+\s\\|)\\|]\\|}\)<CR>hd?\(,\\|\s+\s\\|(\\|[\\|{\)<CR>n/\(\w\\|'\\|"\)<CR>Plv/\(,\\|\s+\s\)<CR>hd/\s<CR>p?\(,\\|\s+\s\\|(\\|[\\|{\)<CR>n/\(\w\\|'\\|"\)<CR>:noh<CR>
+nnoremap <silent> <Leader>SS v/\(,\\|\s+\s\\|)\\|]\\|}\)<CR>hd?\(,\\|\s+\s\\|(\\|[\\|{\)<CR>n/\(\w\\|'\\|"\)<CR>Plv/\(,\\|\s+\s\)<CR>hd/\s<CR>p?\(,\\|\s+\s\\|(\\|[\\|{\)<CR>n/\(\w\\|'\\|"\)<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Strings
@@ -421,9 +424,6 @@ nnoremap <silent> <Leader>Ss v/\(,\\|\s+\s\\|)\\|]\\|}\)<CR>hd?\(,\\|\s+\s\\|(\\
 nnoremap <Leader>++ a<Space>+<Space>
 nnoremap <Leader>+' a<Space>+<Space>''<Esc>i
 nnoremap <Leader>+" a<Space>+<Space>""<Esc>i
-
-" Append variable in tick string
-nnoremap <Leader>${ a${}<Esc>i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
@@ -476,8 +476,8 @@ command! Lrc source $MYVIMRC
 " Yank to end of line
 nnoremap Y y$
 
-" Yank to clipboard
-vnoremap <Leader>gy "+y
+" Yank selection to clipboard
+vnoremap <Leader>y "+y
 
 " Yank curly brace block
 nnoremap <Leader>yb V%y
