@@ -19,12 +19,19 @@ nnoremap <silent> <buffer> [r ?\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
 nnoremap <silent> <buffer> ]r /\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" auto-pairs
+let g:AutoPairs['<']='>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Add closing tag for tag inline/below
-nnoremap <buffer> <localleader>t ^lv/\s\\|><CR>hy$a<lt>/<esc>pa><esc>$
-nnoremap <buffer> <localleader>T ^lv/\s\\|><CR>hyo<lt>/<esc>pa><esc>$
+nnoremap <buffer> <localleader>t ^lv/\s\\|><CR>hy$a<lt>/<esc>pa><esc>$:noh<CR>
+nnoremap <buffer> <localleader>T ^lv/\s\\|><CR>hyo<lt>/<esc>pa><esc>:noh<CR>O
 
 " Add/change/delete interpolation
 nnoremap <buffer> <localleader>ai a{{}}<esc>hi
@@ -36,11 +43,4 @@ nnoremap <buffer> <localleader>yii 2lyt}
 nnoremap <buffer> <localleader>yai y2f}
 
 " Delete attribute on a tag
-nnoremap <buffer> <localleader>dr v/=".\{-}\("\zs\s\\|\zs"\ze>\)<CR>:noh<CR>d
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" autopairs
-let b:AutoPairs['<']='>'
+nnoremap <buffer> <localleader>dr v/=".\{-}\("\zs\s\\|\zs"\ze>\)<CR>d:noh<CR>

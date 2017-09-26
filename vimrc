@@ -25,6 +25,9 @@ nnoremap <Leader>y[ vf[%y
 nnoremap <Leader>c{ vf{%c
 nnoremap <Leader>d{ vf{%d
 nnoremap <Leader>y{ vf{%y
+nnoremap <Leader>c< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>c
+nnoremap <Leader>d< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>d:noh<CR>
+nnoremap <Leader>y< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>y:noh<CR>
 
 " Delete text from current position to the next pair of matching parentheses, preserving the content inside
 nnoremap <Leader>D( dt(di(hPl2xB
@@ -131,8 +134,8 @@ nnoremap <Leader>yG 0yG
 
 " Change/delete/highlight/yank from current line until next blank line
 nnoremap <Leader>cn 0c/^\n<CR>:noh<CR>
-nnoremap <Leader>dn 0d/^\n<CR>dd:noh<CR>
-nnoremap <Leader>vn 0V/^\n<CR>k
+nnoremap <Leader>dn 0d/^\n<CR>"_dd:noh<CR>
+nnoremap <Leader>vn 0V/^\n<CR>k:noh<CR>
 nnoremap <Leader>yn 0y/^\n<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,7 +194,7 @@ nnoremap <silent> y~ v/\u<CR>hy:noh<CR>
 nnoremap <Leader>s~ ~hi
 
 " Delete until next capital letter and make it lowercase
-nnoremap <Leader>S~ v/\u<CR>:noh<CR>hd~h
+nnoremap <Leader>S~ v/\u<CR>hd~h:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Line operations
@@ -231,7 +234,7 @@ nnoremap <Leader>a, a,<Space>
 nnoremap <Leader>a+ a<Space>+<Space>
 
 " Delete item from comma/plus separated list, not yanking the comma/plus
-nnoremap <Leader>d, /\(\((\\|\[\\|{\\|<\).*\()\\|\]\\|}\\|>\)\)*\zs\(,\\|)\\|\]\\|}\\|>\)<CR>:noh<CR>
+nnoremap <Leader>dl v/\w\+\([([{<].\{-}[)\]}>]\)\{-}\zs\(,\\|\s+\\|)\)<CR>hd"_df<Space>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -261,18 +264,28 @@ nnoremap <silent> <Leader>w< f<l
 nnoremap <silent> <Leader>b< F<l
 nnoremap <silent> <Leader>w{ f{l
 nnoremap <silent> <Leader>b{ F{l
-nnoremap <silent> <Leader>w2{ /\{\{\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b2{ ?\{\{\zs\w<CR>:noh<CR>
+
+" Move to next/previous part of a file path
+nnoremap <silent> <Leader>wp /\("\\|\\\\\)\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>bp ?\("\\|\\\\\)\zs\w<CR>:noh<CR>
+
+" Move to next/previous interpolation
+nnoremap <silent> <Leader>wi /\{\{\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>bi ?\{\{\zs\w<CR>:noh<CR>
 
 " Move to next/previous capital letter
 nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
 nnoremap <silent> <Leader>b~ ?\u<CR>:noh<CR>
 
 " Move to start of next/previous single/double quote string
-nnoremap <silent> <Leader>w' /'.\{-}[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>b' ?'.\{-}[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>w" /".\{-}[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>b" ?".\{-}[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>w' /'\zs.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <Leader>b' ?'\zs.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <Leader>w" /"\zs.\{-}[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>b" ?"\zs.\{-}[^\\]"<CR>:noh<CR>
+
+" Move to start of next/previous string concatenation
+nnoremap <silent> <Leader>wc /\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
+nnoremap <silent> <Leader>bc ?\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
 
 " Move to the line after/before the next/previous blank line
 nnoremap <silent> ]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>
@@ -465,3 +478,6 @@ nnoremap Y y$
 
 " Yank to clipboard
 vnoremap <Leader>gy "+y
+
+" Yank curly brace block
+nnoremap <Leader>yb V%y

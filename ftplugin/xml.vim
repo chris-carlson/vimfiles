@@ -14,12 +14,24 @@ setlocal shiftwidth=2
 nnoremap <silent> <buffer> [t ?<[^/]\+><CR>:noh<CR>
 nnoremap <silent> <buffer> ]t /<[^/]\+><CR>:noh<CR>
 
+" Go to previous/next attribute
+nnoremap <silent> <buffer> [r ?\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
+nnoremap <silent> <buffer> ]r /\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" auto-pairs
+let g:AutoPairs['<']='>'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Add closing tag for non-attributed/attributed tag inline/below
-nnoremap <buffer> <localleader>at ^lyt>$a<lt>/><esc>P$
-nnoremap <buffer> <localleader>aT ^lyt<space>$a<lt>/><esc>P$
-nnoremap <buffer> <localleader>At ^lyt>o<lt>/><esc>P<lt><lt>$
-nnoremap <buffer> <localleader>AT ^lyt<space>o<lt>/><esc>P<lt><lt>$
+" Add closing tag for tag inline/below
+nnoremap <buffer> <localleader>t ^lv/\s\\|><CR>hy$a<lt>/<esc>pa><esc>$:noh<CR>
+nnoremap <buffer> <localleader>T ^lv/\s\\|><CR>hyo<lt>/<esc>pa><esc>$:noh<CR>O
+
+" Delete attribute on a tag
+nnoremap <buffer> <localleader>dr v/=".\{-}\("\zs\s\\|\zs"\ze>\)<CR>d:noh<CR>
