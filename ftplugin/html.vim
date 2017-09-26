@@ -37,3 +37,10 @@ nnoremap <buffer> <localleader>yai y2f}
 
 " Delete attribute on a tag
 nnoremap <buffer> <localleader>dr v/=".\{-}\("\zs\s\\|\zs"\ze>\)<CR>:noh<CR>d
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" autopairs
+let b:AutoPairs['<']='>'

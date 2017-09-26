@@ -80,7 +80,7 @@ set cmdheight=1
 set wildmenu
 
 " Ignore compiled files in autocomplete
-set wildignore=*~,*.class,*.jar,*.map,*.pyc,*\\dist\\*,*\\node_modules\\*,*\\__pycache__\\*,*\\build\\*,*\\bin\\*
+set wildignore=*~,*.class,*.jar,*.map,*.pyc,*.xlsx,*\\dist\\*,*\\node_modules\\*,*\\__pycache__\\*,*\\build\\*,*\\bin\\*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Commands
@@ -102,6 +102,18 @@ command! Noh noh
 autocmd SourcePre * :let @/ = ""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" File Information
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Encode files in UTF-8
+set encoding=utf-8
+
+" Set line endings to Unix for new files
+set fileformats=unix,dos
+
+command! Unix set ff=unix | w
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " File Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -119,8 +131,8 @@ nnoremap <Leader>yG 0yG
 
 " Change/delete/highlight/yank from current line until next blank line
 nnoremap <Leader>cn 0c/^\n<CR>:noh<CR>
-nnoremap <Leader>dn 0d/^\n<CR>:noh<CR>dd
-nnoremap <Leader>vn 0V/^\n<CR>:noh<CR>k
+nnoremap <Leader>dn 0d/^\n<CR>dd:noh<CR>
+nnoremap <Leader>vn 0V/^\n<CR>k
 nnoremap <Leader>yn 0y/^\n<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -171,9 +183,9 @@ let maplocalleader = '_'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Change/delete/yank until next capital letter
-nnoremap <silent> c~ v/\u<CR>:noh<CR>hdi
-nnoremap <silent> d~ v/\u<CR>:noh<CR>hd
-nnoremap <silent> y~ v/\u<CR>:noh<CR>hy
+nnoremap <silent> c~ v/\u<CR>hd:noh<CR>i
+nnoremap <silent> d~ v/\u<CR>hd:noh<CR>
+nnoremap <silent> y~ v/\u<CR>hy:noh<CR>
 
 " Toggle case of current letter and enter insertion mode
 nnoremap <Leader>s~ ~hi
@@ -192,11 +204,12 @@ nnoremap 2o o<Esc>o
 " Add two new lines and go into insert mode on the first
 nnoremap <Leader>oO o<Esc>O
 
-" Wrap the next word/Word/function in parentheses
-nnoremap <Leader>(e i(<Esc>ea)<Esc>%i
-nnoremap <Leader>(E i(<Esc>Ea)<Esc>%i
-nnoremap <Leader>(( i(<Esc>f(%a)<Esc>%i
-nnoremap <Leader>($ i(<Esc>$a)<Esc>%i
+" Wrap the selection in parentheses
+vnoremap <Leader>( di()<Esc>P
+nnoremap <Leader>($ v$hda()<Esc>P
+
+" Select to the end of the line
+vnoremap $ $h
 
 " Double up backslashes in a line
 nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
@@ -253,6 +266,7 @@ nnoremap <silent> <Leader>b2{ ?\{\{\zs\w<CR>:noh<CR>
 
 " Move to next/previous capital letter
 nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
+nnoremap <silent> <Leader>b~ ?\u<CR>:noh<CR>
 
 " Move to start of next/previous single/double quote string
 nnoremap <silent> <Leader>w' /'.\{-}[^\\]'<CR>:noh<CR>
@@ -277,12 +291,6 @@ inoremap <silent> <S-Enter> <Esc>O
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Numbers
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
-" Increment/decrement next/previous number
-nnoremap <silent> <Leader><C-A>n /\d<CR><C-A>:noh<CR>
-nnoremap <silent> <Leader><C-X>n /\d<CR><C-X>:noh<CR>
-nnoremap <silent> <Leader><C-A>N ?\d<CR><C-A>:noh<CR>
-nnoremap <silent> <Leader><C-X>N ?\d<CR><C-X>:noh<CR>
 
 " Paste line, increment next number, and yank that line
 nnoremap <silent> <Leader>p<C-A> yyp/\d<CR><C-A>:noh<CR>
@@ -325,16 +333,30 @@ nnoremap <Leader>yP "0P
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" ctrlp
-let g:ctrlp_working_path_mode = 'a'
-let g:ctrlp_by_filename = 1
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_max_files = 100
-let g:ctrlp_open_new_file = 'h'
-let g:ctrlp_open_multiple_files = 'ir'
+" airline
+let g:airline_theme='light'
+let g:airline_section_y='[%{&fileformat}]'
+let g:airline_section_z='%l:%c'
 
-" Pathogen
+" ctrlp
+let g:ctrlp_working_path_mode='a'
+let g:ctrlp_by_filename=1
+let g:ctrlp_show_hidden=1
+let g:ctrlp_max_files=100
+let g:ctrlp_open_new_file='h'
+let g:ctrlp_open_multiple_files='ir'
+
+" nerdtree
+nnoremap <C-N> :NERDTree<CR>
+let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bin$[[dir]]']
+
+" pathogen
 call pathogen#infect()
+
+" ultisnips
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<c-x>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
@@ -352,12 +374,6 @@ set ignorecase
 " Allow for the special character to be changed
 set magic
 
-" Use very magic when searching
-nnoremap / /\v
-nnoremap ? ?\v
-vnoremap / /\v
-vnoremap ? ?\v
-
 " Toggle search highlight
 nnoremap <silent> <F2> :set hlsearch! hlsearch?<CR>
 
@@ -367,9 +383,6 @@ nnoremap <silent> <F2> :set hlsearch! hlsearch?<CR>
 
 " Always show the status line
 set laststatus=2
-
-" Format the status line
-set statusline=%f\ %y\ %m%=%l:%c
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Swapping
@@ -451,9 +464,4 @@ command! Lrc source $MYVIMRC
 nnoremap Y y$
 
 " Yank to clipboard
-nnoremap <Leader>gye "+ye
-nnoremap <Leader>gyE "+yE
-nnoremap <Leader>gyw "+yw
-nnoremap <Leader>gyW "+yW
-nnoremap <Leader>gyy "+yy
-nnoremap <Leader>gY "+y$
+vnoremap <Leader>gy "+y

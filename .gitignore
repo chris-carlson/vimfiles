@@ -1,3 +1,4 @@
 .netrwhist
 bundle/haskell-vim/tests
+bundle/ultisnips/test
 bundle/vim-vue/test

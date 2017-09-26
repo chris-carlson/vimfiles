@@ -27,16 +27,20 @@ setlocal shiftwidth=4
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Go to previous/next class definition
-nnoremap <silent> <buffer> [c ?^class<space>\w\+:<CR>:noh<CR>w
-nnoremap <silent> <buffer> ]c /^class<space>\w\+:<CR>:noh<CR>w
+nnoremap <silent> <buffer> [c ?^class\s\zs\w\+:<CR>:noh<CR>
+nnoremap <silent> <buffer> ]c /^class\s\zs\w\+:<CR>:noh<CR>
 
 " Go to previous/next init
-nnoremap <silent> <buffer> [i ?def<space>__init__(.*):<CR>:noh<CR>w
-nnoremap <silent> <buffer> ]i /def<space>__init__(.*):<CR>:noh<CR>w
+nnoremap <silent> <buffer> [i ?def\s\zs__init__(.*):<CR>:noh<CR>
+nnoremap <silent> <buffer> ]i /def\s\zs__init__(.*):<CR>:noh<CR>
 
 " Go to previous/next function definition
-nnoremap <silent> <buffer> [f ?def<space>\w\+(.*):<CR>:noh<CR>w
-nnoremap <silent> <buffer> ]f /def<space>\w\+(.*):<CR>:noh<CR>w
+nnoremap <silent> <buffer> [f ?def\s\zs\w\+(.*):<CR>:noh<CR>
+nnoremap <silent> <buffer> ]f /def\s\zs\w\+(.*):<CR>:noh<CR>
+
+" Go to previous/next parameter
+nnoremap <silent> <buffer> [p ?\((\\|,\s\)\zs\(\S\+\\|'.\{-}'\)\ze\(,\\|)\)<CR>:noh<CR>
+nnoremap <silent> <buffer> ]p /\((\\|,\s\)\zs\(\S\+\\|'.\{-}'\)\ze\(,\\|)\)<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations
