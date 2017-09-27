@@ -46,34 +46,9 @@ nnoremap <silent> <buffer> ]p /\((\\|,\s\)\zs\(\S\+\\|'.\{-}'\)\ze\(,\\|)\)<CR>:
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Add a standard/class function
-nnoremap <buffer> <localleader>ff S<tab>def<space>():<esc>F(i
-nnoremap <buffer> <localleader>fc S<tab>def<space>(self):<esc>F(i
+" Add a parameter to a function
+nnoremap <buffer> <localleader>ip ^f(a,<space>
+nnoremap <buffer> <localleader>ap ^f)i,<space>
 
-" Add a parameter to a standard/class function
-nnoremap <buffer> <localleader>pp ^f(a,<space>
-nnoremap <buffer> <localleader>pc ^f(ea,<space>
-nnoremap <buffer> <localleader>P ^f)i,<space>
-
-" Add a self parameter to the function, then do nothing, start the body, or add another parameter
-nnoremap <buffer> <localleader>ss ^f(aself<esc>
-nnoremap <buffer> <localleader>sb ^f(a(self):<CR>
-nnoremap <buffer> <localleader>sp ^f(a(self):<esc>hi,<space>
-
-" Add a range to a list
-nnoremap <buffer> <localleader>r irange(0,<space>len(<esc>f:i))<esc>
-
-" Add a double-underscore function
-nnoremap <buffer> <localleader>_in Sdef<space>__init__(self):<esc>
-nnoremap <buffer> <localleader>_st S<tab>def<space>__str__(self):<esc>
-nnoremap <buffer> <localleader>_r S<tab>def<space>__repr__(self):<esc>
-nnoremap <buffer> <localleader>_l S<tab>def<space>__len__(self):<esc>
-nnoremap <buffer> <localleader>_it S<tab>def<space>__iter__(self):<esc>
-nnoremap <buffer> <localleader>_gi S<tab>def<space>__getitem__(self):<esc>hi,<space>
-nnoremap <buffer> <localleader>_si S<tab>def<space>__setitem__(self):<esc>hi,<space>
-
-" Add log statement with yanked variable
-nnoremap <buffer> <localleader>pp oprint('<esc>pa:<space>'<space>+<space>str(<esc>pa))<esc>
-nnoremap <buffer> <localleader>PP Oprint('<esc>pa:<space>'<space>+<space>str(<esc>pa))<esc>
-nnoremap <buffer> <localleader>pl oprint('<esc>pa:<space>'<space>+<space>str(len(<esc>pa)))<esc>
-nnoremap <buffer> <localleader>PL Oprint('<esc>pa:<space>'<space>+<space>str(len(<esc>pa)))<esc>
+" Convert a standard for loop to a range for loop
+nnoremap <buffer> <localleader>r ^2ea_index<esc>2wirange(0,<space>len(<esc>f:i))<esc>$

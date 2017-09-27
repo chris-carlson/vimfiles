@@ -130,17 +130,14 @@ nnoremap <Leader>dg ggdG
 nnoremap <Leader>vg ggVG
 nnoremap <Leader>yg ggyG
 
-" Change/delete/highlight/yank from current line until end of file
-nnoremap <Leader>cG 0cG
-nnoremap <Leader>dG 0dG
-nnoremap <Leader>vG 0VG
-nnoremap <Leader>yG 0yG
+" Highlight from current line until end of file
+nnoremap <Leader>vG VG
 
 " Change/delete/highlight/yank from current line until next blank line
-nnoremap <Leader>cn 0c/^\n<CR>:noh<CR>
-nnoremap <Leader>dn 0d/^\n<CR>"_dd:noh<CR>
-nnoremap <Leader>vn 0V/^\n<CR>k:noh<CR>
-nnoremap <Leader>yn 0y/^\n<CR>:noh<CR>
+nnoremap <Leader>cn 0c/\(^\n\\|\%$\)<CR>:noh<CR>
+nnoremap <Leader>dn 0d/\(^\n\\|\%$\)<CR>"_dd:noh<CR>
+nnoremap <Leader>vn 0V/\(^\n\\|\%$\)<CR>k:noh<CR>
+nnoremap <Leader>yn 0y/\(^\n\\|\%$\)<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
@@ -368,11 +365,6 @@ let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'no
 
 " pathogen
 call pathogen#infect()
-
-" ultisnips
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<c-x>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching

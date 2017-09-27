@@ -1,0 +1,54 @@
+snippet class "class definition"
+class ${1:name}${2:(${3:extend})}:
+	$0
+endsnippet
+
+snippet __ "underscore function"
+def __${1:name}__(self${2:, ${3:params}}):
+	$0
+endsnippet
+
+snippet def "function definition"
+def ${1:name}(${2:self${3:, ${4:params}}}):
+	$0
+endsnippet
+
+snippet imp "import statement"
+${1:from ${2:path} }import ${3:package}
+endsnippet
+
+snippet if "if statement" i
+if ${1:condition}:
+	$0
+endsnippet
+
+snippet else "else statement"
+else:
+	$0
+endsnippet
+
+snippet while "while loop"
+while ${1:condition}:
+	$0
+endsnippet
+
+snippet for "for loop"
+for ${1:variable} in ${2:range(${3:0}, ${4:len(${5:collection})})}:
+	$0
+endsnippet
+
+snippet raise "raise exception"
+raise ${1:class}('${2:message}')
+endsnippet
+
+snippet print "print statement"
+print(${1:'${2:message}: ' + }${3:str(${4:expression})})
+endsnippet
+
+snippet and "and condition" w
+${1:condition1} and ${2:condition2}
+endsnippet
+
+snippet or "or condition" w
+${1:condition1} or ${2:condition2}
+endsnippet

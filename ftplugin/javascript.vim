@@ -49,5 +49,5 @@ nnoremap <buffer> <localleader>nm ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>
 nnoremap <buffer> <localleader>nM ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>Ireturn<space><esc>$
 
 " Add a parameter to the function
-nnoremap <buffer> <localleader>p ^f(a
-nnoremap <buffer> <localleader>P ^f)i,<space>
+nnoremap <buffer> <localleader>ip ^f(a
+nnoremap <buffer> <localleader>ap ^f)i,<space>

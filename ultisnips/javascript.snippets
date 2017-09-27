@@ -1,0 +1,77 @@
+snippet let "variable initialization"
+let ${1:name} = ${2:value};
+endsnippet
+
+snippet const "constant initialization"
+const ${1:name} = ${2:value};
+endsnippet
+
+snippet imp "import statement"
+import ${1:{ ${2:member} }} from ${3:module};
+endsnippet
+
+snippet req "require statement"
+const ${1:name} = require('${2:path}');
+endsnippet
+
+snippet fun "standard function definition"
+${1:function }${2:name}(${3:params}) {
+	$0
+}
+endsnippet
+
+snippet anon "anonymous function definition"
+${1:(${2:params})} => ${3:{
+	${4:body}
+}}
+endsnippet
+
+snippet if "if statement"
+if (${1:condition}) {
+	$0
+}
+endsnippet
+
+snippet while "while statement"
+while (${1:condition}) {
+	$0
+}
+endsnippet
+
+snippet for "for statement"
+for (let ${1:name}; $1 < ${2:end}; $1++) {
+	$0
+}
+endsnippet
+
+snippet modexp "module exports"
+module.exports = ${1:expression};
+endsnippet
+
+snippet ret "return statement"
+return ${1:expression};
+endsnippet
+
+snippet class "class definition"
+class ${1:name} {
+	$0
+}
+endsnippet
+
+snippet con "constructor definition"
+constructor(${1:params}) {
+	$0
+}
+endsnippet
+
+snippet and "and condition" w
+${1:condition1} && ${2:condition2}
+endsnippet
+
+snippet or "or condition" w
+${1:condition1} || ${2:condition2}
+endsnippet
+
+snippet clog "console log statement"
+console.log(${1:'${2:message}: ' + }${3:JSON.stringify(${4:expression})});
+endsnippet
