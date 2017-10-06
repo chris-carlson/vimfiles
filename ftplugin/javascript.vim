@@ -4,9 +4,12 @@
 
 iabbrev <buffer> cha chauffeur
 iabbrev <buffer> clog console.log
+iabbrev <buffer> con constructor
 iabbrev <buffer> exp exports
 iabbrev <buffer> fe forEach
+iabbrev <buffer> fr from
 iabbrev <buffer> fun function
+iabbrev <buffer> imp import
 iabbrev <buffer> jstr JSON.stringify
 iabbrev <buffer> mod module
 iabbrev <buffer> ret return
@@ -34,13 +37,6 @@ nnoremap <silent> <buffer> ]F /^function.*(.*) {<CR>:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
-" Insert anonymous function
-nnoremap <buffer> <localleader>nes a()<space>=><space>
-nnoremap <buffer> <localleader>nem a()<space>=><space>{<CR>}<esc>O
-nnoremap <buffer> <localleader>nf afunction<space>()<space>{<CR>}<esc>O
-nnoremap <buffer> <localleader>nv a<space>=><space>{<CR>}<esc>k$F=hi
-nnoremap <buffer> <localleader>nV a()<space>=><space>{<CR>}<esc>k$F(a
 
 " Convert anonymous function body to a single/multi line body and either don't modify the body or delete/add the return statement
 nnoremap <buffer> <localleader>ns ^f{xj$xj^x2kJJ

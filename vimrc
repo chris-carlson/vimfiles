@@ -134,7 +134,7 @@ nnoremap <Leader>yg ggyG
 nnoremap <Leader>vG VG
 
 " Change/delete/highlight/yank from current line until next blank line
-nnoremap <Leader>cn 0c/\(^\n\\|\%$\)<CR>:noh<CR>
+nnoremap <Leader>cn 0d/\(^\n\\|\%$\)<CR>:noh<CR>O
 nnoremap <Leader>dn 0d/\(^\n\\|\%$\)<CR>"_dd:noh<CR>
 nnoremap <Leader>vn 0V/\(^\n\\|\%$\)<CR>k:noh<CR>
 nnoremap <Leader>yn 0y/\(^\n\\|\%$\)<CR>:noh<CR>
@@ -200,6 +200,9 @@ nnoremap <Leader>d~ v/\u<CR>hd~h:noh<CR>
 " Line operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+" Don't add comment on new line
+set formatoptions=tcql
+
 " Add two new lines above/below current line
 nnoremap 2O O<Esc>O
 nnoremap 2o o<Esc>o
@@ -214,8 +217,9 @@ nnoremap <Leader>($ v$hda()<Esc>P
 " Select to the end of the line
 vnoremap $ $h
 
-" Delete selection without yanking it
+" Delete/replace selection without yanking it
 vnoremap <Leader>d "_d
+vnoremap <Leader>r "_dP
 
 " Double up backslashes in a line
 nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
@@ -256,6 +260,8 @@ nnoremap <silent> <Leader>w_ /_\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b_ ?_\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w. /\.\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b. ?\.\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w, /,\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b, ?,\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w( /(\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b( ?(\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w[ /[\zs\w<CR>:noh<CR>
@@ -264,6 +270,8 @@ nnoremap <silent> <Leader>w{ /{\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b{ ?{\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w< /<\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b< ?<\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w/ /\/\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b/ ?\/\zs\w<CR>:noh<CR>
 
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
@@ -358,13 +366,23 @@ let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files=100
 let g:ctrlp_open_new_file='h'
 let g:ctrlp_open_multiple_files='ir'
+if exists("g:ctrlp_user_command")
+  unlet g:ctrlp_user_command
+endif
+let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn)$)|([\\]bundle$)'
+
+" jsx
+let g:jsx_ext_required=0
 
 " nerdtree
 nnoremap <C-N> :NERDTree<CR>
-let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bin$[[dir]]']
+let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bin$[[dir]]', 'bundle$[[dir]]']
 
 " pathogen
 call pathogen#infect()
+
+" ultisnips
+let g:UltiSnipsNoPythonWarning=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
