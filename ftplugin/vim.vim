@@ -21,6 +21,14 @@ iabbrev <buffer> sil <lt>silent>
 iabbrev <buffer> sp <lt>Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Indentation
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 

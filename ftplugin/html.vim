@@ -11,8 +11,8 @@ setlocal shiftwidth=2
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Go to previous/next tag
-nnoremap <silent> <buffer> [t ?<[^/]\+><CR>:noh<CR>
-nnoremap <silent> <buffer> ]t /<[^/]\+><CR>:noh<CR>
+nnoremap <silent> <buffer> [t ?<\zs[^/]\+><CR>:noh<CR>
+nnoremap <silent> <buffer> ]t /<\zs[^/]\+><CR>:noh<CR>
 
 " Go to previous/next attribute
 nnoremap <silent> <buffer> [r ?\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
