@@ -1,0 +1,152 @@
+# Typescript
+
+snippet var "variable declaration" w
+${1:name}: ${2:type}
+endsnippet
+
+snippet let "variable initialization"
+let ${1:name}${2:: ${3:type}} = ${4:value};
+endsnippet
+
+snippet const "constant initialization"
+const ${1:name}${2:: ${3:type}} = ${4:value};
+endsnippet
+
+snippet imp "import statement"
+import ${1:{ ${2:members} }} from '${3:module}';
+endsnippet
+
+snippet fun "class function definition"
+${1:name}(${2:params}): ${3:type} {
+	$0
+}
+endsnippet
+
+snippet anon "anonymous function definition" w
+(${1:params}) => ${2:{
+	${3:body}
+}}
+endsnippet
+
+snippet if "if statement"
+if (${1:condition}) {
+	$0
+}
+endsnippet
+
+snippet while "while statement"
+while (${1:condition}) {
+	$0
+}
+endsnippet
+
+snippet for "for statement"
+for (let ${1:name} = 0; $1 < ${2:end}; $1++) {
+	$0
+}
+endsnippet
+
+snippet ret "return statement"
+return ${1:expression};
+endsnippet
+
+snippet class "class definition"
+class ${1:name} {
+	$0
+}
+endsnippet
+
+snippet classext "extends class definition"
+class ${1:name} extends ${2:class} {
+	$0
+}
+endsnippet
+
+snippet classimp "implements class definition"
+class ${1:name} implements ${2:class} {
+	$0
+}
+endsnippet
+
+snippet con "constructor definition"
+constructor(${1:params}) {
+	$0
+}
+endsnippet
+
+snippet and "and condition" w
+${1:condition1} && ${2:condition2}
+endsnippet
+
+snippet or "or condition" w
+${1:condition1} || ${2:condition2}
+endsnippet
+
+snippet clog "console log statement"
+console.log(${1:'${2:message}: ' + }${3:JSON.stringify(${4:expression})});
+endsnippet
+
+# Angular
+
+snippet impang "angular import"
+import { ${1:members} } from '@angular/${2:module}';
+endsnippet
+
+snippet comp "component annotation"
+@Component({
+	selector: '${1:selector}',
+	templateUrl: '${2:file}.html'${3:,
+	styleUrls: ['${4:file}.css']}
+})
+endsnippet
+
+snippet servparampriv "service parameter" w
+private ${1:name}: ${2:class}
+endsnippet
+
+snippet servparampub "service parameter" w
+public ${1:name}: ${2:class}
+endsnippet
+
+snippet servcall "service call"
+${1:function}
+	.then((${2:params}) => ${3:{
+		${4:body}
+	}})
+	.catch((${5:params}) => ${6:{
+		${7:body}
+	}});
+endsnippet
+
+snippet nav "router navigation"
+this.router.navigate([${1:route}]${2:, { relativeTo: this.route }});
+endsnippet
+
+snippet prom "promise" w
+Promise<${1:type}>
+endsnippet
+
+snippet ngmod "ngmodule annotation"
+@NgModule({
+	${1:imports: [${2:imports}],
+	}${3:exports: [${4:exports}],
+	}${5:declarations: [${6:declarations}],
+	}${7:entryComponents: [${8:entryComponents}],
+	}${9:providers: [${10:providers}]}
+})
+endsnippet
+
+snippet routecomp "component route definition"
+{
+	path: ${1:path},
+	component: ${2:component}
+}
+endsnippet
+
+snippet routere "redirect route definition"
+{
+	path: ${1:path},
+	redirectTo: ${2:redirect}${3:,
+	pathMatch: ${4:pathMatch}}
+}
+endsnippet

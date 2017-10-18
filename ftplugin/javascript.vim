@@ -2,17 +2,17 @@
 " Abbreviations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-iabbrev <buffer> cha chauffeur
 iabbrev <buffer> clog console.log
 iabbrev <buffer> con constructor
-iabbrev <buffer> exp exports
-iabbrev <buffer> fe forEach
+iabbrev <buffer> def default
+iabbrev <buffer> exp export
 iabbrev <buffer> fr from
 iabbrev <buffer> fun function
 iabbrev <buffer> imp import
 iabbrev <buffer> jstr JSON.stringify
 iabbrev <buffer> mod module
 iabbrev <buffer> ret return
+iabbrev <buffer> th this
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation

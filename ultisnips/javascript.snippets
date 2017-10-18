@@ -7,7 +7,7 @@ const ${1:name} = ${2:value};
 endsnippet
 
 snippet imp "import statement"
-import ${1:{ ${2:member} }} from ${3:module};
+import ${1:{ ${2:member} }} from '${3:module}';
 endsnippet
 
 snippet req "require statement"
@@ -20,7 +20,7 @@ ${1:function }${2:name}(${3:params}) {
 }
 endsnippet
 
-snippet anon "anonymous function definition"
+snippet anon "anonymous function definition" w
 ${1:(${2:params})} => ${3:{
 	${4:body}
 }}
@@ -39,7 +39,7 @@ while (${1:condition}) {
 endsnippet
 
 snippet for "for statement"
-for (let ${1:name}; $1 < ${2:end}; $1++) {
+for (let ${1:name} = 0; $1 < ${2:end}; $1++) {
 	$0
 }
 endsnippet
@@ -52,8 +52,14 @@ snippet ret "return statement"
 return ${1:expression};
 endsnippet
 
-snippet class "class definition"
+snippet class "standard class definition"
 class ${1:name} {
+	$0
+}
+endsnippet
+
+snippet classext "extends class definition"
+class ${1:name} extends ${2:class} {
 	$0
 }
 endsnippet

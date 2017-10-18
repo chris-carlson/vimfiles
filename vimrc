@@ -137,7 +137,7 @@ nnoremap <Leader>vG VG
 nnoremap <Leader>cn 0d/\(^\n\\|\%$\)<CR>:noh<CR>O
 nnoremap <Leader>dn 0d/\(^\n\\|\%$\)<CR>"_dd:noh<CR>
 nnoremap <Leader>vn 0V/\(^\n\\|\%$\)<CR>k:noh<CR>
-nnoremap <Leader>yn 0y/\(^\n\\|\%$\)<CR>:noh<CR>
+nnoremap <Leader>yn 0y/\(^\n\\|\%$\)<CR>:noh<CR>n
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
@@ -272,6 +272,12 @@ nnoremap <silent> <Leader>w< /<\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b< ?<\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w/ /\/\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b/ ?\/\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w: /:\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b: ?:\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w# /#\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b# ?#\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w- /-\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b- ?-\zs\w<CR>:noh<CR>
 
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
@@ -490,4 +496,4 @@ nnoremap Y y$
 vnoremap <Leader>y "+y
 
 " Yank curly brace block
-nnoremap <Leader>yb V%y
+nnoremap <Leader>yb V$%y$%

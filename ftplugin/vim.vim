@@ -5,6 +5,7 @@
 " Remaps
 iabbrev <buffer> com command!
 iabbrev <buffer> cno cnoremap
+iabbrev <buffer> iab iabbrev
 iabbrev <buffer> ino inoremap
 iabbrev <buffer> nno nnoremap
 iabbrev <buffer> vno vnoremap
@@ -29,15 +30,15 @@ setlocal softtabstop=2
 setlocal shiftwidth=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nnoremap <buffer> <Leader>a@ i@='<Esc>A'<lt>CR><Esc>jB
-nnoremap <buffer> <Leader>d@ df'$F'DjB
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " autopairs
 let b:AutoPairs={}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Operations
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <buffer> <Leader>a@ i@='<Esc>A'<lt>CR><Esc>jB
+nnoremap <buffer> <Leader>d@ df'$F'DjB

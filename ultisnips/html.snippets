@@ -1,0 +1,14 @@
+snippet < "tag" i
+<${1:name}${2: ${3:attributes}}>${4:
+	${5:body}
+}</$1>
+endsnippet
+
+snippet attr "attribute" i
+${1:name}="${2:value}"$0
+endsnippet
+
+snippet doc "doctype"
+<!doctype html>
+$0
+endsnippet
