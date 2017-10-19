@@ -15,8 +15,12 @@ nnoremap <silent> <buffer> [t ?<\zs[^/]\+><CR>:noh<CR>
 nnoremap <silent> <buffer> ]t /<\zs[^/]\+><CR>:noh<CR>
 
 " Go to previous/next attribute
-nnoremap <silent> <buffer> [r ?\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
-nnoremap <silent> <buffer> ]r /\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
+nnoremap <silent> <buffer> [r ?\S\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
+nnoremap <silent> <buffer> ]r /\S\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
+
+" Go to previous/next inner tag
+nnoremap <silent> <buffer> [i ?<[^/]\+>\zs.<CR>:noh<CR>
+nnoremap <silent> <buffer> ]i /<[^/]\+>\zs.<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations

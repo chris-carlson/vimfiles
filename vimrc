@@ -210,10 +210,6 @@ nnoremap 2o o<Esc>o
 " Add two new lines and go into insert mode on the first
 nnoremap <Leader>oO o<Esc>O
 
-" Wrap the selection in parentheses
-vnoremap <Leader>( di()<Esc>P
-nnoremap <Leader>($ v$hda()<Esc>P
-
 " Select to the end of the line
 vnoremap $ $h
 
@@ -291,11 +287,23 @@ nnoremap <silent> <Leader>bi ?\{\{\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
 nnoremap <silent> <Leader>b~ ?\u<CR>:noh<CR>
 
-" Move to start of next/previous single/double quote string
+" Move to start/end of next/previous single/double quote string
 nnoremap <silent> <Leader>w' /'\zs.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <Leader>W' /'.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <Leader>e' /'.\{-}\zs[^\\]'<CR>:noh<CR>
+nnoremap <silent> <Leader>E' /'.\{-}[^\\]\zs'<CR>:noh<CR>
 nnoremap <silent> <Leader>b' ?'\zs.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <Leader>B' ?'.\{-}[^\\]'<CR>:noh<CR>
+nnoremap <silent> <Leader>ge' ?'.\{-}\zs[^\\]'<CR>:noh<CR>
+nnoremap <silent> <Leader>gE' ?'.\{-}[^\\]\zs'<CR>:noh<CR>
 nnoremap <silent> <Leader>w" /"\zs.\{-}[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>W" /".\{-}[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>e" /".\{-}\zs[^\\]s"<CR>:noh<CR>
+nnoremap <silent> <Leader>E" /".\{-}[^\\]\zss"<CR>:noh<CR>
 nnoremap <silent> <Leader>b" ?"\zs.\{-}[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>B" ?".\{-}[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>ge" ?".\{-}\zs[^\\]s"<CR>:noh<CR>
+nnoremap <silent> <Leader>gE" ?".\{-}[^\\]\zss"<CR>:noh<CR>
 
 " Move to start of next/previous string concatenation
 nnoremap <silent> <Leader>wc /\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
