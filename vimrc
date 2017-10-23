@@ -137,7 +137,7 @@ nnoremap <Leader>vG VG
 nnoremap <Leader>cn 0d/\(^\n\\|\%$\)<CR>:noh<CR>O
 nnoremap <Leader>dn 0d/\(^\n\\|\%$\)<CR>"_dd:noh<CR>
 nnoremap <Leader>vn 0V/\(^\n\\|\%$\)<CR>k:noh<CR>
-nnoremap <Leader>yn 0y/\(^\n\\|\%$\)<CR>:noh<CR>n
+nnoremap <Leader>yn 0y/\(^\n\\|\%$\)<CR>n-:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
