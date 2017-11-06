@@ -16,7 +16,7 @@ iabbrev <buffer> cr <lt>CR>
 iabbrev <buffer> cv <lt>C-V>
 iabbrev <buffer> esc <lt>Esc>
 iabbrev <buffer> lead <lt>Leader>
-iabbrev <buffer> llead <lt>Localleader>
+iabbrev <buffer> local <lt>Localleader>
 iabbrev <buffer> noh :noh<lt>CR>
 iabbrev <buffer> sil <lt>silent>
 iabbrev <buffer> sp <lt>Space>

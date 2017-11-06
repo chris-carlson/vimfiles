@@ -52,3 +52,6 @@ nnoremap <buffer> <localleader>ap ^f)i,<space>
 
 " Convert a standard for loop to a range for loop
 nnoremap <buffer> <localleader>r ^2ea_index<esc>2wirange(0,<space>len(<esc>f:i))<esc>$
+
+" Paste variable assigned in current line in next line
+nnoremap <buffer> <Localleader>pv ^yeo<Esc>pa

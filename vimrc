@@ -108,6 +108,9 @@ command! Noh noh
 " Turn off last search highlight when loading source
 autocmd SourcePre * :let @/ = ""
 
+" Set working directory to that of the currently open file
+command! Cd cd %:p:h
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Information
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,14 +204,14 @@ nnoremap <Leader>d~ v/\u<CR>hd~h:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Don't add comment on new line
-set formatoptions=tcql
+set formatoptions-=ro
 
 " Add two new lines above/below current line
 nnoremap 2O O<Esc>O
 nnoremap 2o o<Esc>o
 
 " Add two new lines and go into insert mode on the first
-nnoremap <Leader>oO o<Esc>O
+nnoremap <Leader>oo o<Esc>O
 
 " Select to the end of the line
 vnoremap $ $h
@@ -310,10 +313,10 @@ nnoremap <silent> <Leader>wc /\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR
 nnoremap <silent> <Leader>bc ?\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
 
 " Move to the line after/before the next/previous blank line
-nnoremap <silent> ]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>
-nnoremap <silent> [[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>
-nnoremap <silent> ][ /\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>
-nnoremap <silent> [] ?\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>
+nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>
+nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>
+nnoremap <silent> <Leader>][ /\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>
+nnoremap <silent> <Leader>[] ?\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>
 
 " Move to the next/previous blank line
 nnoremap <silent> ]n /^\n<CR>:noh<CR>
@@ -324,22 +327,15 @@ inoremap <silent> <C-Enter> <Esc>o
 inoremap <silent> <S-Enter> <Esc>O
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Numbers
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Paste line, increment next number, and yank that line
-nnoremap <silent> <Leader>p<C-A> yyp/\d<CR><C-A>:noh<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pasting
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Delete word/line under cursor and paste yanked word/line
-nnoremap <Leader>dep de"0P
-nnoremap <Leader>dEp dE"0P
-nnoremap <Leader>dwp dw"0P
-nnoremap <Leader>dWp dW"0P
-nnoremap <Leader>ddp dd"0Pj
+nnoremap <Leader>dep "_deP
+nnoremap <Leader>dEp "_dEP
+nnoremap <Leader>dwp "_dwP
+nnoremap <Leader>dWp "_dWP
+nnoremap <Leader>ddp "_ddPj
 
 " Add a new line below/above then paste below/above
 nnoremap <Leader>op o<Esc>p
@@ -363,6 +359,9 @@ nnoremap <Leader>gP "+gP
 " Paste from yank buffer
 nnoremap <Leader>yp "0p
 nnoremap <Leader>yP "0P
+
+" Paste line, increment next number, and yank that line
+nnoremap <silent> <Leader>p<C-A> yyp/\d<CR><C-A>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
