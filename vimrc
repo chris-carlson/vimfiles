@@ -25,9 +25,9 @@ nnoremap <Leader>y[ vf[%y
 nnoremap <Leader>c{ vf{%c
 nnoremap <Leader>d{ vf{%d
 nnoremap <Leader>y{ vf{%y
-nnoremap <Leader>c< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>d:noh<CR>i
-nnoremap <Leader>d< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>d:noh<CR>
-nnoremap <Leader>y< v/<.\{-}\([([{<].\{-}[)\]}>]\)\{-}\zs><CR>y:noh<CR>
+nnoremap <Leader>c< vf<%c
+nnoremap <Leader>d< vf<%d
+nnoremap <Leader>y< vf<%y
 
 
 " Delete text from current position to the next pair of matching characters, preserving the content inside
@@ -35,6 +35,9 @@ nnoremap <Leader>D( dt(di(hPl2xB
 nnoremap <Leader>D[ dt[di[hPl2xB
 nnoremap <Leader>D{ dt{di{hPl2xB
 nnoremap <Leader>D< dt<di<hPl2xB
+
+" Match angle bracket pairs
+set matchpairs+=<:>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
@@ -133,14 +136,11 @@ nnoremap <Leader>dg ggdG
 nnoremap <Leader>vg ggVG
 nnoremap <Leader>yg ggyG
 
-" Highlight from current line until end of file
-nnoremap <Leader>vG VG
-
 " Change/delete/highlight/yank from current line until next blank line
-nnoremap <Leader>cn 0d/\(^\n\\|\%$\)<CR>:noh<CR>O
-nnoremap <Leader>dn 0d/\(^\n\\|\%$\)<CR>"_dd:noh<CR>
-nnoremap <Leader>vn 0V/\(^\n\\|\%$\)<CR>k:noh<CR>
-nnoremap <Leader>yn 0y/\(^\n\\|\%$\)<CR>n-:noh<CR>
+nnoremap <Leader>cn V/\(\n\{2}\\|\%$\)<CR>c<Esc>:noh<CR>S
+nnoremap <Leader>dn V/\(\n\{2}\\|\%$\)<CR>d"_dd:noh<CR>
+nnoremap <Leader>vn V/\(\n\{2}\\|\%$\)<CR>
+nnoremap <Leader>yn V/\(\n\{2}\\|\%$\)<CR>yn^:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
@@ -169,12 +169,6 @@ set cindent
 
 " Load filetype-specific indent files
 filetype plugin indent on
-
-" Indent/unindent curly brace block
-nnoremap <Leader>>{ $vi{>
-nnoremap <Leader><lt>{ $vi{<lt>
-nnoremap <Leader>>} vi{>
-nnoremap <Leader><lt>} vi{<lt>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Leaders
@@ -233,11 +227,12 @@ nnoremap <Leader>; A;<Esc>
 " Insert/append to a comma/plus separated list
 nnoremap <Leader>i, i,<Space><Esc>hi
 nnoremap <Leader>i+ i<Space>+<Space><Esc>2hi
+nnoremap <Leader>I, a,<Space><Esc>hi
+nnoremap <Leader>I+ a<Space>+<Space><Esc>2hi
 nnoremap <Leader>a, a,<Space>
 nnoremap <Leader>a+ a<Space>+<Space>
-
-" Delete item from comma/plus separated list, not yanking the comma/plus
-nnoremap <Leader>dl v/\w\+\([([{<].\{-}[)\]}>]\)\{-}\zs\(,\\|\s+\\|)\)<CR>hd"_df<Space>:noh<CR>
+nnoremap <Leader>A, i,<Space>
+nnoremap <Leader>A+ i<Space>+<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -255,28 +250,28 @@ set scrolloff=7
 " Move to next/previous word after the next/previous given character
 nnoremap <silent> <Leader>ww /\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>bb ?\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w_ /_\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b_ ?_\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w. /\.\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b. ?\.\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w, /,\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b, ?,\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w( /(\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b( ?(\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w[ /[\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b[ ?[\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w{ /{\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b{ ?{\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w< /<\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b< ?<\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w/ /\/\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b/ ?\/\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w: /:\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b: ?:\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w# /#\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b# ?#\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w- /-\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b- ?-\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w_ f_l
+nnoremap <silent> <Leader>b_ F_l
+nnoremap <silent> <Leader>w. f.l
+nnoremap <silent> <Leader>b. F.l
+nnoremap <silent> <Leader>w, f,l
+nnoremap <silent> <Leader>b, F,l
+nnoremap <silent> <Leader>w( f(l
+nnoremap <silent> <Leader>b( F(l
+nnoremap <silent> <Leader>w[ f[l
+nnoremap <silent> <Leader>b[ F[l
+nnoremap <silent> <Leader>w{ f{l
+nnoremap <silent> <Leader>b{ F{l
+nnoremap <silent> <Leader>w< f<l
+nnoremap <silent> <Leader>b< F<l
+nnoremap <silent> <Leader>w/ f/l
+nnoremap <silent> <Leader>b/ F/l
+nnoremap <silent> <Leader>w: f:l
+nnoremap <silent> <Leader>b: F:l
+nnoremap <silent> <Leader>w# f#l
+nnoremap <silent> <Leader>b# F#l
+nnoremap <silent> <Leader>w- f-l
+nnoremap <silent> <Leader>b- F-l
 
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
@@ -335,14 +330,11 @@ nnoremap <Leader>dep "_deP
 nnoremap <Leader>dEp "_dEP
 nnoremap <Leader>dwp "_dwP
 nnoremap <Leader>dWp "_dWP
-nnoremap <Leader>ddp "_ddPj
+nnoremap <Leader>ddp "_ddP
 
 " Add a new line below/above then paste below/above
 nnoremap <Leader>op o<Esc>p
 nnoremap <Leader>OP O<Esc>P
-
-" Delete line then paste below
-nnoremap <Leader>dp pkdd
 
 " Paste at the start/end of a line
 nnoremap <Leader>ip I<Esc>p
@@ -351,6 +343,8 @@ nnoremap <Leader>ap A<Esc>p
 " Paste to a comma/plus separated list
 nnoremap <Leader>p, a,<Space><Esc>p
 nnoremap <Leader>p+ a<Space>+<Space><Esc>p
+nnoremap <Leader>P, i,<Space><Esc>p
+nnoremap <Leader>P+ i<Space>+<Space><Esc>p
 
 " External paste
 nnoremap <Leader>gp "+gp
@@ -361,7 +355,7 @@ nnoremap <Leader>yp "0p
 nnoremap <Leader>yP "0P
 
 " Paste line, increment next number, and yank that line
-nnoremap <silent> <Leader>p<C-A> yyp/\d<CR><C-A>:noh<CR>
+nnoremap <silent> <Leader>p<C-A> yyp<C-A>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -386,6 +380,9 @@ let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn)$)|([\\]bundle$)'
 
 " jsx
 let g:jsx_ext_required=0
+
+" matchit
+runtime macros/matchit.vim
 
 " nerdtree
 nnoremap <C-N> :NERDTree<CR>
@@ -428,16 +425,12 @@ set laststatus=2
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Swap line with the one above/below
-nnoremap <silent> <Leader>k @='kddpk'<CR>
-nnoremap <silent> <Leader>j @='ddp'<CR>
+nnoremap <silent> <Leader>k kddpk
+nnoremap <silent> <Leader>j ddp
 
 " Swap two characters forwards/backwards
-nnoremap <Leader>x @='xp'<CR>
-nnoremap <Leader>X @='xhP'<CR>
-
-" Swap two items in a list forwards/backwards
-nnoremap <silent> <Leader>ss v/\(,\\|\s+\s\)<CR>hd/\(\w\\|'\\|"\)<CR>Plv/\(,\\|\s+\s\\|)\\|]\\|}\)<CR>hd?\(,\\|\s+\s\)<CR>P/\(\w\\|'\\|"\)<CR>:noh<CR>
-nnoremap <silent> <Leader>SS v/\(,\\|\s+\s\\|)\\|]\\|}\)<CR>hd?\(,\\|\s+\s\\|(\\|[\\|{\)<CR>n/\(\w\\|'\\|"\)<CR>Plv/\(,\\|\s+\s\)<CR>hd/\s<CR>p?\(,\\|\s+\s\\|(\\|[\\|{\)<CR>n/\(\w\\|'\\|"\)<CR>:noh<CR>
+nnoremap <Leader>x xp
+nnoremap <Leader>X xhP
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Strings
@@ -502,5 +495,5 @@ nnoremap Y y$
 " Yank selection to clipboard
 vnoremap <Leader>y "+y
 
-" Yank curly brace block
+" Yank brace block
 nnoremap <Leader>yb V$%y$%
