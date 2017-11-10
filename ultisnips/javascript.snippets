@@ -10,6 +10,10 @@ snippet imp "import statement"
 import ${1:{ ${2:member} }} from '${3:module}';
 endsnippet
 
+snippet exp "export statement"
+export ${1:${2:default} }${3:variable};
+endsnippet
+
 snippet req "require statement"
 const ${1:name} = require('${2:path}');
 endsnippet
@@ -44,7 +48,18 @@ for (let ${1:name} = 0; $1 < ${2:end}; $1++) {
 }
 endsnippet
 
-snippet modexp "module exports"
+snippet switch "switch statement"
+switch (${1:variable}) {
+	$0
+}
+endsnippet
+
+snippet case "case statement"
+case ${1:value}:
+	$0
+endsnippet
+
+snippet mod "module exports"
 module.exports = ${1:expression};
 endsnippet
 
@@ -52,14 +67,8 @@ snippet ret "return statement"
 return ${1:expression};
 endsnippet
 
-snippet class "standard class definition"
-class ${1:name} {
-	$0
-}
-endsnippet
-
-snippet classext "extends class definition"
-class ${1:name} extends ${2:class} {
+snippet class "class definition"
+class ${1:name} ${2:extends ${3:class} }{
 	$0
 }
 endsnippet

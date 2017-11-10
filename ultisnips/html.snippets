@@ -1,10 +1,14 @@
-snippet < "tag" i
+snippet < "open/close tag" i
 <${1:name}${2: ${3:attributes}}>${4:
 	${5:body}
 }</$1>
 endsnippet
 
-snippet attr "attribute" i
+snippet <> "self-closing tag" i
+<${1:name}${2: ${3:attributes}} />
+endsnippet
+
+snippet = "attribute" i
 ${1:name}="${2:value}"$0
 endsnippet
 

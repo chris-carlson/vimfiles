@@ -250,28 +250,28 @@ set scrolloff=7
 " Move to next/previous word after the next/previous given character
 nnoremap <silent> <Leader>ww /\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>bb ?\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w_ f_l
-nnoremap <silent> <Leader>b_ F_l
-nnoremap <silent> <Leader>w. f.l
-nnoremap <silent> <Leader>b. F.l
-nnoremap <silent> <Leader>w, f,l
-nnoremap <silent> <Leader>b, F,l
-nnoremap <silent> <Leader>w( f(l
-nnoremap <silent> <Leader>b( F(l
-nnoremap <silent> <Leader>w[ f[l
-nnoremap <silent> <Leader>b[ F[l
-nnoremap <silent> <Leader>w{ f{l
-nnoremap <silent> <Leader>b{ F{l
-nnoremap <silent> <Leader>w< f<l
-nnoremap <silent> <Leader>b< F<l
-nnoremap <silent> <Leader>w/ f/l
-nnoremap <silent> <Leader>b/ F/l
-nnoremap <silent> <Leader>w: f:l
-nnoremap <silent> <Leader>b: F:l
-nnoremap <silent> <Leader>w# f#l
-nnoremap <silent> <Leader>b# F#l
-nnoremap <silent> <Leader>w- f-l
-nnoremap <silent> <Leader>b- F-l
+nnoremap <Leader>w_ f_l
+nnoremap <Leader>b_ F_l
+nnoremap <Leader>w. f.l
+nnoremap <Leader>b. F.l
+nnoremap <Leader>w, f,l
+nnoremap <Leader>b, F,l
+nnoremap <Leader>w( f(l
+nnoremap <Leader>b( F(l
+nnoremap <Leader>w[ f[l
+nnoremap <Leader>b[ F[l
+nnoremap <Leader>w{ f{l
+nnoremap <Leader>b{ F{l
+nnoremap <Leader>w< f<l
+nnoremap <Leader>b< F<l
+nnoremap <Leader>w/ f/l
+nnoremap <Leader>b/ F/l
+nnoremap <Leader>w: f:l
+nnoremap <Leader>b: F:l
+nnoremap <Leader>w# f#l
+nnoremap <Leader>b# F#l
+nnoremap <Leader>w- f-l
+nnoremap <Leader>b- F-l
 
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
@@ -320,6 +320,10 @@ nnoremap <silent> [n ?^\n<CR>:noh<CR>
 " Add a line above/below in insertion mode
 inoremap <silent> <C-Enter> <Esc>o
 inoremap <silent> <S-Enter> <Esc>O
+
+" Move to end of next/previous line
+nnoremap <Leader>+ j$
+nnoremap <Leader>- k$
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pasting
@@ -437,9 +441,9 @@ nnoremap <Leader>X xhP
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Append plus and nothing or single/double quote string
-nnoremap <Leader>++ a<Space>+<Space>
-nnoremap <Leader>+' a<Space>+<Space>''<Esc>i
-nnoremap <Leader>+" a<Space>+<Space>""<Esc>i
+nnoremap <Leader>a++ a<Space>+<Space>
+nnoremap <Leader>a+' a<Space>+<Space>''<Esc>i
+nnoremap <Leader>a+" a<Space>+<Space>""<Esc>i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface

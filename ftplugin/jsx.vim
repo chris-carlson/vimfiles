@@ -18,16 +18,13 @@ nnoremap <silent> <buffer> ]t /<\zs[^/]\+\/\=><CR>:noh<CR>
 nnoremap <silent> <buffer> [r ?\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
 nnoremap <silent> <buffer> ]r /\w\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
 
+" Go to previous/next inner tag
+nnoremap <silent> <buffer> [i ?<[^/]\+>\zs.<CR>:noh<CR>
+nnoremap <silent> <buffer> ]i /<[^/]\+>\zs.<CR>:noh<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Delete attribute on a tag
 nnoremap <buffer> <localleader>dr v/=".\{-}\("\zs\s\\|\zs"\ze>\)<CR>d:noh<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" auto-pairs
-let g:AutoPairs['<']='>'

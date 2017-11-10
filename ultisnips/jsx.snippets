@@ -1,0 +1,13 @@
+extends html
+
+# React
+
+snippet props "propTypes declaration"
+${1:component}.propTypes = {
+	$0
+};
+endsnippet
+
+snippet prop "PropTypes variable type"
+${1:variable}: PropTypes.${2:type}.isRequired
+endsnippet
