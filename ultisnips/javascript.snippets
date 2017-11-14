@@ -90,3 +90,11 @@ endsnippet
 snippet clog "console log statement"
 console.log(${1:'${2:message}: ' + }${3:JSON.stringify(${4:expression})});
 endsnippet
+
+snippet elem "get element by id"
+document.getElementById('${1:id}');
+endsnippet
+
+snippet query "query selector"
+${1:document}.querySelector${2:All}('${3:tag}${4:[${5:attribute}="${6:value}"]}');
+endsnippet

@@ -138,7 +138,8 @@ nnoremap <Leader>yg ggyG
 
 " Change/delete/highlight/yank from current line until next blank line
 nnoremap <Leader>cn V/\(\n\{2}\\|\%$\)<CR>c<Esc>:noh<CR>S
-nnoremap <Leader>dn V/\(\n\{2}\\|\%$\)<CR>d"_dd:noh<CR>
+nnoremap <Leader>dn V/\(\n\{2}\\|\%$\)<CR>d:noh<CR>
+nnoremap <Leader>Dn V/\(\n\{2}\\|\%$\)<CR>d"_dd:noh<CR>
 nnoremap <Leader>vn V/\(\n\{2}\\|\%$\)<CR>
 nnoremap <Leader>yn V/\(\n\{2}\\|\%$\)<CR>yn^:noh<CR>
 
@@ -250,28 +251,28 @@ set scrolloff=7
 " Move to next/previous word after the next/previous given character
 nnoremap <silent> <Leader>ww /\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>bb ?\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
-nnoremap <Leader>w_ f_l
-nnoremap <Leader>b_ F_l
-nnoremap <Leader>w. f.l
-nnoremap <Leader>b. F.l
-nnoremap <Leader>w, f,l
-nnoremap <Leader>b, F,l
-nnoremap <Leader>w( f(l
-nnoremap <Leader>b( F(l
-nnoremap <Leader>w[ f[l
-nnoremap <Leader>b[ F[l
-nnoremap <Leader>w{ f{l
-nnoremap <Leader>b{ F{l
-nnoremap <Leader>w< f<l
-nnoremap <Leader>b< F<l
-nnoremap <Leader>w/ f/l
-nnoremap <Leader>b/ F/l
-nnoremap <Leader>w: f:l
-nnoremap <Leader>b: F:l
-nnoremap <Leader>w# f#l
-nnoremap <Leader>b# F#l
-nnoremap <Leader>w- f-l
-nnoremap <Leader>b- F-l
+nnoremap <silent> <Leader>w_ /_\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b_ ?_\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w. /.\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b. ?.\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w, /,\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b, ?,\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w( /(\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b( ?(\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w[ /[\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b[ ?[\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w{ /{\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b{ ?{\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w< /<\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b< ?<\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w/ //\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b/ ?/\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w: /:\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b: ?:\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w# /#\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b# ?#\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w- /-\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b- ?-\zs\w<CR>:noh<CR>
 
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
@@ -372,7 +373,6 @@ let g:airline_section_z='%l:%c'
 
 " ctrlp
 let g:ctrlp_working_path_mode='a'
-let g:ctrlp_by_filename=1
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files=100
 let g:ctrlp_open_new_file='h'
