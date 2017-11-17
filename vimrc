@@ -19,16 +19,19 @@ set noswapfile
 nnoremap <Leader>c( vf(%c
 nnoremap <Leader>d( vf(%d
 nnoremap <Leader>y( vf(%y
+nnoremap <Leader>v( vf(%
 nnoremap <Leader>c[ vf[%c
 nnoremap <Leader>d[ vf[%d
 nnoremap <Leader>y[ vf[%y
-nnoremap <Leader>c{ vf{%c
-nnoremap <Leader>d{ vf{%d
-nnoremap <Leader>y{ vf{%y
+nnoremap <Leader>v[ vf[%
+nnoremap <Leader>c{ V^f{%c
+nnoremap <Leader>d{ V^f{%d
+nnoremap <Leader>y{ V^f{%y^f{%
+nnoremap <Leader>v{ V^f{%
 nnoremap <Leader>c< vf<%c
 nnoremap <Leader>d< vf<%d
 nnoremap <Leader>y< vf<%y
-
+nnoremap <Leader>v< vf<%
 
 " Delete text from current position to the next pair of matching characters, preserving the content inside
 nnoremap <Leader>D( dt(di(hPl2xB
@@ -59,7 +62,7 @@ command! Wp w | bp
 
 " Save buffer and move to next buffer
 command! Wn w | bn
-"
+
 " Save buffer, close it, and move to next buffer
 command! Wd w | bd | bn
 
@@ -253,8 +256,8 @@ nnoremap <silent> <Leader>ww /\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>bb ?\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w_ /_\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b_ ?_\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w. /.\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b. ?.\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w. /\.\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b. ?\.\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w, /,\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b, ?,\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w( /(\zs\w<CR>:noh<CR>
@@ -265,8 +268,8 @@ nnoremap <silent> <Leader>w{ /{\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b{ ?{\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w< /<\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b< ?<\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w/ //\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b/ ?/\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w/ /\/\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b/ ?\/\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w: /:\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b: ?:\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w# /#\zs\w<CR>:noh<CR>
@@ -429,8 +432,8 @@ set laststatus=2
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Swap line with the one above/below
-nnoremap <silent> <Leader>k kddpk
-nnoremap <silent> <Leader>j ddp
+nnoremap <silent> <Leader>k kddp-
+nnoremap <silent> <Leader>j ddp^
 
 " Swap two characters forwards/backwards
 nnoremap <Leader>x xp
@@ -441,9 +444,9 @@ nnoremap <Leader>X xhP
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Append plus and nothing or single/double quote string
-nnoremap <Leader>a++ a<Space>+<Space>
-nnoremap <Leader>a+' a<Space>+<Space>''<Esc>i
-nnoremap <Leader>a+" a<Space>+<Space>""<Esc>i
+nnoremap <Leader>ac+ a<Space>+<Space>
+nnoremap <Leader>ac' a<Space>+<Space>''<Esc>i
+nnoremap <Leader>ac" a<Space>+<Space>""<Esc>i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
@@ -498,6 +501,3 @@ nnoremap Y y$
 
 " Yank selection to clipboard
 vnoremap <Leader>y "+y
-
-" Yank brace block
-nnoremap <Leader>yb V$%y$%
