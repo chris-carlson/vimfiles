@@ -39,6 +39,12 @@ nnoremap <Leader>D[ dt[di[hPl2xB
 nnoremap <Leader>D{ dt{di{hPl2xB
 nnoremap <Leader>D< dt<di<hPl2xB
 
+" Highlight through next pair of matching characters
+vnoremap <Leader>( f(%
+vnoremap <Leader>[ f[%
+vnoremap <Leader>{ f{%
+vnoremap <Leader>< f<%
+
 " Match angle bracket pairs
 set matchpairs+=<:>
 
@@ -326,19 +332,12 @@ inoremap <silent> <C-Enter> <Esc>o
 inoremap <silent> <S-Enter> <Esc>O
 
 " Move to end of next/previous line
-nnoremap <Leader>+ j$
-nnoremap <Leader>- k$
+nnoremap g+ j$
+nnoremap g- k$
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pasting
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
-" Delete word/line under cursor and paste yanked word/line
-nnoremap <Leader>dep "_deP
-nnoremap <Leader>dEp "_dEP
-nnoremap <Leader>dwp "_dwP
-nnoremap <Leader>dWp "_dWP
-nnoremap <Leader>ddp "_ddP
 
 " Add a new line below/above then paste below/above
 nnoremap <Leader>op o<Esc>p
@@ -400,6 +399,17 @@ call pathogen#infect()
 
 " ultisnips
 let g:UltiSnipsNoPythonWarning=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Replace
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Replace word/line under cursor and paste yanked word/line
+nnoremap <Leader>re "_deP^
+nnoremap <Leader>rE "_dEP^
+nnoremap <Leader>rw "_dwP^
+nnoremap <Leader>rW "_dWP^
+nnoremap <Leader>rr "_ddP^
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
