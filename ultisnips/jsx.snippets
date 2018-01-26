@@ -2,6 +2,48 @@ extends html
 
 # React
 
+snippet impre "import react"
+import React from 'react';
+endsnippet
+
+snippet classre "class which extends the react component"
+class ${1:name} extends React.Component {
+	$0
+}
+
+export default $1
+endsnippet
+
+snippet conre "constructor with props"
+constructor(props) {
+	super(props);
+}
+endsnippet
+
+snippet state "state declaration"
+this.state = {$0};
+endsnippet
+
+snippet funre "class function"
+${1:name} = ${2:(${3:params)}} => {
+	$0
+}
+endsnippet
+
+snippet ren "render function"
+render() {
+	return (
+		$0
+	);
+}
+endsnippet
+
+snippet ={ "attribute reference" i
+${1:name}={${2:value}}$0
+endsnippet
+
+# Redux
+
 snippet props "propTypes declaration"
 ${1:component}.propTypes = {
 	$0
@@ -10,4 +52,23 @@ endsnippet
 
 snippet prop "PropTypes variable type"
 ${1:variable}: PropTypes.${2:type}.isRequired
+endsnippet
+
+snippet act "action declaration"
+export const ${1:name} = ${2:(${3:params})} => {
+	return {
+		$0
+	};
+};
+endsnippet
+
+snippet red "reducer declaration"
+const ${1:name} = (state = ${2:default}, action) => {
+	switch (action.type) {
+		case '${3:action}':
+			$0
+		default:
+			return state;
+	}
+};
 endsnippet
