@@ -54,4 +54,4 @@ nnoremap <buffer> <localleader>ap ^f)i,<space>
 nnoremap <buffer> <localleader>r ^2ea_index<esc>2wirange(0,<space>len(<esc>f:i))<esc>$
 
 " Paste variable assigned in current line in next line
-nnoremap <buffer> <Localleader>pv ^yeo<Esc>pa
+nnoremap <buffer> <Localleader>pv ^yeo#<Esc>"_xpa

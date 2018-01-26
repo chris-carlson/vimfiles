@@ -230,6 +230,9 @@ nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 " Add semicolon to end of line
 nnoremap <Leader>; A;<Esc>
 
+" Clear line
+nnoremap <Leader>S S<Esc>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " List
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -266,10 +269,10 @@ nnoremap <silent> <Leader>w. /\.\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b. ?\.\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w, /,\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b, ?,\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w( /(\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b( ?(\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w[ /[\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b[ ?[\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w( /(\zs.<CR>:noh<CR>
+nnoremap <silent> <Leader>b( ?(\zs.<CR>:noh<CR>
+nnoremap <silent> <Leader>w[ /[\zs.<CR>:noh<CR>
+nnoremap <silent> <Leader>b[ ?[\zs.<CR>:noh<CR>
 nnoremap <silent> <Leader>w{ /{\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b{ ?{\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w< /<\zs\w<CR>:noh<CR>
@@ -334,6 +337,8 @@ inoremap <silent> <S-Enter> <Esc>O
 " Move to end of next/previous line
 nnoremap g+ j$
 nnoremap g- k$
+vnoremap g+ j$
+vnoremap g- k$
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pasting
@@ -350,8 +355,8 @@ nnoremap <Leader>ap A<Esc>p
 " Paste to a comma/plus separated list
 nnoremap <Leader>p, a,<Space><Esc>p
 nnoremap <Leader>p+ a<Space>+<Space><Esc>p
-nnoremap <Leader>P, i,<Space><Esc>p
-nnoremap <Leader>P+ i<Space>+<Space><Esc>p
+nnoremap <Leader>P, a,<Space><Esc>ph2xh
+nnoremap <Leader>P+ a<Space>+<Space><Esc>p2h3xh
 
 " External paste
 nnoremap <Leader>gp "+gp
@@ -363,6 +368,13 @@ nnoremap <Leader>yP "0P
 
 " Paste line, increment next number, and yank that line
 nnoremap <silent> <Leader>p<C-A> yyp<C-A>
+
+" Paste line, then delete line above
+nnoremap <Leader>pd pkdd
+
+" Paste in insert mode
+inoremap <Leader>p <Esc>pa
+inoremap <Leader>P *<Esc>p^xA
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -409,6 +421,7 @@ nnoremap <Leader>re "_deP^
 nnoremap <Leader>rE "_dEP^
 nnoremap <Leader>rw "_dwP^
 nnoremap <Leader>rW "_dWP^
+nnoremap <Leader>r$ "_d$p^
 nnoremap <Leader>rr "_ddP^
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
