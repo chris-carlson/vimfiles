@@ -2,11 +2,11 @@ extends html
 
 # React
 
-snippet impre "import react"
+snippet impr "import react"
 import React from 'react';
 endsnippet
 
-snippet classre "class which extends the react component"
+snippet classr "class which extends the react component"
 class ${1:name} extends React.Component {
 	$0
 }
@@ -14,17 +14,17 @@ class ${1:name} extends React.Component {
 export default $1
 endsnippet
 
-snippet conre "constructor with props"
+snippet conr "constructor with props"
 constructor(props) {
 	super(props);
 }
 endsnippet
 
 snippet state "state declaration"
-this.state = {$0};
+this.state = {${1:state}};
 endsnippet
 
-snippet funre "class function"
+snippet funr "class function"
 ${1:name} = ${2:(${3:params)}} => {
 	$0
 }
@@ -38,7 +38,15 @@ render() {
 }
 endsnippet
 
-snippet ={ "attribute reference" i
+snippet rt "react tag with no attributes" i
+<${1:name} />
+endsnippet
+
+snippet rta "react tag with no attributes" i
+<${1:name} ${2:attributes} />
+endsnippet
+
+snippet ra "attribute reference" i
 ${1:name}={${2:value}}$0
 endsnippet
 

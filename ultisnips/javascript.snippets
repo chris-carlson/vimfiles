@@ -1,9 +1,9 @@
-snippet ; "statement"
-${1};
-endsnippet
-
 snippet let "variable initialization"
 let ${1:name} = ${2:value};
+endsnippet
+
+snippet letc "variable initialization from class"
+let ${1:name} = new ${2:class}(${3:params});
 endsnippet
 
 snippet const "constant initialization"
@@ -11,11 +11,19 @@ const ${1:name} = ${2:value};
 endsnippet
 
 snippet imp "import statement"
-import ${1:{ ${2:member} }} from '${3:module}';
+import ${1:member} from '${2:module}';
+endsnippet
+
+snippet impb "import statement with curly braces"
+import { ${1:member} } from '${2:module}';
 endsnippet
 
 snippet exp "export statement"
-export ${1:${2:default} }${3:variable};
+export $1;
+endsnippet
+
+snippet expd "export default statement"
+export default $1;
 endsnippet
 
 snippet req "require statement"
@@ -23,15 +31,33 @@ const ${1:name} = require('${2:path}');
 endsnippet
 
 snippet fun "standard function definition"
-${1:function }${2:name}(${3:params}) {
+function ${1:name}(${2:params}) {
 	$0
 }
 endsnippet
 
-snippet anon "anonymous function definition" w
-${1:(${2:params})} => ${3:{
-	${4:body}
-}}
+snippet func "class function definition"
+${1:name}(${2:params}) {
+	$0
+}
+endsnippet
+
+snippet anon "single-line anonymous function definition" w
+${1:(${2:params})} => $0
+endsnippet
+
+snippet anonm "multi-line anonymous function definition" w
+${1:(${2:params})} => {
+	$0
+}
+endsnippet
+
+snippet call "function call"
+${1:name}(${2:params});
+endsnippet
+
+snippet callr "function call with variable store"
+${1:var} = ${2:name}(${3:params});
 endsnippet
 
 snippet if "if statement"
@@ -47,7 +73,7 @@ while (${1:condition}) {
 endsnippet
 
 snippet for "for statement"
-for (let ${1:name} = 0; $1 < ${2:end}; $1++) {
+for (let ${1:i} = 0; $1 < ${2:end}; $1++) {
 	$0
 }
 endsnippet
@@ -72,7 +98,13 @@ return ${1:expression};
 endsnippet
 
 snippet class "class definition"
-class ${1:name} ${2:extends ${3:class} }{
+class ${1:name} {
+	$0
+}
+endsnippet
+
+snippet classe "extends class definition"
+class ${1:name} extends ${2:class} {
 	$0
 }
 endsnippet
@@ -92,19 +124,19 @@ ${1:condition1} || ${2:condition2}
 endsnippet
 
 snippet clog "console log statement"
-console.log(${1:'${2:message}: ' + }${3:JSON.stringify(${4:expression})});
+console.log('$1: ' + JSON.stringify(${1:expression}));
 endsnippet
 
-snippet elem "get element by id"
+snippet id "get element by id"
 document.getElementById('${1:id}')
 endsnippet
 
 snippet query "query selector"
-${1:document}.querySelector${2:All}('${3:${4:tag}${5:[${6:attribute}="${7:value}"]}}')
+${1:document}.querySelector('${2:selector}')
 endsnippet
 
-snippet ; "statement"
-${1};
+snippet querya "query selector all"
+${1:document}.querySelectorAll('${2:selector}')
 endsnippet
 
 snippet pair "object pair"

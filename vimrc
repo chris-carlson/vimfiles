@@ -28,22 +28,22 @@ nnoremap <Leader>c{ V^f{%c
 nnoremap <Leader>d{ V^f{%d
 nnoremap <Leader>y{ V^f{%y^f{%
 nnoremap <Leader>v{ V^f{%
-nnoremap <Leader>c< vf<%c
-nnoremap <Leader>d< vf<%d
-nnoremap <Leader>y< vf<%y
-nnoremap <Leader>v< vf<%
+nnoremap <Leader>c<lt> vf<lt>%c
+nnoremap <Leader>d<lt> vf<lt>%d
+nnoremap <Leader>y<lt> vf<lt>%y
+nnoremap <Leader>v<lt> vf<lt>%
 
 " Delete text from current position to the next pair of matching characters, preserving the content inside
 nnoremap <Leader>D( dt(di(hPl2xB
 nnoremap <Leader>D[ dt[di[hPl2xB
 nnoremap <Leader>D{ dt{di{hPl2xB
-nnoremap <Leader>D< dt<di<hPl2xB
+nnoremap <Leader>D<lt> dt<lt>di<lt>hPl2xB
 
 " Highlight through next pair of matching characters
 vnoremap <Leader>( f(%
 vnoremap <Leader>[ f[%
 vnoremap <Leader>{ f{%
-vnoremap <Leader>< f<%
+vnoremap <Leader><lt> f<lt>%
 
 " Match angle bracket pairs
 set matchpairs+=<:>
@@ -275,8 +275,8 @@ nnoremap <silent> <Leader>w[ /[\zs.<CR>:noh<CR>
 nnoremap <silent> <Leader>b[ ?[\zs.<CR>:noh<CR>
 nnoremap <silent> <Leader>w{ /{\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b{ ?{\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w< /<\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b< ?<\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>w<lt> /<lt>\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>b<lt> ?<lt>\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w/ /\/\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b/ ?\/\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w: /:\zs\w<CR>:noh<CR>
@@ -309,22 +309,22 @@ nnoremap <silent> <Leader>ge' ?'.\{-}\zs[^\\]'<CR>:noh<CR>
 nnoremap <silent> <Leader>gE' ?'.\{-}[^\\]\zs'<CR>:noh<CR>
 nnoremap <silent> <Leader>w" /"\zs.\{-}[^\\]"<CR>:noh<CR>
 nnoremap <silent> <Leader>W" /".\{-}[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>e" /".\{-}\zs[^\\]s"<CR>:noh<CR>
-nnoremap <silent> <Leader>E" /".\{-}[^\\]\zss"<CR>:noh<CR>
+nnoremap <silent> <Leader>e" /".\{-}\zs[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>E" /".\{-}[^\\]\zs"<CR>:noh<CR>
 nnoremap <silent> <Leader>b" ?"\zs.\{-}[^\\]"<CR>:noh<CR>
 nnoremap <silent> <Leader>B" ?".\{-}[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>ge" ?".\{-}\zs[^\\]s"<CR>:noh<CR>
-nnoremap <silent> <Leader>gE" ?".\{-}[^\\]\zss"<CR>:noh<CR>
+nnoremap <silent> <Leader>ge" ?".\{-}\zs[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>gE" ?".\{-}[^\\]\zs"<CR>:noh<CR>
 
 " Move to start of next/previous string concatenation
 nnoremap <silent> <Leader>wc /\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
 nnoremap <silent> <Leader>bc ?\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
 
 " Move to the line after/before the next/previous blank line
-nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>
-nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>
-nnoremap <silent> <Leader>][ /\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>
-nnoremap <silent> <Leader>[] ?\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>
+nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
+nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
+nnoremap <silent> <Leader>][ /\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>^
+nnoremap <silent> <Leader>[] ?\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>^
 
 " Move to the next/previous blank line
 nnoremap <silent> ]n /^\n<CR>:noh<CR>
@@ -349,7 +349,7 @@ nnoremap <Leader>op o<Esc>p
 nnoremap <Leader>OP O<Esc>P
 
 " Paste at the start/end of a line
-nnoremap <Leader>ip I<Esc>p
+nnoremap <Leader>ip I<Esc>P
 nnoremap <Leader>ap A<Esc>p
 
 " Paste to a comma/plus separated list
@@ -371,10 +371,6 @@ nnoremap <silent> <Leader>p<C-A> yyp<C-A>
 
 " Paste line, then delete line above
 nnoremap <Leader>pd pkdd
-
-" Paste in insert mode
-inoremap <Leader>p <Esc>pa
-inoremap <Leader>P *<Esc>p^xA
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -417,11 +413,11 @@ let g:UltiSnipsNoPythonWarning=1
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Replace word/line under cursor and paste yanked word/line
-nnoremap <Leader>re "_deP^
-nnoremap <Leader>rE "_dEP^
-nnoremap <Leader>rw "_dwP^
-nnoremap <Leader>rW "_dWP^
-nnoremap <Leader>r$ "_d$p^
+nnoremap <Leader>re "_deP
+nnoremap <Leader>rE "_dEP
+nnoremap <Leader>rw "_dwP
+nnoremap <Leader>rW "_dWP
+nnoremap <Leader>r$ "_d$p
 nnoremap <Leader>rr "_ddP^
 
 """"""""""""""""""""""""""""""""""""""""""""""""""

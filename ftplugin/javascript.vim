@@ -27,12 +27,12 @@ setlocal shiftwidth=2
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Go to previous/next function definition
-nnoremap <silent> <buffer> [f ?function.*(.*) {<CR>:noh<CR>
-nnoremap <silent> <buffer> ]f /function.*(.*) {<CR>:noh<CR>
+nnoremap <silent> <buffer> [f ?\w\+(.*) {<CR>:noh<CR>
+nnoremap <silent> <buffer> ]f /\w\+(.*) {<CR>:noh<CR>
 
 " Go to previous/next named function definition
-nnoremap <silent> <buffer> [F ?^function.*(.*) {<CR>:noh<CR>
-nnoremap <silent> <buffer> ]F /^function.*(.*) {<CR>:noh<CR>
+nnoremap <silent> <buffer> [F ?^\w\+(.*) {<CR>:noh<CR>
+nnoremap <silent> <buffer> ]F /^\w\+(.*) {<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations

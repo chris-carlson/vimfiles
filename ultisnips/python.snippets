@@ -1,5 +1,12 @@
 snippet class "class definition"
-class ${1:name}${2:(${3:extend})}:
+class ${1:name}:
+
+	$0
+endsnippet
+
+snippet classe "sub-class definition"
+class ${1:name}(${2:extend}):
+
 	$0
 endsnippet
 
@@ -8,13 +15,42 @@ def __${1:name}__(self${2:, ${3:params}}):
 	$0
 endsnippet
 
+snippet var "variable declaration"
+${1:name} = ${2:value}
+endsnippet
+
+snippet vars "class variable declaration"
+self._${1:name} = ${2:$1}
+endsnippet
+
+snippet varc "constructor variable declaration"
+${1:name} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
+endsnippet
+
 snippet def "function definition"
-def ${1:name}(${2:self${3:, ${4:params}}}):
+def ${1:name}(${2:params}):
 	$0
 endsnippet
 
+snippet defs "class function definition"
+def ${1:name}(self${2:, ${3:params}}):
+	$0
+endsnippet
+
+snippet prop "property function"
+@property
+def ${1:var}(self):
+	return self._$1
+endsnippet
+
+snippet set "setter function"
+@${1:var}.setter
+def $1(self, $1):
+	self._$1 = $1
+endsnippet
+
 snippet imp "import statement"
-from ${1:path} import ${2:package}
+from ${1:path} import ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}
 endsnippet
 
 snippet if "if statement" i
@@ -33,7 +69,12 @@ while ${1:condition}:
 endsnippet
 
 snippet for "for loop"
-for ${1:variable} in ${2:range(${3:0}, ${4:len(${5:collection})})}:
+for ${1:item} in ${2:collection}:
+	$0
+endsnippet
+
+snippet range "range for loop"
+for ${1:item} in range(${2:0}, ${3:len(${4:collection})}):
 	$0
 endsnippet
 
@@ -41,8 +82,12 @@ snippet raise "raise exception"
 raise ${1:class}('${2:message}')
 endsnippet
 
-snippet print "print statement"
-print(${1:'${2:message}: ' + }${3:str(${4:expression})})
+snippet print "print variable"
+print('$1: ' + str(${1:expression}))
+endsnippet
+
+snippet printm "print message and variable"
+print('${1:message}: ' + str(${2:expression}))
 endsnippet
 
 snippet and "and condition" w
@@ -55,4 +100,10 @@ endsnippet
 
 snippet block "block comment"
 """
+endsnippet
+
+snippet index "indexes of character"
+${1:name}_index_1 = ${2:line}.find('${3:char}')
+$1_index_2 = $2.find('$3', $1_index_1 + 1)
+${4:name} = $2[$1_index_1 + 1 : $1_index_2]
 endsnippet

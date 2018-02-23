@@ -1,14 +1,24 @@
-snippet < "open/close tag" i
-<${1:name}${2: ${3:attributes}}>${4:
-	${5:body}
-}</$1>
+snippet t "single-line standard tag with no attributes"
+<${1:name}>$0</$1>
 endsnippet
 
-snippet / "self-closing tag" i
-<${1:name}${2: ${3:attributes}} />
+snippet ta "single-line standard tag with attributes"
+<${1:name} ${2:attributes}>$0</$1>
 endsnippet
 
-snippet = "attribute" i
+snippet tm "multi-line standard tag with no attributes"
+<${1:name}>
+	$0
+</$1>
+endsnippet
+
+snippet tam "multi-line standard tag with attributes"
+<${1:name} ${2:attributes}>
+	$0
+</$1>
+endsnippet
+
+snippet a "attribute" i
 ${1:name}="${2:value}"$0
 endsnippet
 

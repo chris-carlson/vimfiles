@@ -8,11 +8,9 @@ iabbrev <buffer> con continue
 iabbrev <buffer> fr from
 iabbrev <buffer> imp import
 iabbrev <buffer> pr print
-iabbrev <buffer> prop @property
 iabbrev <buffer> ret return
 iabbrev <buffer> se self
 iabbrev <buffer> set setter
-iabbrev <buffer> stat @staticmethod
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
