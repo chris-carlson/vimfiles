@@ -2,10 +2,12 @@
 " Abbreviations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+iabbrev <buffer> cl class
 iabbrev <buffer> clog console.log
 iabbrev <buffer> con constructor
 iabbrev <buffer> def default
 iabbrev <buffer> exp export
+iabbrev <buffer> imp import
 iabbrev <buffer> fr from
 iabbrev <buffer> fun function
 iabbrev <buffer> imp import
@@ -26,13 +28,17 @@ setlocal shiftwidth=2
 " Movement
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Go to previous/next function definition
-nnoremap <silent> <buffer> [f ?\w\+(.*) {<CR>:noh<CR>
-nnoremap <silent> <buffer> ]f /\w\+(.*) {<CR>:noh<CR>
+" Go to previous/next class
+nnoremap <silent> <buffer> [c ?^export<space>class<space>\w\+<space>\(\(\w\+<space>\)\{2\}\)\={<CR>:noh<CR>
+nnoremap <silent> <buffer> ]c /^export<space>class<space>\w\+<space>\(\(\w\+<space>\)\{2\}\)\={<CR>:noh<CR>
 
-" Go to previous/next named function definition
-nnoremap <silent> <buffer> [F ?^\w\+(.*) {<CR>:noh<CR>
-nnoremap <silent> <buffer> ]F /^\w\+(.*) {<CR>:noh<CR>
+" Go to constructor
+nnoremap <silent> <buffer> [C ?constructor<CR>:noh<CR>
+nnoremap <silent> <buffer> ]C /constructor<CR>:noh<CR>
+
+" Go to previous/next function definition
+nnoremap <silent> <buffer> [f ?\s\+\zs\w\+(.*)\s{<CR>:noh<CR>
+nnoremap <silent> <buffer> ]f /\s\+\zs\w\+(.*)\s{<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations

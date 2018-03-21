@@ -25,8 +25,8 @@ setlocal shiftwidth=4
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Go to previous/next class definition
-nnoremap <silent> <buffer> [c ?^class\s\zs\w\+:<CR>:noh<CR>
-nnoremap <silent> <buffer> ]c /^class\s\zs\w\+:<CR>:noh<CR>
+nnoremap <silent> <buffer> [c ?^class\s\zs\w\+<CR>:noh<CR>
+nnoremap <silent> <buffer> ]c /^class\s\zs\w\+<CR>:noh<CR>
 
 " Go to previous/next init
 nnoremap <silent> <buffer> [i ?def\s\zs__init__(.*):<CR>:noh<CR>

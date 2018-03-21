@@ -44,9 +44,9 @@ nnoremap <silent> <buffer> ]m /\(private\\|protected\\|public\)<space>\w\+<space
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Add a parameter to the method
-nnoremap <buffer> <localleader>p ^f(a
-nnoremap <buffer> <localleader>P ^f)i,<space>
+" Add a parameter to the function
+nnoremap <buffer> <localleader>ip ^f(a
+nnoremap <buffer> <localleader>ap ^f)i,<space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins

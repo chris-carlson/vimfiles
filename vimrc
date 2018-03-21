@@ -233,6 +233,9 @@ nnoremap <Leader>; A;<Esc>
 " Clear line
 nnoremap <Leader>S S<Esc>
 
+" Delete part of a file path
+nnoremap <Leader>dp d2f\
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " List
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -341,7 +344,7 @@ vnoremap g+ j$
 vnoremap g- k$
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Pasting
+" Paste
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Add a new line below/above then paste below/above
@@ -371,6 +374,12 @@ nnoremap <silent> <Leader>p<C-A> yyp<C-A>
 
 " Paste line, then delete line above
 nnoremap <Leader>pd pkdd
+
+" Paste external file path
+nnoremap <Leader>pp' "+gphr'F"r'vf':s/\\/\\\\/g<CR>:noh<CR>$
+nnoremap <Leader>pp" "+gphvF":s/\\/\\\\/g<CR>:noh<CR>$
+nnoremap <Leader>Pp' "+gPhr'F"r'vf':s/\\/\\\\/g<CR>:noh<CR>$
+nnoremap <Leader>Pp" "+gPhvF":s/\\/\\\\/g<CR>:noh<CR>$
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -466,6 +475,10 @@ nnoremap <Leader>X xhP
 nnoremap <Leader>ac+ a<Space>+<Space>
 nnoremap <Leader>ac' a<Space>+<Space>''<Esc>i
 nnoremap <Leader>ac" a<Space>+<Space>""<Esc>i
+
+" Append quoted string
+nnoremap <Leader>a\' i\'<Esc>la<Space>+<Space><Space>+<Space>'\''<Esc>6hi
+nnoremap <Leader>a\" i\"<Esc>la<Space>+<Space><Space>+<Space>"\""<Esc>6hi
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
