@@ -36,6 +36,10 @@ nnoremap <silent> <buffer> ]i /def\s\zs__init__(.*):<CR>:noh<CR>
 nnoremap <silent> <buffer> [f ?def\s\zs\w\+(.*):<CR>:noh<CR>
 nnoremap <silent> <buffer> ]f /def\s\zs\w\+(.*):<CR>:noh<CR>
 
+" Go to previous/next non-underscore function definition
+nnoremap <silent> <buffer> [F ?def\s\zs[A-Z0-9]\+(.*):<CR>:noh<CR>
+nnoremap <silent> <buffer> ]F /def\s\zs[A-Z0-9]\+(.*):<CR>:noh<CR>
+
 " Go to previous/next parameter
 nnoremap <silent> <buffer> [p ?\((\\|,\s\)\zs\(\S\+\\|'.\{-}'\)\ze\(,\\|)\)<CR>:noh<CR>
 nnoremap <silent> <buffer> ]p /\((\\|,\s\)\zs\(\S\+\\|'.\{-}'\)\ze\(,\\|)\)<CR>:noh<CR>
