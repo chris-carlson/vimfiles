@@ -1,0 +1,371 @@
+# Variables
+
+snippet var "variable initialization"
+${1:type} ${2:var} = ${3:value};
+endsnippet
+
+snippet vara "variable assignment"
+${1:var} = ${2:value};
+endsnippet
+
+snippet varn "variable initialization with new"
+${1:type} ${2:var} = new $1(${3:params});
+endsnippet
+
+snippet vart "this assignment"
+this.${1:var} = $1;
+endsnippet
+
+snippet new "class initialization"
+new ${1:class}(${2:params});
+endsnippet
+
+# Methods
+
+snippet meth "method declaration"
+${1:public} ${2:type} ${3:name}(${4:params}) {
+	$0
+}
+endsnippet
+
+snippet meths "static method declaration"
+${1:public} static ${2:type} ${3:name}(${4:params}) {
+	$0
+}
+endsnippet
+
+snippet ret "return statement"
+return ${1:expression};
+endsnippet
+
+snippet get "getter method"
+public ${1:type} get${2/\w+/\u$0/g}() {
+	return ${2:var};
+}
+endsnippet
+
+snippet set "setter method"
+public void set${1/\w+/\u$0/g}() {
+	this.${1:var} = $1;
+}
+endsnippet
+
+snippet call "method call"
+${1:name}(${2:params});
+endsnippet
+
+snippet callr "method call with variable store"
+${1:var} = ${2:name}(${3:params});
+endsnippet
+
+snippet main "main method declaration"
+public static void main(String[] args) {
+	$0
+}
+endsnippet
+
+snippet final "constant declaration"
+${1:public} static final ${2:type} ${3:name} = ${4:value};
+endsnippet
+
+# Classes
+
+snippet class "class declaration"
+public class ${1:name} {
+	$0
+}
+endsnippet
+
+snippet classa "abstract class declaration"
+public abstract class ${1:name} {
+	$0
+}
+endsnippet
+
+snippet int "interface declaration"
+public interface ${1:name} {
+	$0
+}
+endsnippet
+
+snippet enum "enum declaration"
+public enum ${1:name} {
+	$0
+}
+endsnippet
+
+snippet ext "extends statement"
+extends ${1:class}
+endsnippet
+
+snippet imp "implements statement"
+implements ${1:class}
+endsnippet
+
+snippet pack "package statement"
+package ${1:path};
+endsnippet
+
+snippet imp "import statement"
+import ${1:path};
+endsnippet
+
+snippet vari "instance variable"
+private ${1:type} ${2:var};
+endsnippet
+
+snippet con "constructor"
+public ${1:name}(${2:params}) {
+	$0
+}
+endsnippet
+
+snippet conp "private constructor"
+private ${1:name}() {
+}
+endsnippet
+
+# Control Flow
+
+snippet if "if statement"
+if (${1:cond}) {
+	$0
+}
+endsnippet
+
+snippet ife "if else statement"
+if (${1:cond}) {
+	${2:if}
+} else {
+	${3:else}
+}
+endsnippet
+
+snippet while "while statement"
+while (${1:cond}) {
+	$0
+}
+endsnippet
+
+snippet for "for statement"
+for (let ${1:i} = 0; $1 < ${2:end}; $1++) {
+	$0
+}
+endsnippet
+
+snippet fore "for each statement"
+for (${1:type} ${2:item} : ${3:collection}) {
+	$0
+}
+endsnippet
+
+snippet switch "switch statement"
+switch (${1:var}) {
+	$0
+}
+endsnippet
+
+snippet case "case statement"
+case ${1:value}:
+	$0
+endsnippet
+
+snippet == "double equals check" w
+${1:var1} == ${2:var2}
+endsnippet
+
+snippet != "negative double equals check" w
+${1:var1} != ${2:var2}
+endsnippet
+
+snippet eq "equality check" w
+${1:var1}.equals(${2:var2})
+endsnippet
+
+snippet and "and condition" w
+${1:cond1} && ${2:cond2}
+endsnippet
+
+snippet or "or condition" w
+${1:cond1} || ${2:cond2}
+endsnippet
+
+snippet throw "throw exception"
+throw new ${1:exception}("${2:message}");
+endsnippet
+
+snippet try "try/catch statement"
+try {
+	${1:try}
+} catch (${2:exception} exception) {
+	${3:catch}
+}
+endsnippet
+
+snippet opt "optional check"
+if (${1:var}.isPresent()) {
+	return $1.get();
+}
+throw new ${2:exception}("${3:message}");
+endsnippet
+
+snippet lamb "lambda function"
+${1:var} -> ${2:exp}
+endsnippet
+
+# Logging
+
+snippet sys "print statement"
+System.out.println(${1:exp});
+endsnippet
+
+snippet sysm "message print statement"
+System.out.println("${1:message}: " + ${2:exp});
+endsnippet
+
+snippet sysv "variable print statement"
+System.out.println("$1: " + ${1:exp});
+endsnippet
+
+snippet log "logger initialization"
+private static final Logger LOGGER = LogManager.getLogger();
+endsnippet
+
+# Object
+
+snippet hash "hashCode override"
+@Override
+public int hashCode() {
+	return new HashCodeBuilder().append(${1:var}).toHashCode();
+}
+endsnippet
+
+snippet apph "append variable to hashCode" i
+.append(${1:var})
+endsnippet
+
+snippet equals "equals override"
+@Override
+public boolean equals(Object obj) {
+	if (obj == null) {
+		return false;
+	}
+	if (obj == this) {
+		return true;
+	}
+	if (obj.getClass() != getClass()) {
+		return false;
+	}
+	${1:class} other = ($1) obj;
+	return new EqualsBuilder().append(${2:var}, other.$2).isEquals();
+}
+endsnippet
+
+snippet appe "append variable to equals" i
+.append(${1:var}, other.$1)
+endsnippet
+
+snippet tos "toString override"
+@Override
+public String toString() {
+	return ${1:var};
+}
+endsnippet
+
+snippet tosb "toString override with StringBuilder"
+@Override
+public String toString() {
+	StringBuilder builder = new StringBuilder();$0
+	return builder.toString();
+}
+endsnippet
+
+# JUnit
+
+snippet ase "assertEquals statement"
+assertEquals(${1:expected}, ${2:actual});
+endsnippet
+
+snippet ast "assertTrue statement"
+assertTrue(${1:expression});
+endsnippet
+
+snippet asf "assertFalse statement"
+assertFalse(${1:expression});
+endsnippet
+
+snippet classt "test class"
+class ${1:name}Test {
+	$0
+}
+endsnippet
+
+snippet inst "instance variable declaration"
+private ${1:type} instance;
+endsnippet
+
+snippet bef "before each method declaration"
+@BeforeEach
+void setUp() {
+	$0
+}
+endsnippet
+
+snippet test "test method declaration"
+@Test
+void ${1:name}() {
+	$0
+}
+endsnippet
+
+# Mockito
+
+snippet mock "mock class"
+${1:type} ${2:name} = mock($1.class);
+endsnippet
+
+snippet when "when statement"
+when(${1:var}.${2:method}(${3:params})).thenReturn(${4:value});
+endsnippet
+
+snippet ver "verify statement"
+verify(${1:var}).${2:method};
+endsnippet
+
+# Swing
+
+snippet panel "JPanel initialization"
+JPanel ${1:name} = new JPanel();
+endsnippet
+
+snippet label "JLabel initialization"
+JLabel ${1:name} = new JLabel(${2:text});
+endsnippet
+
+snippet flow "FlowLayout initialization"
+new FlowLayout(FlowLayout.CENTER, ${1:size}, $1)
+endsnippet
+
+snippet box "BoxLayout initialization"
+new BoxLayout(${1:container}, BoxLayout.${2:axis})
+endsnippet
+
+snippet bore "empty border initialization"
+new EmptyBorder(${1:size}, $1, $1, $1)
+endsnippet
+
+snippet borl "line border initialization"
+new LineBorder(${1:color}, ${2:size})
+endsnippet
+
+snippet dim "dimension initialization"
+new Dimension(${1:width}, ${2:height})
+endsnippet
+
+snippet rig "rigid area creation"
+Box.createRigidArea(new Dimension(${1:width}, ${2:height}))
+endsnippet
+
+snippet size "set preferred size"
+setPreferredSize(new Dimension(${1:width}, ${2:height}));
+endsnippet
