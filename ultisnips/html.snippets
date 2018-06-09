@@ -1,28 +1,6 @@
-# General
+extends markup
 
-snippet t "single-line standard tag with no attributes"
-<${1:name}>$0</$1>
-endsnippet
-
-snippet ta "single-line standard tag with attributes"
-<${1:name} ${2:attributes}>$0</$1>
-endsnippet
-
-snippet tm "multi-line standard tag with no attributes"
-<${1:name}>
-	$0
-</$1>
-endsnippet
-
-snippet tam "multi-line standard tag with attributes"
-<${1:name} ${2:attributes}>
-	$0
-</$1>
-endsnippet
-
-snippet a "attribute" w
-${1:name}="${2:value}"$0
-endsnippet
+# Document
 
 snippet doc "doctype"
 <!doctype html>
@@ -32,9 +10,9 @@ endsnippet
 # Angular
 
 snippet a* "structural directive" w
-*ng${1:name}="${2:value}"$0
+*ng${1:name}="${2:value}"
 endsnippet
 
 snippet a) "component interaction" w
-(${1:name})="${2:value}"$0
+(${1:name})="${2:value}"
 endsnippet

@@ -17,7 +17,11 @@ this.${1:var} = $1;
 endsnippet
 
 snippet new "class initialization"
-new ${1:class}(${2:params});
+new ${1:class}(${2:params})
+endsnippet
+
+snippet const "constant declaration"
+${1:public} static final ${2:type} ${3:name} = ${4:value};
 endsnippet
 
 # Methods
@@ -45,8 +49,8 @@ public ${1:type} get${2/\w+/\u$0/g}() {
 endsnippet
 
 snippet set "setter method"
-public void set${1/\w+/\u$0/g}() {
-	this.${1:var} = $1;
+public void set${2/\w+/\u$0/g}(${1:type} ${2:name}) {
+	this.$2 = $2;
 }
 endsnippet
 
@@ -62,10 +66,6 @@ snippet main "main method declaration"
 public static void main(String[] args) {
 	$0
 }
-endsnippet
-
-snippet final "constant declaration"
-${1:public} static final ${2:type} ${3:name} = ${4:value};
 endsnippet
 
 # Classes

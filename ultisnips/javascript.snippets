@@ -1,3 +1,5 @@
+# Variables
+
 snippet var "assignment"
 ${1:name} = ${2:value};
 endsnippet
@@ -10,13 +12,19 @@ snippet let "variable initialization"
 let ${1:name} = ${2:value};
 endsnippet
 
-snippet letc "variable initialization from class"
-let ${1:name} = new ${2:class}(${3:params});
-endsnippet
-
 snippet const "constant initialization"
 const ${1:name} = ${2:value};
 endsnippet
+
+snippet new "new object initialization"
+new ${2:class}(${3:params})
+endsnippet
+
+snippet pair "object pair"
+${1:key}: ${2:pair}
+endsnippet
+
+# Import/Export
 
 snippet imp "import statement"
 import ${1:member} from '${2:module}';
@@ -27,16 +35,22 @@ import { ${1:member} } from '${2:module}';
 endsnippet
 
 snippet exp "export statement"
-export $1;
+export ${1:var};
 endsnippet
 
 snippet expd "export default statement"
-export default $1;
+export default ${1:var};
 endsnippet
 
 snippet req "require statement"
 const ${1:name} = require('${2:path}');
 endsnippet
+
+snippet mod "module exports"
+module.exports = ${1:expression};
+endsnippet
+
+# Functions
 
 snippet fun "standard function definition"
 function ${1:name}(${2:params}) {
@@ -68,14 +82,20 @@ snippet callr "function call with variable store"
 ${1:var} = ${2:name}(${3:params});
 endsnippet
 
+snippet ret "return statement"
+return ${1:expression};
+endsnippet
+
+# Control Flow
+
 snippet if "if statement"
-if (${1:condition}) {
+if (${1:cond}) {
 	$0
 }
 endsnippet
 
 snippet ife "if else statement"
-if (${1:condition}) {
+if (${1:cond}) {
 	${2:if}
 } else {
 	${3:else}
@@ -83,7 +103,7 @@ if (${1:condition}) {
 endsnippet
 
 snippet while "while statement"
-while (${1:condition}) {
+while (${1:cond}) {
 	$0
 }
 endsnippet
@@ -95,7 +115,7 @@ for (let ${1:i} = 0; $1 < ${2:end}; $1++) {
 endsnippet
 
 snippet switch "switch statement"
-switch (${1:variable}) {
+switch (${1:var}) {
 	$0
 }
 endsnippet
@@ -105,13 +125,20 @@ case ${1:value}:
 	$0
 endsnippet
 
-snippet mod "module exports"
-module.exports = ${1:expression};
+snippet === "equality check" w
+${1:var1} === ${2:var2}
 endsnippet
 
-snippet ret "return statement"
-return ${1:expression};
+snippet and "and condition" w
+${1:cond1} && ${2:cond2}
 endsnippet
+
+snippet or "or condition" w
+${1:cond1} || ${2:cond2}
+endsnippet
+
+
+# Classes
 
 snippet class "class definition"
 class ${1:name} {
@@ -129,17 +156,7 @@ constructor(${1:params}) {
 }
 endsnippet
 
-snippet === "equality check" w
-${1:variable1} === ${2:variable2}
-endsnippet
-
-snippet and "and condition" w
-${1:condition1} && ${2:condition2}
-endsnippet
-
-snippet or "or condition" w
-${1:condition1} || ${2:condition2}
-endsnippet
+# Logging
 
 snippet clog "console log statement"
 console.log(JSON.stringify(${1:expression}));
@@ -153,6 +170,8 @@ snippet clogm "console log message"
 console.log('${1:message}: ' + JSON.stringify(${2:expression}));
 endsnippet
 
+# Browser
+
 snippet id "get element by id"
 document.getElementById('${1:id}')
 endsnippet
@@ -163,8 +182,4 @@ endsnippet
 
 snippet querya "query selector all"
 ${1:document}.querySelectorAll('${2:selector}')
-endsnippet
-
-snippet pair "object pair"
-${1:key}: ${2:pair}
 endsnippet

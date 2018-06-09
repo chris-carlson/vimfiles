@@ -1,11 +1,15 @@
 extends javascript
 
-# General
+# Variables
 
-snippet classi "implements class definition"
-class ${1:name} implements ${2:class} {
-	$0
-}
+snippet vary "variable with type"
+${1:name}: ${2:type}
+endsnippet
+
+# Classes
+
+snippet imp "implements statement"
+implements ${1:class}
 endsnippet
 
 # Angular
@@ -47,12 +51,8 @@ endsnippet
 
 snippet promc "promise call"
 ${1:function}
-	.then((${2:params}) => ${3:{
-		${4:body}
-	}})
-	.catch((${5:params}) => ${6:{
-		${7:body}
-	}});
+	.then((${2:params}) => ${3:body})
+	.catch((${4:params}) => ${5:body});
 endsnippet
 
 snippet ngmod "ngmodule annotation"
