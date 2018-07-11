@@ -1,18 +1,22 @@
 # Variables
 
-snippet var "assignment"
+snippet var "variable assignment"
 ${1:name} = ${2:value};
 endsnippet
 
-snippet vart "this assignment"
+snippet vart "instance variable assignment"
 this.${1:name} = ${2:value};
 endsnippet
 
-snippet let "variable initialization"
+snippet vartp "instance variable assignment from parameter"
+this.${1:name} = $1;
+endsnippet
+
+snippet let "let statement"
 let ${1:name} = ${2:value};
 endsnippet
 
-snippet const "constant initialization"
+snippet const "const statement"
 const ${1:name} = ${2:value};
 endsnippet
 
@@ -20,8 +24,8 @@ snippet new "new object initialization"
 new ${2:class}(${3:params})
 endsnippet
 
-snippet pair "object pair"
-${1:key}: ${2:pair}
+snippet : "object pair"
+${1:key}: ${2:value}
 endsnippet
 
 # Import/Export
@@ -38,7 +42,7 @@ snippet exp "export statement"
 export ${1:var};
 endsnippet
 
-snippet expd "export default statement"
+snippet expd "default export statement"
 export default ${1:var};
 endsnippet
 
@@ -52,7 +56,7 @@ endsnippet
 
 # Functions
 
-snippet fun "standard function definition"
+snippet fun "function definition"
 function ${1:name}(${2:params}) {
 	$0
 }
@@ -64,11 +68,11 @@ ${1:name}(${2:params}) {
 }
 endsnippet
 
-snippet anon "single-line anonymous function definition" w
+snippet anon "single-line anonymous function" w
 ${1:(${2:params})} => $0
 endsnippet
 
-snippet anonm "multi-line anonymous function definition" w
+snippet anonm "multi-line anonymous function" w
 ${1:(${2:params})} => {
 	$0
 }
@@ -123,17 +127,23 @@ endsnippet
 snippet case "case statement"
 case ${1:value}:
 	$0
+	break;
 endsnippet
 
-snippet === "equality check" w
+snippet casef "case statement with fall-through"
+case ${1:value}:
+	$0
+endsnippet
+
+snippet = "equality check" w
 ${1:var1} === ${2:var2}
 endsnippet
 
-snippet and "and condition" w
+snippet & "and condition" w
 ${1:cond1} && ${2:cond2}
 endsnippet
 
-snippet or "or condition" w
+snippet | "or condition" w
 ${1:cond1} || ${2:cond2}
 endsnippet
 

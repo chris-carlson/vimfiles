@@ -8,19 +8,23 @@ snippet vara "variable assignment"
 ${1:var} = ${2:value};
 endsnippet
 
-snippet varn "variable initialization with new"
-${1:type} ${2:var} = new $1(${3:params});
+snippet vart "this assignment"
+this.${1:var} = ${2:value};
 endsnippet
 
-snippet vart "this assignment"
+snippet vartp "this assignment from parameter"
 this.${1:var} = $1;
+endsnippet
+
+snippet vari "instance variable declaration"
+private ${1:type} ${2:var};
 endsnippet
 
 snippet new "class initialization"
 new ${1:class}(${2:params})
 endsnippet
 
-snippet const "constant declaration"
+snippet const "constant initialization"
 ${1:public} static final ${2:type} ${3:name} = ${4:value};
 endsnippet
 
@@ -42,13 +46,13 @@ snippet ret "return statement"
 return ${1:expression};
 endsnippet
 
-snippet get "getter method"
+snippet get "getter method declaration"
 public ${1:type} get${2/\w+/\u$0/g}() {
 	return ${2:var};
 }
 endsnippet
 
-snippet set "setter method"
+snippet set "setter method declaration"
 public void set${2/\w+/\u$0/g}(${1:type} ${2:name}) {
 	this.$2 = $2;
 }
@@ -56,10 +60,6 @@ endsnippet
 
 snippet call "method call"
 ${1:name}(${2:params});
-endsnippet
-
-snippet callr "method call with variable store"
-${1:var} = ${2:name}(${3:params});
 endsnippet
 
 snippet main "main method declaration"
@@ -110,10 +110,6 @@ snippet imp "import statement"
 import ${1:path};
 endsnippet
 
-snippet vari "instance variable"
-private ${1:type} ${2:var};
-endsnippet
-
 snippet con "constructor"
 public ${1:name}(${2:params}) {
 	$0
@@ -148,7 +144,7 @@ while (${1:cond}) {
 endsnippet
 
 snippet for "for statement"
-for (let ${1:i} = 0; $1 < ${2:end}; $1++) {
+for (int ${1:i} = 0; $1 < ${2:end}; $1++) {
 	$0
 }
 endsnippet
@@ -168,13 +164,19 @@ endsnippet
 snippet case "case statement"
 case ${1:value}:
 	$0
+	break;
 endsnippet
 
-snippet == "double equals check" w
+snippet casef "case statement with fall-through"
+case ${1:value}:
+	$0
+endsnippet
+
+snippet = "double equals check" w
 ${1:var1} == ${2:var2}
 endsnippet
 
-snippet != "negative double equals check" w
+snippet ! "negative double equals check" w
 ${1:var1} != ${2:var2}
 endsnippet
 
@@ -182,24 +184,16 @@ snippet eq "equality check" w
 ${1:var1}.equals(${2:var2})
 endsnippet
 
-snippet and "and condition" w
+snippet & "and condition" w
 ${1:cond1} && ${2:cond2}
 endsnippet
 
-snippet or "or condition" w
+snippet | "or condition" w
 ${1:cond1} || ${2:cond2}
 endsnippet
 
-snippet throw "throw exception"
-throw new ${1:exception}("${2:message}");
-endsnippet
-
-snippet try "try/catch statement"
-try {
-	${1:try}
-} catch (${2:exception} exception) {
-	${3:catch}
-}
+snippet null "null check" w
+${1:expression} != null
 endsnippet
 
 snippet opt "optional check"
@@ -211,6 +205,20 @@ endsnippet
 
 snippet lamb "lambda function"
 ${1:var} -> ${2:exp}
+endsnippet
+
+# Exceptions
+
+snippet throw "throw exception"
+throw new ${1:exception}("${2:message}");
+endsnippet
+
+snippet try "try/catch statement"
+try {
+	${1:try}
+} catch (${2:exception} exception) {
+	${3:catch}
+}
 endsnippet
 
 # Logging
@@ -236,7 +244,7 @@ endsnippet
 snippet hash "hashCode override"
 @Override
 public int hashCode() {
-	return new HashCodeBuilder().append(${1:var}).toHashCode();
+	return new HashCodeBuilder().append(${1:var})$0.toHashCode();
 }
 endsnippet
 
@@ -257,7 +265,7 @@ public boolean equals(Object obj) {
 		return false;
 	}
 	${1:class} other = ($1) obj;
-	return new EqualsBuilder().append(${2:var}, other.$2).isEquals();
+	return new EqualsBuilder().append(${2:var}, other.$2)$0.isEquals();
 }
 endsnippet
 
@@ -278,6 +286,20 @@ public String toString() {
 	StringBuilder builder = new StringBuilder();$0
 	return builder.toString();
 }
+endsnippet
+
+# Collections
+
+snippet list "list initialization"
+List<${1:type}> ${2:name} = new ArrayList<>();
+endsnippet
+
+snippet set "set initialization"
+Set<${1:type}> ${2:name} = new HashSet<>();
+endsnippet
+
+snippet map "map initialization"
+Map<${1:type1}, ${2:type2}> ${3:name} = new HashMap<>();
 endsnippet
 
 # JUnit

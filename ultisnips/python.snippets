@@ -18,8 +18,6 @@ snippet init "init function"
 def __init__(self${1:, ${2:params}}):
 endsnippet
 
-# Variables
-
 snippet def "function definition"
 def ${1:name}(${2:params}):
 endsnippet
@@ -50,11 +48,17 @@ def $1(self, $1):
 	self._$1 = $1
 endsnippet
 
+# Variables
+
 snippet var "variable declaration"
 ${1:name} = ${2:value}
 endsnippet
 
 snippet vars "self variable declaration"
+self._${1:name} = ${2:value}
+endsnippet
+
+snippet varsp "self variable declaration from parameter"
 self._${1:name} = $1
 endsnippet
 
@@ -74,7 +78,7 @@ snippet if "if statement" i
 if ${1:cond}:
 endsnippet
 
-snippet ife "else statement"
+snippet ife "if else statement"
 if ${1:cond}:
 	${2:body}
 else:
@@ -97,19 +101,19 @@ snippet raise "raise exception"
 raise ${1:class}('${2:message}')
 endsnippet
 
-snippet == "equality check"
+snippet = "equality check"
 ${1:var1} == ${2:var2}
 endsnippet
 
-snippet != "negative equality check"
+snippet ! "negative equality check"
 ${1:var1} != ${2:var2}
 endsnippet
 
-snippet and "and condition" w
+snippet & "and condition" w
 ${1:cond1} and ${2:cond2}
 endsnippet
 
-snippet or "or condition" w
+snippet | "or condition" w
 ${1:cond1} or ${2:cond2}
 endsnippet
 
@@ -129,6 +133,6 @@ endsnippet
 
 # Comments
 
-snippet " "block comment"
+snippet bc "block comment"
 """
 endsnippet
