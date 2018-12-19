@@ -399,7 +399,7 @@ let g:ctrlp_open_multiple_files='ir'
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
 endif
-let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn)$)|([\\]bundle$)'
+let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)'
 
 " jsx
 let g:jsx_ext_required=0
@@ -409,7 +409,7 @@ runtime macros/matchit.vim
 
 " nerdtree
 nnoremap <C-N> :NERDTree<CR>
-let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bin$[[dir]]', 'bundle$[[dir]]']
+let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bin$[[dir]]', 'bundle$[[dir]]', '.idea$[[dir]]', 'target$[[dir]]', 'out$[[dir]]']
 
 " pathogen
 call pathogen#infect()
