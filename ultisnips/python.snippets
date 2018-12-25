@@ -11,65 +11,81 @@ endsnippet
 # Functions
 
 snippet __ "underscore function"
-def __${1:name}__(self${2:, ${3:params}}):
+def __${1:name}__(self${2:, ${3:params}}) -> ${4:type}:
 endsnippet
 
 snippet init "init function"
-def __init__(self${1:, ${2:params}}):
+def __init__(self${1:, ${2:params}}) -> None:
 endsnippet
 
 snippet def "function definition"
-def ${1:name}(${2:params}):
+def ${1:name}(${2:params}) -> ${3:type}:
 endsnippet
 
 snippet defs "self function definition"
-def ${1:name}(self${2:, ${3:params}}):
+def ${1:name}(self${2:, ${3:params}}) -> ${4:type}:
 endsnippet
 
 snippet defc "class function definition"
 @classmethod
-def ${1:name}(cls${2:, ${3:params}}):
+def ${1:name}(cls${2:, ${3:params}}) -> ${4:type}:
 endsnippet
 
 snippet deft "static function definition"
 @staticmethod
-def ${1:name}(${2:params}):
+def ${1:name}(${2:params}) -> ${3:type}:
 endsnippet
 
 snippet prop "property function"
 @property
-def ${1:var}(self):
+def ${1:var}(self) -> ${2:type}:
 	return self._$1
 endsnippet
 
 snippet set "setter function"
 @${1:var}.setter
-def $1(self, $1):
+def $1(self, $1) -> None:
 	self._$1 = $1
+endsnippet
+
+snippet par "parameter"
+${1:var}: ${2:type}
+endsnippet
+
+snippet part "parameter with type based on name"
+${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}
 endsnippet
 
 # Variables
 
 snippet var "variable declaration"
-${1:name} = ${2:value}
+${1:name}: ${2:type} = ${3:value}
+endsnippet
+
+snippet vart "variable declaration with type based on name"
+${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${2:value}
 endsnippet
 
 snippet vars "self variable declaration"
-self._${1:name} = ${2:value}
+self._${1:name}: ${2:type} = ${3:value}
 endsnippet
 
 snippet varsp "self variable declaration from parameter"
-self._${1:name} = $1
+self._${1:name}: ${2:type} = $1
 endsnippet
 
 snippet varc "constructor variable declaration"
-${1:name} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
+${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
 endsnippet
 
 # Import
 
 snippet imp "import statement"
 from ${1:path} import ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}
+endsnippet
+
+snippet impt "import typing"
+from typings import ${1:name}
 endsnippet
 
 # Control Flow
