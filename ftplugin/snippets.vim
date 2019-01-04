@@ -18,7 +18,7 @@ setlocal shiftwidth=4
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Convert named tabstop into unnamed one
-nnoremap <Leader>d: xldf}
+nnoremap <Localleader>d: xldf}
 
 " Delete tabstop but preserve inside
-nnoremap <Leader>d$ xl2xhdi{hPl2xB
+nnoremap <Localleader>d$ xl2xhdi{hPl2xB

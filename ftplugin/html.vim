@@ -22,18 +22,22 @@ nnoremap <silent> <buffer> ]r /\S\+=".\{-}"\(\s\\|>\)<CR>:noh<CR>
 nnoremap <silent> <buffer> [i ?<[^/]\+>\zs.<CR>:noh<CR>
 nnoremap <silent> <buffer> ]i /<[^/]\+>\zs.<CR>:noh<CR>
 
+" Move to next/previous interpolation
+nnoremap <silent> <Localleader>wi /\{\{\zs\w<CR>:noh<CR>
+nnoremap <silent> <Localleader>bi ?\{\{\zs\w<CR>:noh<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Delete attribute on a tag
-nnoremap <buffer> <localleader>dr hv/=".\{-}\zs"<CR>dl:noh<CR>
+nnoremap <buffer> <Localleader>dr hv/=".\{-}\zs"<CR>dl:noh<CR>
 
 " Add/change/delete interpolation
-nnoremap <buffer> <localleader>ai a{{}}<esc>hi
-nnoremap <buffer> <localleader>cii 2lct}
-nnoremap <buffer> <localleader>cai c2f}
-nnoremap <buffer> <localleader>dii 2ldt}
-nnoremap <buffer> <localleader>dai d2f}
-nnoremap <buffer> <localleader>yii 2lyt}
-nnoremap <buffer> <localleader>yai y2f}
+nnoremap <buffer> <Localleader>ai a{{}}<esc>hi
+nnoremap <buffer> <Localleader>cii 2lct}
+nnoremap <buffer> <Localleader>cai c2f}
+nnoremap <buffer> <Localleader>dii 2ldt}
+nnoremap <buffer> <Localleader>dai d2f}
+nnoremap <buffer> <Localleader>yii 2lyt}
+nnoremap <buffer> <Localleader>yai y2f}

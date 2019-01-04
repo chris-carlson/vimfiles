@@ -29,12 +29,12 @@ setlocal shiftwidth=2
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Go to previous/next class
-nnoremap <silent> <buffer> [c ?^export<space>class<space>\w\+<space>\(\(\w\+<space>\)\{2\}\)\={<CR>:noh<CR>
-nnoremap <silent> <buffer> ]c /^export<space>class<space>\w\+<space>\(\(\w\+<space>\)\{2\}\)\={<CR>:noh<CR>
+nnoremap <silent> <buffer> [c ?class\s\zs\w\+<CR>:noh<CR>
+nnoremap <silent> <buffer> ]c /class\s\zs\w\+<CR>:noh<CR>
 
 " Go to constructor
-nnoremap <silent> <buffer> [C ?constructor<CR>:noh<CR>
-nnoremap <silent> <buffer> ]C /constructor<CR>:noh<CR>
+nnoremap <silent> <buffer> [n ?constructor<CR>:noh<CR>
+nnoremap <silent> <buffer> ]n /constructor<CR>:noh<CR>
 
 " Go to previous/next function definition
 nnoremap <silent> <buffer> [f ?\s\+\zs\w\+(.*)\s{<CR>:noh<CR>
@@ -45,11 +45,11 @@ nnoremap <silent> <buffer> ]f /\s\+\zs\w\+(.*)\s{<CR>:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Convert anonymous function body to a single/multi line body and either don't modify the body or delete/add the return statement
-nnoremap <buffer> <localleader>ns ^f{xj$xj^x2kJJ
-nnoremap <buffer> <localleader>nS ^f{xj^dw$xj^x2kJJ
-nnoremap <buffer> <localleader>nm ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>
-nnoremap <buffer> <localleader>nM ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>Ireturn<space><esc>$
+nnoremap <buffer> <Localleader>ns ^f{xj$xj^x2kJJ
+nnoremap <buffer> <Localleader>nS ^f{xj^dw$xj^x2kJJ
+nnoremap <buffer> <Localleader>nm ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>
+nnoremap <buffer> <Localleader>nM ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>Ireturn<space><esc>$
 
 " Add a parameter to the function
-nnoremap <buffer> <localleader>ip ^f(a
-nnoremap <buffer> <localleader>ap ^f)i,<space>
+nnoremap <buffer> <Localleader>ip ^f(a
+nnoremap <buffer> <Localleader>ap ^f)i,<space>

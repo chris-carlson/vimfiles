@@ -99,7 +99,7 @@ set cmdheight=1
 set wildmenu
 
 " Ignore compiled files in autocomplete
-set wildignore=*~,*.class,*.jar,*.map,*.pyc,*.xlsx,*\\dist\\*,*\\node_modules\\*,*\\__pycache__\\*,*\\build\\*,*\\bin\\*
+set wildignore=*~,*.class,*.jar,*.map,*.pyc,*.xlsx,*\\dist\\*,*\\node_modules\\*,*\\build\\*,*\\bin\\*,*\\target\\*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Commands
@@ -151,6 +151,12 @@ nnoremap <Leader>dn V/\(\n\{2}\\|\%$\)<CR>d:noh<CR>
 nnoremap <Leader>Dn V/\(\n\{2}\\|\%$\)<CR>d"_dd:noh<CR>
 nnoremap <Leader>vn V/\(\n\{2}\\|\%$\)<CR>
 nnoremap <Leader>yn V/\(\n\{2}\\|\%$\)<CR>yn^:noh<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set nocompatible
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
@@ -208,7 +214,7 @@ nnoremap <Leader>d~ v/\u<CR>hd~h:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Don't add comment on new line
-set formatoptions-=ro
+set formatoptions-=cro
 
 " Add two new lines above/below current line
 nnoremap 2O O<Esc>O
@@ -292,10 +298,6 @@ nnoremap <silent> <Leader>b- ?-\zs\w<CR>:noh<CR>
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>bp ?\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
-
-" Move to next/previous interpolation
-nnoremap <silent> <Leader>wi /\{\{\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>bi ?\{\{\zs\w<CR>:noh<CR>
 
 " Move to next/previous capital letter
 nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
@@ -396,10 +398,11 @@ let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files=100
 let g:ctrlp_open_new_file='h'
 let g:ctrlp_open_multiple_files='ir'
+let g:ctrlp_lazy_update=1
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
 endif
-let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)'
+let g:ctrlp_custom_ignore='\v([\/]\.(git|hg|svn)$)|([\/]bundle$)|([\/].idea$)|([\/]target$)|([\/]out$)|([\/]\.settings$)'
 
 " jsx
 let g:jsx_ext_required=0
@@ -415,7 +418,7 @@ let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'no
 call pathogen#infect()
 
 " ultisnips
-let g:UltiSnipsNoPythonWarning=1
+let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Replace

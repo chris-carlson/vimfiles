@@ -1,7 +1,11 @@
 # Variables
 
-snippet var "variable initialization"
+snippet vari "variable initialization"
 ${1:type} ${2:var} = ${3:value};
+endsnippet
+
+snippet varic "variable initialization with name based on class"
+${1:type} ${1/\w+/\l$0/g} = ${2:value};
 endsnippet
 
 snippet vara "variable assignment"
@@ -16,8 +20,12 @@ snippet vartp "this assignment from parameter"
 this.${1:var} = $1;
 endsnippet
 
-snippet vari "instance variable declaration"
+snippet varn "instance variable declaration"
 private ${1:type} ${2:var};
+endsnippet
+
+snippet varnc "instance variable declaration with name based on class"
+private ${1:type} ${1/\w+/\l$0/g};
 endsnippet
 
 snippet new "class initialization"
@@ -31,13 +39,13 @@ endsnippet
 # Methods
 
 snippet meth "method declaration"
-${1:public} ${2:type} ${3:name}(${4:params}) {
+${1:public} ${2:void} ${3:name}(${4:params}) {
 	$0
 }
 endsnippet
 
 snippet meths "static method declaration"
-${1:public} static ${2:type} ${3:name}(${4:params}) {
+${1:public} static ${2:void} ${3:name}(${4:params}) {
 	$0
 }
 endsnippet
@@ -66,6 +74,11 @@ snippet main "main method declaration"
 public static void main(String[] args) {
 	$0
 }
+endsnippet
+
+snippet ov "override annotation"
+@Override
+$0
 endsnippet
 
 # Classes
@@ -98,7 +111,7 @@ snippet ext "extends statement"
 extends ${1:class}
 endsnippet
 
-snippet imp "implements statement"
+snippet impl "implements statement"
 implements ${1:class}
 endsnippet
 
@@ -248,7 +261,7 @@ public int hashCode() {
 }
 endsnippet
 
-snippet apph "append variable to hashCode" i
+snippet aph "append variable to hashCode" i
 .append(${1:var})
 endsnippet
 
@@ -269,7 +282,7 @@ public boolean equals(Object obj) {
 }
 endsnippet
 
-snippet appe "append variable to equals" i
+snippet ape "append variable to equals" i
 .append(${1:var}, other.$1)
 endsnippet
 
@@ -291,15 +304,15 @@ endsnippet
 # Collections
 
 snippet list "list initialization"
-List<${1:type}> ${2:name} = new ArrayList<>();
+List<${1:type}> ${2:name} = ${3:new ArrayList<>()};
 endsnippet
 
 snippet set "set initialization"
-Set<${1:type}> ${2:name} = new HashSet<>();
+Set<${1:type}> ${2:name} = ${3:new HashSet<>()};
 endsnippet
 
 snippet map "map initialization"
-Map<${1:type1}, ${2:type2}> ${3:name} = new HashMap<>();
+Map<${1:type1}, ${2:type2}> ${3:name} = ${4:new HashMap<>()};
 endsnippet
 
 # JUnit
