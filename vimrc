@@ -99,7 +99,7 @@ set cmdheight=1
 set wildmenu
 
 " Ignore compiled files in autocomplete
-set wildignore=*~,*.class,*.jar,*.map,*.pyc,*.xlsx,*\\dist\\*,*\\node_modules\\*,*\\build\\*,*\\bin\\*,*\\target\\*
+set wildignore=*~,*.class,*.jar,*.map,*.pyc,*.xlsx,*\\dist\\*,*\\node_modules\\*,*\\build\\*,*\\bin\\*,*\\target\\*,*\\.idea\\*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Commands
@@ -402,7 +402,7 @@ let g:ctrlp_lazy_update=1
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
 endif
-let g:ctrlp_custom_ignore='\v([\/]\.(git|hg|svn)$)|([\/]bundle$)|([\/].idea$)|([\/]target$)|([\/]out$)|([\/]\.settings$)'
+let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)|([\\]\.settings$)|([\\]out-tsc$)'
 
 " jsx
 let g:jsx_ext_required=0
