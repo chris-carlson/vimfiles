@@ -214,7 +214,7 @@ nnoremap <Leader>d~ v/\u<CR>hd~h:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Don't add comment on new line
-set formatoptions-=cro
+set formatoptions=ql
 
 " Add two new lines above/below current line
 nnoremap 2O O<Esc>O
