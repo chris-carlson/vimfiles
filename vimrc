@@ -295,6 +295,10 @@ nnoremap <silent> <Leader>b# ?#\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w- /-\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b- ?-\zs\w<CR>:noh<CR>
 
+" Move to next word after the last given character
+nnoremap <Leader>e. $F.l
+nnoremap <Leader>e\ $F\l
+
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>bp ?\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>

@@ -56,6 +56,14 @@ snippet part "parameter with type based on name"
 ${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}
 endsnippet
 
+snippet exit "system exit"
+sys.exit()
+endsnippet
+
+snippet join "join statement"
+'${1:sep}'.join(${2:list})
+endsnippet
+
 # Variables
 
 snippet var "variable declaration"
@@ -78,11 +86,11 @@ snippet varc "constructor variable declaration"
 ${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
 endsnippet
 
-snippet list "list creation"
+snippet list "list creation" w
 [${1:expression} for ${2:item} in ${3:collection}]
 endsnippet
 
-snippet listc "conditional list creation"
+snippet listc "conditional list creation" w
 [${1:expression} for ${2:item} in ${3:collection} if ${4:condition}]
 endsnippet
 
