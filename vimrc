@@ -99,7 +99,7 @@ set cmdheight=1
 set wildmenu
 
 " Ignore compiled files in autocomplete
-set wildignore=*~,*.class,*.jar,*.map,*.pyc,*.xlsx,*\\dist\\*,*\\node_modules\\*,*\\build\\*,*\\bin\\*,*\\target\\*,*\\.idea\\*
+set wildignore=*~,*.class,*.jar,*.map,*.pyc,*.xlsx,*\\dist\\*,*\\node_modules\\*,*\\build\\*,*\\target\\*,*\\.idea\\*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Commands
@@ -131,9 +131,9 @@ command! Cd cd %:p:h
 set encoding=utf-8
 
 " Set line endings to Unix for new files
-set fileformats=unix,dos
+autocmd BufWinEnter,BufRead * setlocal fileformats=unix,dos
 
-command! Unix set ff=unix | w
+command! Unix set fileformat=unix | w
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Operations
@@ -214,7 +214,7 @@ nnoremap <Leader>d~ v/\u<CR>hd~h:noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Don't add comment on new line
-set formatoptions=ql
+autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
 
 " Add two new lines above/below current line
 nnoremap 2O O<Esc>O
@@ -416,7 +416,7 @@ runtime macros/matchit.vim
 
 " nerdtree
 nnoremap <C-N> :NERDTree<CR>
-let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bin$[[dir]]', 'bundle$[[dir]]', '.idea$[[dir]]', 'target$[[dir]]', 'out$[[dir]]']
+let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bundle$[[dir]]', '.idea$[[dir]]', 'target$[[dir]]', 'out$[[dir]]']
 
 " pathogen
 call pathogen#infect()

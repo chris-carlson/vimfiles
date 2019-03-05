@@ -60,7 +60,7 @@ snippet exit "system exit"
 sys.exit()
 endsnippet
 
-snippet join "join statement"
+snippet join "join statement" w
 '${1:sep}'.join(${2:list})
 endsnippet
 
@@ -94,6 +94,10 @@ snippet listc "conditional list creation" w
 [${1:expression} for ${2:item} in ${3:collection} if ${4:condition}]
 endsnippet
 
+snippet type "type variable"
+${1:type} = TypeVar('$1')
+endsnippet
+
 # Import
 
 snippet imp "import statement"
@@ -102,6 +106,10 @@ endsnippet
 
 snippet impt "import typing"
 from typing import ${1:name}
+endsnippet
+
+snippet impc "import cac module"
+from cac.${1:path} import ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}
 endsnippet
 
 # Control Flow
