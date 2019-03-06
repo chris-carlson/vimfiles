@@ -66,12 +66,16 @@ endsnippet
 
 # Variables
 
-snippet var "variable declaration"
+snippet vard "variable declaration"
 ${1:name}: ${2:type} = ${3:value}
 endsnippet
 
-snippet vart "variable declaration with type based on name"
-${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${2:value}
+snippet vara "variable assignment"
+${1:name} = ${2:value}
+endsnippet
+
+snippet varc "constructor variable declaration"
+${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
 endsnippet
 
 snippet vars "self variable declaration"
@@ -82,8 +86,12 @@ snippet varsp "self variable declaration from parameter"
 self._${1:name}: ${2:type} = $1
 endsnippet
 
-snippet varc "constructor variable declaration"
-${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
+snippet varsa "self variable assignment"
+self._${1:name} = ${2:value}
+endsnippet
+
+snippet varsc "self constructor variable declaration"
+self._${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
 endsnippet
 
 snippet list "list creation" w
@@ -92,6 +100,14 @@ endsnippet
 
 snippet listc "conditional list creation" w
 [${1:expression} for ${2:item} in ${3:collection} if ${4:condition}]
+endsnippet
+
+snippet dict "dict creation" w
+[${1:key}: ${2:value} for ${3:item} in ${4:collection}]
+endsnippet
+
+snippet dictc "conditional dict creation" w
+[${1:key}: ${2:value} for ${3:item} in ${4:collection} if ${5:condition}]
 endsnippet
 
 snippet type "type variable"
