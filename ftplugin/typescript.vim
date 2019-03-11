@@ -1,18 +1,6 @@
 runtime! ftplugin/javascript.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Abbreviations
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-iabbrev <buffer> boo boolean
-iabbrev <buffer> impl implements
-iabbrev <buffer> num number
-iabbrev <buffer> pri private
-iabbrev <buffer> pub public
-iabbrev <buffer> str string
-iabbrev <buffer> vo void
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
 """"""""""""""""""""""""""""""""""""""""""""""""""
 

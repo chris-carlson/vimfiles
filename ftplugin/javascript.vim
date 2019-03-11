@@ -1,22 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Abbreviations
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-iabbrev <buffer> cl class
-iabbrev <buffer> clog console.log
-iabbrev <buffer> con constructor
-iabbrev <buffer> def default
-iabbrev <buffer> exp export
-iabbrev <buffer> imp import
-iabbrev <buffer> fr from
-iabbrev <buffer> fun function
-iabbrev <buffer> imp import
-iabbrev <buffer> jstr JSON.stringify
-iabbrev <buffer> mod module
-iabbrev <buffer> ret return
-iabbrev <buffer> th this
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""
 

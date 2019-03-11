@@ -4,8 +4,8 @@ snippet vari "variable initialization"
 ${1:type} ${2:var} = ${3:value};
 endsnippet
 
-snippet varic "variable initialization with name based on class"
-${1:type} ${1/\w+/\l$0/g} = ${2:value};
+snippet varc "variable initialization with constructor"
+${1:type} ${2:var} = new $1(${3:params});
 endsnippet
 
 snippet vara "variable assignment"
@@ -24,16 +24,20 @@ snippet varn "instance variable declaration"
 private ${1:type} ${2:var};
 endsnippet
 
-snippet varnc "instance variable declaration with name based on class"
-private ${1:type} ${1/\w+/\l$0/g};
-endsnippet
-
 snippet new "class initialization"
 new ${1:class}(${2:params})
 endsnippet
 
 snippet const "constant initialization"
 ${1:public} static final ${2:type} ${3:name} = ${4:value};
+endsnippet
+
+snippet vali "integer value"
+Integer.valueOf(${1:num})
+endsnippet
+
+snippet valc "character value"
+Character.valueOf(${1:num})
 endsnippet
 
 # Methods
@@ -46,6 +50,12 @@ endsnippet
 
 snippet meths "static method declaration"
 ${1:public} static ${2:void} ${3:name}(${4:params}) {
+	$0
+}
+endsnippet
+
+snippet methd "default method declaration"
+default ${1:type} ${2:name}(${3:params}) {
 	$0
 }
 endsnippet
@@ -76,9 +86,17 @@ public static void main(String[] args) {
 }
 endsnippet
 
-snippet ov "override annotation"
+snippet over "override annotation"
 @Override
 $0
+endsnippet
+
+snippet sing "singleton instance declaration"
+private static ${1:class} instance = new $1();
+
+public static $1 getInstance() {
+	return instance;
+}
 endsnippet
 
 # Classes
@@ -91,6 +109,12 @@ endsnippet
 
 snippet classa "abstract class declaration"
 public abstract class ${1:name} {
+	$0
+}
+endsnippet
+
+snippet classi "inner class"
+private static class ${1:name} ${2:${3:extensions} }{
 	$0
 }
 endsnippet
@@ -134,6 +158,12 @@ private ${1:name}() {
 }
 endsnippet
 
+snippet stub "stub class"
+class ${1:name}Stub extends $1 {
+	$0
+}
+endsnippet
+
 # Control Flow
 
 snippet if "if statement"
@@ -150,19 +180,25 @@ if (${1:cond}) {
 }
 endsnippet
 
-snippet while "while statement"
+snippet ift "if statement to throw exception"
+if (${1:cond}) {
+	throw new ${1:exception}("${2:message}");
+}
+endsnippet
+
+snippet while "while loop"
 while (${1:cond}) {
 	$0
 }
 endsnippet
 
-snippet for "for statement"
-for (int ${1:i} = 0; $1 < ${2:end}; $1++) {
+snippet for "for loop"
+for (int ${1:index} = 0; $1 < ${2:end}; $1++) {
 	$0
 }
 endsnippet
 
-snippet fore "for each statement"
+snippet fore "for each loop"
 for (${1:type} ${2:item} : ${3:collection}) {
 	$0
 }
@@ -185,11 +221,11 @@ case ${1:value}:
 	$0
 endsnippet
 
-snippet = "double equals check" w
+snippet de "double equals check" w
 ${1:var1} == ${2:var2}
 endsnippet
 
-snippet ! "negative double equals check" w
+snippet ne "negative double equals check" w
 ${1:var1} != ${2:var2}
 endsnippet
 
@@ -197,16 +233,20 @@ snippet eq "equality check" w
 ${1:var1}.equals(${2:var2})
 endsnippet
 
-snippet & "and condition" w
+snippet and "and condition" w
 ${1:cond1} && ${2:cond2}
 endsnippet
 
-snippet | "or condition" w
+snippet or "or condition" w
 ${1:cond1} || ${2:cond2}
 endsnippet
 
-snippet null "null check" w
+snippet nulln "negative null check" w
 ${1:expression} != null
+endsnippet
+
+snippet nullp "positive null check" w
+${1:expression} == null
 endsnippet
 
 snippet opt "optional check"
@@ -286,14 +326,14 @@ snippet ape "append variable to equals" i
 .append(${1:var}, other.$1)
 endsnippet
 
-snippet tos "toString override"
+snippet tos "string representation"
 @Override
 public String toString() {
 	return ${1:var};
 }
 endsnippet
 
-snippet tosb "toString override with StringBuilder"
+snippet tosb "string representation with StringBuilder"
 @Override
 public String toString() {
 	StringBuilder builder = new StringBuilder();$0
@@ -307,26 +347,46 @@ snippet list "list initialization"
 List<${1:type}> ${2:name} = ${3:new ArrayList<>()};
 endsnippet
 
+snippet list2 "nested list initialization"
+List<List<${1:type}>> ${2:name} = ${3:new ArrayList<>()};
+endsnippet
+
+snippet listg "guava list"
+Lists.newArrayList(${1:elements})
+endsnippet
+
 snippet set "set initialization"
 Set<${1:type}> ${2:name} = ${3:new HashSet<>()};
+endsnippet
+
+snippet setg "guava set"
+Sets.newHashSet(${1:elements})
 endsnippet
 
 snippet map "map initialization"
 Map<${1:type1}, ${2:type2}> ${3:name} = ${4:new HashMap<>()};
 endsnippet
 
+snippet mapg "guava immutable map"
+new ImmutableMap.Builder<${1:type1}, ${2:type2}>().build();
+endsnippet
+
 # JUnit
 
-snippet ase "assertEquals statement"
+snippet ase "assert equals statement"
 assertEquals(${1:expected}, ${2:actual});
 endsnippet
 
-snippet ast "assertTrue statement"
+snippet ast "assert true statement"
 assertTrue(${1:expression});
 endsnippet
 
-snippet asf "assertFalse statement"
+snippet asf "assert false statement"
 assertFalse(${1:expression});
+endsnippet
+
+snippet asth "assert exception is thrown"
+assertThrows(${1:class}.class, () -> ${2:expression});
 endsnippet
 
 snippet classt "test class"
@@ -367,40 +427,6 @@ snippet ver "verify statement"
 verify(${1:var}).${2:method};
 endsnippet
 
-# Swing
-
-snippet panel "JPanel initialization"
-JPanel ${1:name} = new JPanel();
-endsnippet
-
-snippet label "JLabel initialization"
-JLabel ${1:name} = new JLabel(${2:text});
-endsnippet
-
-snippet flow "FlowLayout initialization"
-new FlowLayout(FlowLayout.CENTER, ${1:size}, $1)
-endsnippet
-
-snippet box "BoxLayout initialization"
-new BoxLayout(${1:container}, BoxLayout.${2:axis})
-endsnippet
-
-snippet bore "empty border initialization"
-new EmptyBorder(${1:size}, $1, $1, $1)
-endsnippet
-
-snippet borl "line border initialization"
-new LineBorder(${1:color}, ${2:size})
-endsnippet
-
-snippet dim "dimension initialization"
-new Dimension(${1:width}, ${2:height})
-endsnippet
-
-snippet rig "rigid area creation"
-Box.createRigidArea(new Dimension(${1:width}, ${2:height}))
-endsnippet
-
-snippet size "set preferred size"
-setPreferredSize(new Dimension(${1:width}, ${2:height}));
+snippet spy "spy statement"
+${1:type} ${2:name} = spy($1.class);
 endsnippet

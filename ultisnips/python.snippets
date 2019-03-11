@@ -52,10 +52,6 @@ snippet par "parameter"
 ${1:var}: ${2:type}
 endsnippet
 
-snippet part "parameter with type based on name"
-${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}
-endsnippet
-
 snippet exit "system exit"
 sys.exit()
 endsnippet
@@ -75,10 +71,10 @@ ${1:name} = ${2:value}
 endsnippet
 
 snippet varc "constructor variable declaration"
-${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
+${1:name}: ${2:type} = $2(${3:params})
 endsnippet
 
-snippet vars "self variable declaration"
+snippet varsd "self variable declaration"
 self._${1:name}: ${2:type} = ${3:value}
 endsnippet
 
@@ -91,7 +87,7 @@ self._${1:name} = ${2:value}
 endsnippet
 
 snippet varsc "self constructor variable declaration"
-self._${1:name}: ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g} = ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}(${2:params})
+self._${1:name}: ${2:type} = $2(${3:params})
 endsnippet
 
 snippet list "list creation" w

@@ -1,21 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Abbreviations
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-iabbrev <buffer> ca catch
-iabbrev <buffer> cl class
-iabbrev <buffer> imp import
-iabbrev <buffer> pri private
-iabbrev <buffer> pro protected
-iabbrev <buffer> psvm public static void main(String[] args)
-iabbrev <buffer> pub public
-iabbrev <buffer> ret return
-iabbrev <buffer> str String
-iabbrev <buffer> sys System.out.println
-iabbrev <buffer> th this
-iabbrev <buffer> thr throw
-iabbrev <buffer> vo void
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""

@@ -1,18 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Abbreviations
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-iabbrev <buffer> br break
-iabbrev <buffer> cl class
-iabbrev <buffer> con continue
-iabbrev <buffer> fr from
-iabbrev <buffer> imp import
-iabbrev <buffer> pr print
-iabbrev <buffer> ret return
-iabbrev <buffer> se self
-iabbrev <buffer> set setter
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""
 

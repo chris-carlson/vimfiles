@@ -14,6 +14,14 @@ setlocal softtabstop=4
 setlocal shiftwidth=4
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Movement
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Go to previous/next snippet
+nnoremap <silent> <buffer> [s ?snippet\s\zs\w\+<CR>:noh<CR>
+nnoremap <silent> <buffer> ]s /snippet\s\zs\w\+<CR>:noh<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Operations
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
