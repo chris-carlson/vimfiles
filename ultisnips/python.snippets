@@ -62,7 +62,7 @@ endsnippet
 
 # Variables
 
-snippet vard "variable declaration"
+snippet vari "variable initialization"
 ${1:name}: ${2:type} = ${3:value}
 endsnippet
 
@@ -70,15 +70,15 @@ snippet vara "variable assignment"
 ${1:name} = ${2:value}
 endsnippet
 
-snippet varc "constructor variable declaration"
+snippet varc "constructor variable initialization"
 ${1:name}: ${2:type} = $2(${3:params})
 endsnippet
 
-snippet varsd "self variable declaration"
+snippet varsi "self variable initialization"
 self._${1:name}: ${2:type} = ${3:value}
 endsnippet
 
-snippet varsp "self variable declaration from parameter"
+snippet varsp "self variable initialization from parameter"
 self._${1:name}: ${2:type} = $1
 endsnippet
 
@@ -86,7 +86,7 @@ snippet varsa "self variable assignment"
 self._${1:name} = ${2:value}
 endsnippet
 
-snippet varsc "self constructor variable declaration"
+snippet varsc "self constructor variable initialization"
 self._${1:name}: ${2:type} = $2(${3:params})
 endsnippet
 

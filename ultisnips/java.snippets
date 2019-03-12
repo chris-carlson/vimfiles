@@ -91,12 +91,16 @@ snippet over "override annotation"
 $0
 endsnippet
 
-snippet sing "singleton instance declaration"
+snippet sings "singleton instance setup"
 private static ${1:class} instance = new $1();
 
 public static $1 getInstance() {
 	return instance;
 }
+endsnippet
+
+snippet singi "singleton instance initialization"
+${1:class} ${2:var} = $1.getInstance();
 endsnippet
 
 # Classes
