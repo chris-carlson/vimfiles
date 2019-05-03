@@ -39,6 +39,12 @@ snippet mati "input" w
 </mat-form-field>
 endsnippet
 
+snippet matl "list" w
+<mat-list>
+	<mat-list-item>${1:content}</mat-list-item>
+</mat-list>
+endsnippet
+
 snippet mats "select" w
 <mat-form-field>
 	<mat-select placeholder="${1:text}">
@@ -62,7 +68,7 @@ endsnippet
 
 snippet matnl "nav list" w
 <mat-nav-list>
-	<a mat-list-item href="${1:route}">${2:text}</a>
+	<a mat-list-item routerLink="${1:route}">${2:text}</a>
 </mat-nav-list>
 endsnippet
 

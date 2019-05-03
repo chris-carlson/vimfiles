@@ -118,6 +118,14 @@ snippet ter "ternary expression"
 ${1:expression1} if ${2:condition} else ${3:expression2}
 endsnippet
 
+snippet raw "raw string" w
+r'${1:string}'
+endsnippet
+
+snippet nt "named tuple"
+${1:name} = namedtuple('$1', [${2:fields}])
+endsnippet
+
 # Import
 
 snippet imp "import statement"
@@ -130,6 +138,10 @@ endsnippet
 
 snippet impc "import cac module"
 from cac.${1:path} import ${1/(?:\w+\.)*(?:([a-z0-9]+)_?)/\u$1/g}
+endsnippet
+
+snippet impnt "import named tuple"
+from collections import namedtuple
 endsnippet
 
 # Control Flow
