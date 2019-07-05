@@ -145,7 +145,7 @@ nnoremap <Leader>dg ggdG
 nnoremap <Leader>vg ggVG
 nnoremap <Leader>yg ggyG
 
-" Change/delete/highlight/yank from current line until next blank line
+" Change/delete/highlight/yank from current line until/through next blank line
 nnoremap <Leader>cn V/\(\n\{2}\\|\%$\)<CR>c<Esc>:noh<CR>S
 nnoremap <Leader>dn V/\(\n\{2}\\|\%$\)<CR>d:noh<CR>
 nnoremap <Leader>Dn V/\(\n\{2}\\|\%$\)<CR>d"_dd:noh<CR>
@@ -237,24 +237,10 @@ nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 nnoremap <Leader>; A;<Esc>
 
 " Clear line
-nnoremap <Leader>S S<Esc>
+nnoremap <Leader>s S<Esc>
 
 " Delete part of a file path
 nnoremap <Leader>dp d2f\
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" List
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Insert/append to a comma/plus separated list
-nnoremap <Leader>i, i,<Space><Esc>hi
-nnoremap <Leader>i+ i<Space>+<Space><Esc>2hi
-nnoremap <Leader>I, a,<Space><Esc>hi
-nnoremap <Leader>I+ a<Space>+<Space><Esc>2hi
-nnoremap <Leader>a, a,<Space>
-nnoremap <Leader>a+ a<Space>+<Space>
-nnoremap <Leader>A, i,<Space>
-nnoremap <Leader>A+ i<Space>+<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -270,8 +256,6 @@ set whichwrap=b,s
 set scrolloff=7
 
 " Move to next/previous word after the next/previous given character
-nnoremap <silent> <Leader>ww /\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>bb ?\(\W\+\\|\n\\|\%^\)\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w_ /_\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>b_ ?_\zs\w<CR>:noh<CR>
 nnoremap <silent> <Leader>w. /\.\zs\w<CR>:noh<CR>
@@ -309,21 +293,13 @@ nnoremap <silent> <Leader>b~ ?\u<CR>:noh<CR>
 
 " Move to start/end of next/previous single/double quote string
 nnoremap <silent> <Leader>w' /'\zs.\{-}[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>W' /'.\{-}[^\\]'<CR>:noh<CR>
 nnoremap <silent> <Leader>e' /'.\{-}\zs[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>E' /'.\{-}[^\\]\zs'<CR>:noh<CR>
 nnoremap <silent> <Leader>b' ?'\zs.\{-}[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>B' ?'.\{-}[^\\]'<CR>:noh<CR>
 nnoremap <silent> <Leader>ge' ?'.\{-}\zs[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>gE' ?'.\{-}[^\\]\zs'<CR>:noh<CR>
 nnoremap <silent> <Leader>w" /"\zs.\{-}[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>W" /".\{-}[^\\]"<CR>:noh<CR>
 nnoremap <silent> <Leader>e" /".\{-}\zs[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>E" /".\{-}[^\\]\zs"<CR>:noh<CR>
 nnoremap <silent> <Leader>b" ?"\zs.\{-}[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>B" ?".\{-}[^\\]"<CR>:noh<CR>
 nnoremap <silent> <Leader>ge" ?".\{-}\zs[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>gE" ?".\{-}[^\\]\zs"<CR>:noh<CR>
 
 " Move to start of next/previous string concatenation
 nnoremap <silent> <Leader>wc /\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
@@ -335,19 +311,9 @@ nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
 nnoremap <silent> <Leader>][ /\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>^
 nnoremap <silent> <Leader>[] ?\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>^
 
-" Move to the next/previous blank line
-nnoremap <silent> ]n /^\n<CR>:noh<CR>
-nnoremap <silent> [n ?^\n<CR>:noh<CR>
-
 " Add a line above/below in insertion mode
 inoremap <silent> <C-Enter> <Esc>o
 inoremap <silent> <S-Enter> <Esc>O
-
-" Move to end of next/previous line
-nnoremap g+ j$
-nnoremap g- k$
-vnoremap g+ j$
-vnoremap g- k$
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Paste
@@ -361,12 +327,6 @@ nnoremap <Leader>OP O<Esc>P
 nnoremap <Leader>ip I<Esc>P
 nnoremap <Leader>ap A<Esc>p
 
-" Paste to a comma/plus separated list
-nnoremap <Leader>p, a,<Space><Esc>p
-nnoremap <Leader>p+ a<Space>+<Space><Esc>p
-nnoremap <Leader>P, a,<Space><Esc>ph2xh
-nnoremap <Leader>P+ a<Space>+<Space><Esc>p2h3xh
-
 " External paste
 nnoremap <Leader>gp "+gp
 nnoremap <Leader>gP "+gP
@@ -375,17 +335,12 @@ nnoremap <Leader>gP "+gP
 nnoremap <Leader>yp "0p
 nnoremap <Leader>yP "0P
 
-" Paste line, increment next number, and yank that line
-nnoremap <silent> <Leader>p<C-A> yyp<C-A>
-
-" Paste line, then delete line above
-nnoremap <Leader>pd pkdd
+" Yank and paste line, then increment number
+nnoremap <silent> <Leader>p+ yyp<C-A>
 
 " Paste external file path
 nnoremap <Leader>pp' "+gphr'F"r'vf':s/\\/\\\\/g<CR>:noh<CR>$
 nnoremap <Leader>pp" "+gphvF":s/\\/\\\\/g<CR>:noh<CR>$
-nnoremap <Leader>Pp' "+gPhr'F"r'vf':s/\\/\\\\/g<CR>:noh<CR>$
-nnoremap <Leader>Pp" "+gPhvF":s/\\/\\\\/g<CR>:noh<CR>$
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -408,8 +363,14 @@ if exists("g:ctrlp_user_command")
 endif
 let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)|([\\]\.settings$)|([\\]out-tsc$)'
 
-" jsx
-let g:jsx_ext_required=0
+" easymotion
+map <C-E> <Plug>(easymotion-prefix)
+map <C-E>f <Plug>(easymotion-fl)
+map <C-E>t <Plug>(easymotion-tl)
+map <C-E>w <Plug>(easymotion-wl)
+map <C-E>b <Plug>(easymotion-bl)
+map <C-E>e <Plug>(easymotion-el)
+map <C-E>ge <Plug>(easymotion-gel)
 
 " matchit
 runtime macros/matchit.vim
@@ -422,6 +383,7 @@ let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'no
 call pathogen#infect()
 
 " ultisnips
+let &pythonthreedll = 'C:\Users\Chris Carlson\AppData\Local\Programs\Python\Python37\python37.dll'
 let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -478,14 +440,9 @@ nnoremap <Leader>X xhP
 " Strings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Append plus and nothing or single/double quote string
-nnoremap <Leader>ac+ a<Space>+<Space>
-nnoremap <Leader>ac' a<Space>+<Space>''<Esc>i
-nnoremap <Leader>ac" a<Space>+<Space>""<Esc>i
-
 " Append quoted string
-nnoremap <Leader>a\' i\'<Esc>la<Space>+<Space><Space>+<Space>'\''<Esc>6hi
-nnoremap <Leader>a\" i\"<Esc>la<Space>+<Space><Space>+<Space>"\""<Esc>6hi
+nnoremap <Leader>a' i\'<Esc>la<Space>+<Space><Space>+<Space>'\''<Esc>6hi
+nnoremap <Leader>a" i\"<Esc>la<Space>+<Space><Space>+<Space>"\""<Esc>6hi
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface

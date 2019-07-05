@@ -181,7 +181,7 @@ snippet raise "raise exception"
 raise ${1:ValueError}('${2:message}')
 endsnippet
 
-snippet eq "equality check"
+snippet de "equality check"
 ${1:var1} == ${2:var2}
 endsnippet
 
@@ -215,15 +215,23 @@ endsnippet
 
 # Logging
 
-snippet print "print statement"
+snippet pr "print statement"
+print(${1:expression})
+endsnippet
+
+snippet prs "print statement to string"
 print(str(${1:expression}))
 endsnippet
 
-snippet printv "print variable"
+snippet prl "print statement for length"
+print(str(len(${1:expression})))
+endsnippet
+
+snippet prv "print variable"
 print('$1: ' + str(${1:expression}))
 endsnippet
 
-snippet printm "print message and variable"
+snippet prm "print message and variable"
 print('${1:message}: ' + str(${2:expression}))
 endsnippet
 

@@ -13,10 +13,6 @@ ${1:var} = ${2:value};
 endsnippet
 
 snippet vart "this assignment"
-this.${1:var} = ${2:value};
-endsnippet
-
-snippet vartp "this assignment from parameter"
 this.${1:var} = $1;
 endsnippet
 
@@ -190,7 +186,7 @@ endsnippet
 
 snippet ift "if statement to throw exception"
 if (${1:cond}) {
-	throw new ${1:exception}("${2:message}");
+	throw new ${2:AssertionError}("${3:message}");
 }
 endsnippet
 
@@ -394,7 +390,7 @@ assertFalse(${1:expression});
 endsnippet
 
 snippet asth "assert exception is thrown"
-assertThrows(${1:class}.class, () -> ${2:expression});
+assertThrows(${1:AssertionError}.class, () -> ${2:expression});
 endsnippet
 
 snippet classt "test class"
@@ -403,7 +399,7 @@ class ${1:name}Test {
 }
 endsnippet
 
-snippet inst "instance variable declaration"
+snippet inst "test instance variable declaration"
 private ${1:type} instance;
 endsnippet
 
@@ -419,6 +415,10 @@ snippet test "test method declaration"
 void ${1:name}() {
 	$0
 }
+endsnippet
+
+snippet eqt "equals tester"
+new EqualsTester().addEqualityGroup(instance1, instance1)$0.testEquals();
 endsnippet
 
 # Mockito
