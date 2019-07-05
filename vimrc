@@ -415,7 +415,7 @@ set ignorecase
 set magic
 
 " Toggle search highlight
-nnoremap <silent> <F2> :set hlsearch! hlsearch?<CR>
+nnoremap <silent> <C-H> :set hlsearch! hlsearch?<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Status line

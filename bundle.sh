@@ -10,6 +10,7 @@ git clone https://github.com/vim-airline/vim-airline
 git clone https://github.com/vim-airline/vim-airline-themes
 git clone https://github.com/tpope/vim-commentary
 git clone https://github.com/easymotion/vim-easymotion
+git clone https://github.com/michaeljsmith/vim-indent-object
 git clone https://github.com/tpope/vim-repeat
 git clone https://github.com/tpope/vim-surround
 cd ..
