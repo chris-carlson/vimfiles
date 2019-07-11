@@ -146,11 +146,11 @@ nnoremap <Leader>vg ggVG
 nnoremap <Leader>yg ggyG
 
 " Change/delete/highlight/yank from current line until/through next blank line
-nnoremap <Leader>cn V/\(\n\{2}\\|\%$\)<CR>c<Esc>:noh<CR>S
-nnoremap <Leader>dn V/\(\n\{2}\\|\%$\)<CR>d:noh<CR>
-nnoremap <Leader>Dn V/\(\n\{2}\\|\%$\)<CR>d"_dd:noh<CR>
-nnoremap <Leader>vn V/\(\n\{2}\\|\%$\)<CR>
-nnoremap <Leader>yn V/\(\n\{2}\\|\%$\)<CR>yn^:noh<CR>
+nnoremap <Leader>cn V/\n\{2}<CR>c<Esc>:noh<CR>S
+nnoremap <Leader>dn V/\n\{2}<CR>d:noh<CR>
+nnoremap <Leader>Dn V/\n\{2}<CR>d"_dd:noh<CR>
+nnoremap <Leader>vn V/\n\{2}<CR>
+nnoremap <Leader>yn V/\n\{2}<CR>yn^:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -216,12 +216,12 @@ nnoremap <Leader>d~ v/\u<CR>hd~h:noh<CR>
 " Don't add comment on new line
 autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
 
-" Add two new lines above/below current line
-nnoremap 2O O<Esc>O
-nnoremap 2o o<Esc>o
+" Add two new lines below/above current line
+nnoremap <Leader>oo o<Esc>o
+nnoremap <Leader>OO O<Esc>O
 
 " Add two new lines and go into insert mode on the first
-nnoremap <Leader>oo o<Esc>O
+nnoremap <Leader>go o<Esc>O
 
 " Select to the end of the line
 vnoremap $ $h
@@ -229,9 +229,6 @@ vnoremap $ $h
 " Delete/replace selection without yanking it
 vnoremap <Leader>d "_d
 vnoremap <Leader>r "_dP
-
-" Double up backslashes in a line
-nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 
 " Add semicolon to end of line
 nnoremap <Leader>; A;<Esc>
@@ -256,60 +253,52 @@ set whichwrap=b,s
 set scrolloff=7
 
 " Move to next/previous word after the next/previous given character
-nnoremap <silent> <Leader>w_ /_\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b_ ?_\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w. /\.\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b. ?\.\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w, /,\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b, ?,\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w( /(\zs.<CR>:noh<CR>
-nnoremap <silent> <Leader>b( ?(\zs.<CR>:noh<CR>
-nnoremap <silent> <Leader>w[ /[\zs.<CR>:noh<CR>
-nnoremap <silent> <Leader>b[ ?[\zs.<CR>:noh<CR>
-nnoremap <silent> <Leader>w{ /{\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b{ ?{\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w<lt> /<lt>\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b<lt> ?<lt>\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w/ /\/\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b/ ?\/\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w: /:\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b: ?:\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w# /#\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b# ?#\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>w- /-\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>b- ?-\zs\w<CR>:noh<CR>
-
-" Move to next word after the last given character
-nnoremap <Leader>e. $F.l
-nnoremap <Leader>e\ $F\l
+nnoremap <Leader>w_ f_l
+nnoremap <Leader>b_ F_l
+nnoremap <Leader>w. f.l
+nnoremap <Leader>b. F.l
+nnoremap <Leader>w, f,l
+nnoremap <Leader>b, F,l
+nnoremap <Leader>w( f(l
+nnoremap <Leader>b( F(l
+nnoremap <Leader>w[ f[l
+nnoremap <Leader>b[ F[l
+nnoremap <Leader>w{ f{l
+nnoremap <Leader>b{ F{l
+nnoremap <Leader>w<lt> f<lt>l
+nnoremap <Leader>b<lt> F<lt>l
+nnoremap <Leader>w> f>l
+nnoremap <Leader>b> F>l
+nnoremap <Leader>w/ f\l
+nnoremap <Leader>b/ F\l
+nnoremap <Leader>w: f:l
+nnoremap <Leader>b: F:l
+nnoremap <Leader>w# f#l
+nnoremap <Leader>b# F#l
+nnoremap <Leader>w- f-l
+nnoremap <Leader>b- F-l
 
 " Move to next/previous part of a file path
-nnoremap <silent> <Leader>wp /\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
-nnoremap <silent> <Leader>bp ?\('\\|"\\|\\\\\)\zs\w<CR>:noh<CR>
+nnoremap <silent> <Leader>wp /\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
+nnoremap <silent> <Leader>bp /\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
 
 " Move to next/previous capital letter
 nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
 nnoremap <silent> <Leader>b~ ?\u<CR>:noh<CR>
 
 " Move to start/end of next/previous single/double quote string
-nnoremap <silent> <Leader>w' /'\zs.\{-}[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>e' /'.\{-}\zs[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>b' ?'\zs.\{-}[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>ge' ?'.\{-}\zs[^\\]'<CR>:noh<CR>
-nnoremap <silent> <Leader>w" /"\zs.\{-}[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>e" /".\{-}\zs[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>b" ?"\zs.\{-}[^\\]"<CR>:noh<CR>
-nnoremap <silent> <Leader>ge" ?".\{-}\zs[^\\]"<CR>:noh<CR>
+nnoremap <silent> <Leader>w' /'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
+nnoremap <silent> <Leader>b' h?'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
+" nnoremap <silent> <Leader>e' /'.\{-}\(\\\)\@<!'<CR>/\(\\\)\@<!'<CR>:noh<CR>h
+" nnoremap <silent> <Leader>ge' h?'.\{-}\(\\\)\@<!'<CR>?\(\\\)\@<!'<CR>:noh<CR>h
 
 " Move to start of next/previous string concatenation
-nnoremap <silent> <Leader>wc /\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
-nnoremap <silent> <Leader>bc ?\(=\s\\|[([{<]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
+" nnoremap <silent> <Leader>wc /\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
+" nnoremap <silent> <Leader>bc ?\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
 
-" Move to the line after/before the next/previous blank line
-nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
-nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
-nnoremap <silent> <Leader>][ /\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>^
-nnoremap <silent> <Leader>[] ?\S\+\(\n\{2,}\\|\%$\)<CR>:noh<CR>^
+" Move to the line before/after the previous/next blank line
+" nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
+" nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
 
 " Add a line above/below in insertion mode
 inoremap <silent> <C-Enter> <Esc>o
@@ -323,8 +312,7 @@ inoremap <silent> <S-Enter> <Esc>O
 nnoremap <Leader>op o<Esc>p
 nnoremap <Leader>OP O<Esc>P
 
-" Paste at the start/end of a line
-nnoremap <Leader>ip I<Esc>P
+" Paste at the end of a line
 nnoremap <Leader>ap A<Esc>p
 
 " External paste
