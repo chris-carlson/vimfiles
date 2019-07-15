@@ -146,11 +146,11 @@ nnoremap <Leader>vg ggVG
 nnoremap <Leader>yg ggyG
 
 " Change/delete/highlight/yank from current line until/through next blank line
-nnoremap <Leader>cn V/\n\{2}<CR>c<Esc>:noh<CR>S
-nnoremap <Leader>dn V/\n\{2}<CR>d:noh<CR>
-nnoremap <Leader>Dn V/\n\{2}<CR>d"_dd:noh<CR>
-nnoremap <Leader>vn V/\n\{2}<CR>
-nnoremap <Leader>yn V/\n\{2}<CR>yn^:noh<CR>
+nnoremap <Leader>cn V/\(\n\{2}\\|\%$\)<CR>c<Esc>:noh<CR>S
+nnoremap <Leader>dn V/\(\n\{2}\\|\%$\)<CR>d:noh<CR>
+nnoremap <Leader>Dn V/\(\n\{2}\\|\%$\)<CR>d"_dd:noh<CR>
+nnoremap <Leader>vn V/\(\n\{2}\\|\%$\)<CR>
+nnoremap <Leader>yn V/\(\n\{2}\\|\%$\)<CR>yn^:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -199,9 +199,9 @@ let maplocalleader = '_'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Change/delete/yank until next capital letter
-nnoremap <silent> c~ v/\u<CR>hd:noh<CR>i
-nnoremap <silent> d~ v/\u<CR>hd:noh<CR>
-nnoremap <silent> y~ v/\u<CR>hy:noh<CR>
+nnoremap <silent> <Leader>c~ v/\u<CR>hd:noh<CR>i
+nnoremap <silent> <Leader>d~ v/\u<CR>hd:noh<CR>
+nnoremap <silent> <Leader>y~ v/\u<CR>hy:noh<CR>
 
 " Toggle case of current letter and enter insertion mode
 nnoremap <Leader>i~ ~hi
@@ -254,29 +254,29 @@ set scrolloff=7
 
 " Move to next/previous word after the next/previous given character
 nnoremap <Leader>w_ f_l
-nnoremap <Leader>b_ F_l
+nnoremap <Leader>b_ hF_l
 nnoremap <Leader>w. f.l
-nnoremap <Leader>b. F.l
+nnoremap <Leader>b. hF.l
 nnoremap <Leader>w, f,l
-nnoremap <Leader>b, F,l
+nnoremap <Leader>b, hF,l
 nnoremap <Leader>w( f(l
-nnoremap <Leader>b( F(l
+nnoremap <Leader>b( hF(l
 nnoremap <Leader>w[ f[l
-nnoremap <Leader>b[ F[l
+nnoremap <Leader>b[ hF[l
 nnoremap <Leader>w{ f{l
-nnoremap <Leader>b{ F{l
+nnoremap <Leader>b{ hF{l
 nnoremap <Leader>w<lt> f<lt>l
-nnoremap <Leader>b<lt> F<lt>l
+nnoremap <Leader>b<lt> hF<lt>l
 nnoremap <Leader>w> f>l
-nnoremap <Leader>b> F>l
+nnoremap <Leader>b> hF>l
 nnoremap <Leader>w/ f\l
-nnoremap <Leader>b/ F\l
+nnoremap <Leader>b/ hF\l
 nnoremap <Leader>w: f:l
-nnoremap <Leader>b: F:l
+nnoremap <Leader>b: hF:l
 nnoremap <Leader>w# f#l
-nnoremap <Leader>b# F#l
+nnoremap <Leader>b# hF#l
 nnoremap <Leader>w- f-l
-nnoremap <Leader>b- F-l
+nnoremap <Leader>b- hF-l
 
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
@@ -293,12 +293,8 @@ nnoremap <silent> <Leader>b' h?'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
 " nnoremap <silent> <Leader>ge' h?'.\{-}\(\\\)\@<!'<CR>?\(\\\)\@<!'<CR>:noh<CR>h
 
 " Move to start of next/previous string concatenation
-" nnoremap <silent> <Leader>wc /\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
-" nnoremap <silent> <Leader>bc ?\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
-
-" Move to the line before/after the previous/next blank line
-" nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
-" nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
+nnoremap <silent> <Leader>wc /\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
+nnoremap <silent> <Leader>bc ?\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
 
 " Add a line above/below in insertion mode
 inoremap <silent> <C-Enter> <Esc>o
@@ -459,9 +455,6 @@ set autoread
 
 " Wrap lines
 set wrap
-
-" Enable the mouse
-set mouse=a
 
 " Stop the window from resizing when opening a new tab
 set guioptions=gmrtT
