@@ -348,7 +348,7 @@ let g:ctrlp_lazy_update=1
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
 endif
-let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)|([\\]\.settings$)|([\\]out-tsc$)'
+let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn|vscode)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)|([\\]\.settings$)|([\\]out-tsc$)'
 
 " easymotion
 map <C-E> <Plug>(easymotion-prefix)
@@ -358,6 +358,12 @@ map <C-E>w <Plug>(easymotion-wl)
 map <C-E>b <Plug>(easymotion-bl)
 map <C-E>e <Plug>(easymotion-el)
 map <C-E>ge <Plug>(easymotion-gel)
+
+" incsearch
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
 
 " matchit
 runtime macros/matchit.vim

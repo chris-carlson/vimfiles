@@ -3,6 +3,8 @@ mkdir bundle
 cd bundle
 git clone https://github.com/jiangmiao/auto-pairs
 git clone https://github.com/ctrlpvim/ctrlp.vim
+git clone https://github.com/haya14busa/incsearch.vim
+git clone https://github.com/haya14busa/incsearch-fuzzy.vim
 git clone https://github.com/scrooloose/nerdtree
 git clone https://github.com/leafgarland/typescript-vim
 git clone https://github.com/sirver/ultisnips
