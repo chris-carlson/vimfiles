@@ -204,10 +204,10 @@ nnoremap <silent> <Leader>d~ v/\u<CR>hd:noh<CR>
 nnoremap <silent> <Leader>y~ v/\u<CR>hy:noh<CR>
 
 " Toggle case of current letter and enter insertion mode
-nnoremap <Leader>i~ ~hi
+nnoremap <Leader>~i ~hi
 
 " Delete until next capital letter and make it lowercase
-nnoremap <Leader>d~ v/\u<CR>hd~h:noh<CR>
+nnoremap <Leader>~d v/\u<CR>hd~h:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Line operations
@@ -238,6 +238,9 @@ nnoremap <Leader>s S<Esc>
 
 " Delete part of a file path
 nnoremap <Leader>dp d2f\
+
+" Double up backslashes in a line
+nnoremap <silent> <Leader>\ :s/\\/\\\\/g<CR>:noh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -280,7 +283,7 @@ nnoremap <Leader>b- hF-l
 
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
-nnoremap <silent> <Leader>bp /\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
+nnoremap <silent> <Leader>bp ?\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
 
 " Move to next/previous capital letter
 nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
