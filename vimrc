@@ -187,6 +187,19 @@ set cindent
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Insertion
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Insert characters in a list/path/concatenation
+nnoremap <Leader>i, i,<Space><Esc>hi
+nnoremap <Leader>i. i.<Esc>i
+nnoremap <Leader>i_ i_<Esc>i
+nnoremap <Leader>ip i\\<Esc>hi
+nnoremap <Leader>i+ i<Space>+<Space><Esc>2hi
+nnoremap <Leader>i' i''<Space>+<Space><Esc>3hi
+nnoremap <Leader>i" i""<Space>+<Space><Esc>3hi
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leaders
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -281,6 +294,10 @@ nnoremap <Leader>b# hF#l
 nnoremap <Leader>w- f-l
 nnoremap <Leader>b- hF-l
 
+" Move to next word after the last given character
+nnoremap <Leader>e_ $F_l
+nnoremap <Leader>e. $F.l
+
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
 nnoremap <silent> <Leader>bp ?\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
@@ -292,8 +309,8 @@ nnoremap <silent> <Leader>b~ ?\u<CR>:noh<CR>
 " Move to start/end of next/previous single/double quote string
 nnoremap <silent> <Leader>w' /'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
 nnoremap <silent> <Leader>b' h?'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
-" nnoremap <silent> <Leader>e' /'.\{-}\(\\\)\@<!'<CR>/\(\\\)\@<!'<CR>:noh<CR>h
-" nnoremap <silent> <Leader>ge' h?'.\{-}\(\\\)\@<!'<CR>?\(\\\)\@<!'<CR>:noh<CR>h
+nnoremap <silent> <Leader>w" /".\{-}\(\\\)\@<!"<CR>:noh<CR>l
+nnoremap <silent> <Leader>b" h?".\{-}\(\\\)\@<!"<CR>:noh<CR>l
 
 " Move to start of next/previous string concatenation
 nnoremap <silent> <Leader>wc /\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
@@ -376,7 +393,6 @@ let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'no
 call pathogen#infect()
 
 " ultisnips
-let &pythonthreedll = 'C:\Users\Chris Carlson\AppData\Local\Programs\Python\Python37\python37.dll'
 let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""

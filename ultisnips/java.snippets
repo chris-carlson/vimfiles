@@ -421,6 +421,10 @@ snippet eqt "equals tester"
 new EqualsTester().addEqualityGroup(instance1, instance1)$0.testEquals();
 endsnippet
 
+snippet aeg "add equality group"
+.addEqualityGroup(instance${1:num}, instance$1)
+endsnippet
+
 # Mockito
 
 snippet mock "mock class"
