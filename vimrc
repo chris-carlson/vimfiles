@@ -253,7 +253,11 @@ nnoremap <Leader>s S<Esc>
 nnoremap <Leader>dp d2f\
 
 " Double up backslashes in a line
-nnoremap <silent> <Leader>\ :s/\\/\\\\/g<CR>:noh<CR>
+nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
+
+" Move to start of next/previous wrapped line
+nnoremap g+ gjg^
+nnoremap g- gjg^
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -297,6 +301,7 @@ nnoremap <Leader>b- hF-l
 " Move to next word after the last given character
 nnoremap <Leader>e_ $F_l
 nnoremap <Leader>e. $F.l
+nnoremap <Leader>ep $?\\\\<CR>:noh<CR>2l
 
 " Move to next/previous part of a file path
 nnoremap <silent> <Leader>wp /\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
@@ -366,15 +371,6 @@ if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
 endif
 let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn|vscode)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)|([\\]\.settings$)|([\\]out-tsc$)'
-
-" easymotion
-map <C-E> <Plug>(easymotion-prefix)
-map <C-E>f <Plug>(easymotion-fl)
-map <C-E>t <Plug>(easymotion-tl)
-map <C-E>w <Plug>(easymotion-wl)
-map <C-E>b <Plug>(easymotion-bl)
-map <C-E>e <Plug>(easymotion-el)
-map <C-E>ge <Plug>(easymotion-gel)
 
 " incsearch
 map / <Plug>(incsearch-forward)
