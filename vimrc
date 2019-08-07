@@ -317,10 +317,6 @@ nnoremap <silent> <Leader>b' h?'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
 nnoremap <silent> <Leader>w" /".\{-}\(\\\)\@<!"<CR>:noh<CR>l
 nnoremap <silent> <Leader>b" h?".\{-}\(\\\)\@<!"<CR>:noh<CR>l
 
-" Move to start of next/previous string concatenation
-nnoremap <silent> <Leader>wc /\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
-nnoremap <silent> <Leader>bc ?\(=\s\\|[([{<lt>]\\|\s+\s\)\('\\|"\)\=\zs.<CR>:noh<CR>
-
 " Add a line above/below in insertion mode
 inoremap <silent> <C-Enter> <Esc>o
 inoremap <silent> <S-Enter> <Esc>O
