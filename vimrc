@@ -301,11 +301,11 @@ nnoremap <Leader>b- hF-l
 " Move to next word after the last given character
 nnoremap <Leader>e_ $F_l
 nnoremap <Leader>e. $F.l
-nnoremap <Leader>ep $?\\\\<CR>:noh<CR>2l
+nnoremap <Leader>ep $?\(\\\\\\|\/\)\@<=.<CR>:noh<CR>
 
 " Move to next/previous part of a file path
-nnoremap <silent> <Leader>wp /\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
-nnoremap <silent> <Leader>bp ?\(\w:\\\\\)\\|\(\(\\\\\)\@<=.\{-}\)<CR>:noh<CR>
+nnoremap <silent> <Leader>wp /\(\w:\(\\\\\\|\/\)\)\\|\(\(\(\\\\\\|\/\)\)\@<=.\{-}\)<CR>:noh<CR>
+nnoremap <silent> <Leader>bp ?\(\w:\(\\\\\\|\/\)\)\\|\(\(\(\\\\\\|\/\)\)\@<=.\{-}\)<CR>:noh<CR>
 
 " Move to next/previous capital letter
 nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
