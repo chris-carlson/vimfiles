@@ -38,18 +38,18 @@ endsnippet
 
 snippet prop "property function"
 @property
-def ${1:var}(self) -> ${2:type}:
+def ${1:variable}(self) -> ${2:type}:
 	return self._$1
 endsnippet
 
-snippet set "setter function"
-@${1:var}.setter
+snippet setter "setter function"
+@${1:variable}.setter
 def $1(self, $1) -> None:
 	self._$1 = $1
 endsnippet
 
 snippet par "parameter" w
-${1:var}: ${2:type}
+${1:variable}: ${2:type}
 endsnippet
 
 snippet ret "return statement"
@@ -98,20 +98,32 @@ snippet varsc "self constructor variable initialization"
 self._${1:name}: ${2:type} = $2(${3:params})
 endsnippet
 
-snippet list "list creation" w
+snippet listi "list variable"
+${1:name}: List[${2:type}] = ${3:[]}
+endsnippet
+
+snippet lista "list creation" w
 [${1:expression} for ${2:item} in ${3:collection}]
 endsnippet
 
-snippet listc "conditional list creation" w
+snippet listac "conditional list creation" w
 [${1:expression} for ${2:item} in ${3:collection} if ${4:condition}]
 endsnippet
 
-snippet dict "dict creation" w
+snippet dicti "dict variable"
+${1:name}: Dict[${2:type}] = ${3:{}}
+endsnippet
+
+snippet dicta "dict creation" w
 {${1:key}: ${2:value} for ${3:item} in ${4:collection}}
 endsnippet
 
-snippet dictc "conditional dict creation" w
+snippet dictac "conditional dict creation" w
 {${1:key}: ${2:value} for ${3:item} in ${4:collection} if ${5:condition}}
+endsnippet
+
+snippet seti "set variable"
+${1:name}: Set[${2:type}] = ${3:set()}
 endsnippet
 
 snippet type "type variable"
@@ -128,6 +140,14 @@ endsnippet
 
 snippet nt "named tuple"
 ${1:name} = namedtuple('$1', [${2:fields}])
+endsnippet
+
+snippet sv "self variable"
+self._${1:name}
+endsnippet
+
+snippet sf "self function"
+self._${1:name}(${2:params})
 endsnippet
 
 # Import
@@ -182,11 +202,11 @@ raise ${1:ValueError}('${2:message}')
 endsnippet
 
 snippet de "equality check"
-${1:var1} == ${2:var2}
+${1:variable1} == ${2:variable2}
 endsnippet
 
 snippet ne "negative equality check"
-${1:var1} != ${2:var2}
+${1:variable1} != ${2:variable2}
 endsnippet
 
 snippet and "and condition" w
@@ -198,19 +218,23 @@ ${1:cond1} or ${2:cond2}
 endsnippet
 
 snippet nop "positive none check"
-${1:var} is None
+${1:variable} is None
 endsnippet
 
 snippet non "negative none check"
-${1:var} is not None
+${1:variable} is not None
 endsnippet
 
 snippet lene "length equality check" w
-len(${1:var}) == ${2:0}
+len(${1:variable}) == ${2:0}
 endsnippet
 
 snippet leng "length greater than check" w
-len(${1:var}) > ${2:0}
+len(${1:variable}) > ${2:0}
+endsnippet
+
+snippet in "in condition"
+${1:variable} in ${2:collection}
 endsnippet
 
 # Logging

@@ -259,6 +259,10 @@ nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
 nnoremap g+ gjg^
 nnoremap g- gjg^
 
+" Copy line up/down
+nnoremap <Leader>yk yyp
+nnoremap <Leader>yj yyP
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -304,8 +308,8 @@ nnoremap <Leader>e. $F.l
 nnoremap <Leader>ep $?\(\\\\\\|\/\)\@<=.<CR>:noh<CR>
 
 " Move to next/previous part of a file path
-nnoremap <silent> <Leader>wp /\(\w:\(\\\\\\|\/\)\)\\|\(\(\(\\\\\\|\/\)\)\@<=.\{-}\)<CR>:noh<CR>
-nnoremap <silent> <Leader>bp ?\(\w:\(\\\\\\|\/\)\)\\|\(\(\(\\\\\\|\/\)\)\@<=.\{-}\)<CR>:noh<CR>
+nnoremap <silent> <Leader>wp /\(\w:\(\\\(\\\)\=\\|\/\)\)\\|\(\(\(\\\(\\\)\=\\|\/\)\)\@<=[A-Za-z_.]\)<CR>:noh<CR>
+nnoremap <silent> <Leader>bp ?\(\w:\(\\\(\\\)\=\\|\/\)\)\\|\(\(\(\\\(\\\)\=\\|\/\)\)\@<=[A-Za-z_.]\)<CR>:noh<CR>
 
 " Move to next/previous capital letter
 nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
