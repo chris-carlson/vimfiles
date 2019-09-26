@@ -323,6 +323,10 @@ nnoremap <silent> <Leader>b' h?'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
 nnoremap <silent> <Leader>w" /".\{-}\(\\\)\@<!"<CR>:noh<CR>l
 nnoremap <silent> <Leader>b" h?".\{-}\(\\\)\@<!"<CR>:noh<CR>l
 
+" Move to the line after/before the next/previous blank line
+nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
+nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
+
 " Add a line above/below in insertion mode
 inoremap <silent> <C-Enter> <Esc>o
 inoremap <silent> <S-Enter> <Esc>O
