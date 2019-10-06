@@ -249,7 +249,7 @@ vnoremap <Leader>r "_dP
 nnoremap <Leader>; A;<Esc>
 
 " Clear line
-nnoremap <Leader>s S<Esc>
+nnoremap <Leader>S S<Esc>
 
 " Delete part of a file path
 nnoremap <Leader>dp d2f\
@@ -264,6 +264,10 @@ nnoremap g- gjg^
 " Copy line up/down
 nnoremap <Leader>yk yyp
 nnoremap <Leader>yj yyP
+
+" Invert boolean
+nnoremap <Leader>sbt cetrue<Esc>
+nnoremap <Leader>sbf cefalse<Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
