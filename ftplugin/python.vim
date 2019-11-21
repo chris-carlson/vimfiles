@@ -33,8 +33,8 @@ nnoremap <silent> <buffer> [p ?\((\\|,\s\)\zs\w\+:\s<CR>:noh<CR>
 nnoremap <silent> <buffer> ]p /\((\\|,\s\)\zs\w\+:\s<CR>:noh<CR>
 
 " Go to previous/next return type
-nnoremap <silent> <buffer> [r ?->\s\zs\w\+<CR>:noh<CR>
-nnoremap <silent> <buffer> ]r /->\s\zs\w\+<CR>:noh<CR>
+nnoremap <silent> <buffer> [r ?->\s\zs\(\w\\|'\)\+<CR>:noh<CR>
+nnoremap <silent> <buffer> ]r /->\s\zs\(\w\\|'\)\+<CR>:noh<CR>
 
 " Go to previous/next condition
 nnoremap <silent> <buffer> [d ?\(\(\(if\\|while\)\s\)\\|and\s\\|or\s\)\zs.<CR>:noh<CR>

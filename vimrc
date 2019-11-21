@@ -373,7 +373,7 @@ let g:airline_section_z='%l:%c'
 " ctrlp
 let g:ctrlp_working_path_mode='a'
 let g:ctrlp_show_hidden=1
-let g:ctrlp_max_files=100
+let g:ctrlp_max_files=1000
 let g:ctrlp_open_new_file='h'
 let g:ctrlp_open_multiple_files='ir'
 let g:ctrlp_lazy_update=1
