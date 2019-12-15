@@ -200,6 +200,7 @@ nnoremap <Leader>ip i\\<Esc>hi
 nnoremap <Leader>i+ i<Space>+<Space><Esc>2hi
 nnoremap <Leader>i' i''<Space>+<Space><Esc>3hi
 nnoremap <Leader>i" i""<Space>+<Space><Esc>3hi
+nnoremap <Leader>i<Space> i<Space><Esc>i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Leaders
