@@ -381,7 +381,18 @@ let g:ctrlp_lazy_update=1
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
 endif
-let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn|vscode)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)|([\\]\.settings$)|([\\]out-tsc$)'
+let g:ctrlp_custom_ignore='\v([\\]\.(git|hg|svn|vscode)$)|([\\]bundle$)|([\\].idea$)|([\\]target$)|([\\]out$)|([\\]\.settings$)|([\\]out-tsc$)|\.(project|classpath|factorypath)$'
+
+" easymotion
+map <Plug>(easymotion-prefix)s <Plug>(easymotion-sl)
+map <Plug>(easymotion-prefix)f <Plug>(easymotion-fl)
+map <Plug>(easymotion-prefix)F <Plug>(easymotion-Fl)
+map <Plug>(easymotion-prefix)t <Plug>(easymotion-tl)
+map <Plug>(easymotion-prefix)T <Plug>(easymotion-Tl)
+map <Plug>(easymotion-prefix)w <Plug>(easymotion-wl)
+map <Plug>(easymotion-prefix)b <Plug>(easymotion-bl)
+map <Plug>(easymotion-prefix)e <Plug>(easymotion-el)
+map <Plug>(easymotion-prefix)ge <Plug>(easymotion-gel)
 
 " incsearch
 map / <Plug>(incsearch-forward)
