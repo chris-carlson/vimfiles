@@ -115,11 +115,11 @@ ${1:name}: Dict[${2:type1}, ${3:type2}] = ${4:{}}
 endsnippet
 
 snippet dicta "dict creation" w
-{${1:key}: ${2:value} for ${3:item} in ${4:collection}}
+{${1:key}: ${2:value} for ${3:key}, ${4:value} in ${5:collection}.items()}
 endsnippet
 
 snippet dictac "conditional dict creation" w
-{${1:key}: ${2:value} for ${3:item} in ${4:collection} if ${5:condition}}
+{${1:key}: ${2:value} for ${3:key}, ${4:value} in ${5:collection}.items() if ${6:condition}}
 endsnippet
 
 snippet seti "set variable"
