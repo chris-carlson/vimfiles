@@ -11,7 +11,7 @@ endsnippet
 # Functions
 
 snippet __ "underscore function"
-def __${1:name}__(self${2:, ${3:params}}) -> ${4:type}:
+def __${1:name}__(self${2:, ${3:params}}) -> ${4:None}:
 endsnippet
 
 snippet init "init function"
@@ -19,21 +19,21 @@ def __init__(self${1:, ${2:params}}) -> None:
 endsnippet
 
 snippet def "function definition"
-def ${1:name}(${2:params}) -> ${3:type}:
+def ${1:name}(${2:params}) -> ${3:None}:
 endsnippet
 
 snippet defs "self function definition"
-def ${1:name}(self${2:, ${3:params}}) -> ${4:type}:
+def ${1:name}(self${2:, ${3:params}}) -> ${4:None}:
 endsnippet
 
 snippet defc "class function definition"
 @classmethod
-def ${1:name}(cls${2:, ${3:params}}) -> ${4:type}:
+def ${1:name}(cls${2:, ${3:params}}) -> ${4:None}:
 endsnippet
 
 snippet deft "static function definition"
 @staticmethod
-def ${1:name}(${2:params}) -> ${3:type}:
+def ${1:name}(${2:params}) -> ${3:None}:
 endsnippet
 
 snippet prop "property function"
@@ -50,6 +50,10 @@ endsnippet
 
 snippet par "parameter" w
 ${1:variable}: ${2:type}
+endsnippet
+
+snippet pard "default parameter" w
+${1:variable}: ${2:type} = ${3:None}
 endsnippet
 
 snippet ret "return statement"
