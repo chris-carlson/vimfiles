@@ -205,11 +205,11 @@ snippet raise "raise exception"
 raise ${1:ValueError}('${2:message}')
 endsnippet
 
-snippet de "equality check"
+snippet de "equality check" w
 ${1:variable1} == ${2:variable2}
 endsnippet
 
-snippet ne "negative equality check"
+snippet ne "negative equality check" w
 ${1:variable1} != ${2:variable2}
 endsnippet
 
@@ -221,11 +221,11 @@ snippet or "or condition" w
 ${1:cond1} or ${2:cond2}
 endsnippet
 
-snippet isn "positive none check"
+snippet isn "positive none check" w
 ${1:variable} is None
 endsnippet
 
-snippet isnn "negative none check"
+snippet isnn "negative none check" w
 ${1:variable} is not None
 endsnippet
 
@@ -241,8 +241,12 @@ snippet leng "length greater than check" w
 len(${1:variable}) > ${2:0}
 endsnippet
 
-snippet in "in condition"
+snippet in "in condition" w
 ${1:variable} in ${2:collection}
+endsnippet
+
+snippet nin "not in condition" w
+${1:variable} not in ${2:collection}
 endsnippet
 
 # Logging
