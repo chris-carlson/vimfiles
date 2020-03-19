@@ -114,20 +114,36 @@ snippet listac "conditional list creation" w
 [${1:expression} for ${2:item} in ${3:collection} if ${4:condition}]
 endsnippet
 
+snippet listad "list creation from dict" w
+[${1:expression} for ${2:key}, ${3:value} in ${4:collection}.items()]
+endsnippet
+
+snippet listacd "conditional list creation from dict" w
+[${1:expression} for ${2:key}, ${3:value} in ${4:collection}.items() if ${5:condition}]
+endsnippet
+
+snippet seti "set variable"
+${1:name}: Set[${2:type}] = ${3:set()}
+endsnippet
+
+snippet seta "set creation" w
+{${1:expression} for ${2:item} in ${3:collection}}
+endsnippet
+
+snippet setac "conditional set creation" w
+{${1:expression} for ${2:item} in ${3:collection} if ${4:condition}}
+endsnippet
+
 snippet dicti "dict variable"
 ${1:name}: Dict[${2:type1}, ${3:type2}] = ${4:{}}
 endsnippet
 
 snippet dicta "dict creation" w
-{${1:key}: ${2:value} for ${3:key}, ${4:value} in ${5:collection}.items()}
+{${1:key}: ${2:value} for ${3:item} in ${4:collection}}
 endsnippet
 
 snippet dictac "conditional dict creation" w
-{${1:key}: ${2:value} for ${3:key}, ${4:value} in ${5:collection}.items() if ${6:condition}}
-endsnippet
-
-snippet seti "set variable"
-${1:name}: Set[${2:type}] = ${3:set()}
+{${1:key}: ${2:value} for ${3:item} in ${4:collection} if ${5:condition}}
 endsnippet
 
 snippet type "type variable"

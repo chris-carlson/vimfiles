@@ -53,6 +53,10 @@ nnoremap <buffer> <Localleader>wi $F.l
 nnoremap <buffer> <Localleader>ip ^f(a
 nnoremap <buffer> <Localleader>ap ^f)i,<space>
 
+" Insert and/or condition
+nnoremap <Leader>i& i<Space>&&<Space><Esc>3hi
+nnoremap <Leader>i\| i<Space>\|\|<Space><Esc>3hi
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""

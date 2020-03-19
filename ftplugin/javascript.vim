@@ -35,3 +35,7 @@ nnoremap <buffer> <Localleader>nM ^f>wi{<CR><esc>$k^f(%i<CR>}<esc>kA;<esc>Iretur
 " Add a parameter to the function
 nnoremap <buffer> <Localleader>ip ^f(a
 nnoremap <buffer> <Localleader>ap ^f)i,<space>
+
+" Insert and/or condition
+nnoremap <Leader>i& i<Space>&&<Space><Esc>3hi
+nnoremap <Leader>i\| i<Space>\|\|<Space><Esc>3hi

@@ -46,3 +46,7 @@ nnoremap <silent> <buffer> ]d /\(\(\(if\\|while\)\s\)\\|and\s\\|or\s\)\zs.<CR>:n
 
 " Paste variable assigned in current line in next line for function call
 nnoremap <buffer> <Localleader>pv ^yeo#<Esc>"_xpa.
+
+" Insert and/or condition
+nnoremap <Leader>ia i<Space>and<Space><Esc>bhi
+nnoremap <Leader>io i<Space>or<Space><Esc>bhi

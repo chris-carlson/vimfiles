@@ -192,7 +192,7 @@ filetype plugin indent on
 " Insertion
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Insert characters in a list/path/concatenation
+" Insert characters
 nnoremap <Leader>i, i,<Space><Esc>hi
 nnoremap <Leader>i. i.<Esc>i
 nnoremap <Leader>i_ i_<Esc>i
