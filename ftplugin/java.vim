@@ -57,6 +57,10 @@ nnoremap <buffer> <Localleader>ap ^f)i,<space>
 nnoremap <Leader>i& i<Space>&&<Space><Esc>3hi
 nnoremap <Leader>i\| i<Space>\|\|<Space><Esc>3hi
 
+" Invert boolean
+nnoremap <Leader>sbt cetrue<Esc>
+nnoremap <Leader>sbf cefalse<Esc>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""

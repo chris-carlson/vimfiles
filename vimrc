@@ -267,9 +267,8 @@ nnoremap g- gjg^
 nnoremap <Leader>yk yyp
 nnoremap <Leader>yj yyP
 
-" Invert boolean
-nnoremap <Leader>sbt cetrue<Esc>
-nnoremap <Leader>sbf cefalse<Esc>
+" Delete concatenated expression
+nnoremap <Leader>d+ df+x
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
@@ -363,6 +362,9 @@ nnoremap <silent> <Leader>p+ yyp<C-A>
 nnoremap <Leader>pp' "+gphr'F"r'vf':s/\\/\\\\/g<CR>:noh<CR>$
 nnoremap <Leader>pp" "+gphvF":s/\\/\\\\/g<CR>:noh<CR>$
 
+" Paste to a list
+nnoremap <Leader>p, a,<Space><Esc>p
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -406,7 +408,7 @@ runtime macros/matchit.vim
 
 " nerdtree
 nnoremap <C-N> :NERDTree<CR>
-let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bundle$[[dir]]', '.idea$[[dir]]', 'target$[[dir]]', 'out$[[dir]]']
+let NERDTreeIgnore=['\~$', 'class$', 'jar$', 'map$', 'pyc$', 'dist$[[dir]]', 'node_modules$[[dir]]', '__pycache__$[[dir]]', 'build$[[dir]]', 'bundle$[[dir]]', '.idea$[[dir]]', 'target$[[dir]]', 'out$[[dir]]', 'My Music$[[dir]]', 'My Pictures$[[dir]]', 'My Videos$[[dir]]']
 
 " pathogen
 call pathogen#infect()
