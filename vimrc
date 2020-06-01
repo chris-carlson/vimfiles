@@ -344,6 +344,9 @@ inoremap <silent> <S-Enter> <Esc>O
 nnoremap <Leader>op o<Esc>p
 nnoremap <Leader>OP O<Esc>P
 
+" Paste then add a new line
+nnoremap <Leader>po po<Esc>-
+
 " Paste at the end of a line
 nnoremap <Leader>ap A<Esc>p
 
