@@ -123,6 +123,9 @@ autocmd SourcePre * :let @/ = ""
 " Set working directory to that of the currently open file
 command! Cd cd %:p:h
 
+" Copy the path of the currently open file to the clipboard
+command! Cp let @+ = expand('%:p')
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Information
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -133,6 +136,7 @@ set encoding=utf-8
 " Set line endings to Unix for new files
 autocmd BufWinEnter,BufRead * setlocal fileformats=unix,dos
 
+" Manually set line endings to Unix
 command! Unix set fileformat=unix | w
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
