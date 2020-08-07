@@ -274,6 +274,9 @@ nnoremap <Leader>yj yyP
 " Delete concatenated expression
 nnoremap <Leader>d+ df+x
 
+" Delete object and preceding comma
+nnoremap <Leader>d, V%dk$x^
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -351,6 +354,9 @@ nnoremap <Leader>OP O<Esc>P
 " Paste then add a new line
 nnoremap <Leader>po po<Esc>-
 
+" Paste whole file
+nnoremap <Leader>pg pkdd
+
 " Paste at the end of a line
 nnoremap <Leader>ap A<Esc>p
 
@@ -423,6 +429,11 @@ call pathogen#infect()
 " ultisnips
 let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
+" youcompleteme
+let g:ycm_auto_hover = ''
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_list_select_completion = ['<Down>']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Replace
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -477,9 +488,10 @@ nnoremap <Leader>X xhP
 " Strings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Append quoted string
-nnoremap <Leader>a' i\'<Esc>la<Space>+<Space><Space>+<Space>'\''<Esc>6hi
-nnoremap <Leader>a" i\"<Esc>la<Space>+<Space><Space>+<Space>"\""<Esc>6hi
+" Insert a variable concatenation
+nnoremap <Leader>icv i'<Esc>a<Space>+<Space><Space>+<Space>'<Esc>3hi
+nnoremap <Leader>ic' i\'<Esc>la<Space>+<Space><Space>+<Space>'\''<Esc>6hi
+nnoremap <Leader>ic" i\"<Esc>la<Space>+<Space><Space>+<Space>"\""<Esc>6hi
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " User interface

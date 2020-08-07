@@ -16,4 +16,5 @@ git clone https://github.com/michaeljsmith/vim-indent-object
 git clone https://github.com/pprovost/vim-ps1
 git clone https://github.com/tpope/vim-repeat
 git clone https://github.com/tpope/vim-surround
+git clone https://github.com/valloric/youcompleteme
 cd ..
