@@ -19,3 +19,6 @@ nnoremap <buffer> <Localleader>tf ^f)a:<space>
 " Change import name/path
 nnoremap <buffer> <Localleader>ii ^f{wdt}hi<space>
 nnoremap <buffer> <Localleader>if ^f'ci'
+
+" Paste variable assigned in current line in next line for function call
+nnoremap <buffer> <Localleader>pv ^wyeo//<Esc>h"_2xpa.

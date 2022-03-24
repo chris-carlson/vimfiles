@@ -43,3 +43,6 @@ nnoremap <Leader>i\| i<Space>\|\|<Space><Esc>3hi
 " Invert boolean
 nnoremap <Leader>sbt cetrue<Esc>
 nnoremap <Leader>sbf cefalse<Esc>
+
+" Paste variable assigned in current line in next line for function call
+nnoremap <buffer> <Localleader>pv ^wyeo//<Esc>h"_2xpa.

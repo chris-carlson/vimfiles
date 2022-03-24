@@ -126,6 +126,9 @@ command! Cd cd %:p:h
 " Copy the path of the currently open file to the clipboard
 command! Cp let @+ = expand('%:p')
 
+" Disable JavaScript autocomplete
+autocmd FileType javascript set omnifunc=
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Information
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -315,6 +318,8 @@ nnoremap <Leader>w# f#l
 nnoremap <Leader>b# hF#l
 nnoremap <Leader>w- f-l
 nnoremap <Leader>b- hF-l
+nnoremap <Leader>w= f=l
+nnoremap <Leader>b= hF=l
 
 " Move to next word after the last given character
 nnoremap <Leader>e_ $F_l
