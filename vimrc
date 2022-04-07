@@ -80,7 +80,7 @@ command! Wd w | bd | bn
 syntax enable
 
 " Set color scheme
-colorscheme desert
+colorscheme OceanicNext
 
 " Set background color
 set background=dark
