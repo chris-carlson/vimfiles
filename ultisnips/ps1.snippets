@@ -1,0 +1,49 @@
+# Variables
+
+snippet var "variable declaration"
+$${1:name} = ${2:value}
+endsnippet
+
+snippet env "env variable"
+$Env:${1:name}
+endsnippet
+
+# Functions
+
+snippet fun "function declaration"
+function ${1:name}(${2:params}) {
+	$0
+}
+endsnippet
+
+# Control Flow
+
+snippet if "if declaration"
+if (${1:cond}) {
+	$0
+}
+endsnippet
+
+snippet int "string interpolation"
+$($${1:name})
+endsnippet
+
+# Commands
+
+snippet red "redirect output to file"
+${1:command} 2>&1 > ${2:file}
+endsnippet
+
+# Logging
+
+snippet wo "write output"
+Write-Output "${1:text}"
+endsnippet
+
+snippet ww "write warning"
+Write-Warning "${1:text}"
+endsnippet
+
+snippet we "write error"
+Write-Error "${1:text}"
+endsnippet
