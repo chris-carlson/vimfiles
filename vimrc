@@ -415,6 +415,9 @@ map <Plug>(easymotion-prefix)lb <Plug>(easymotion-bl)
 map <Plug>(easymotion-prefix)le <Plug>(easymotion-el)
 map <Plug>(easymotion-prefix)lge <Plug>(easymotion-gel)
 
+" fzf
+set rtp+=/opt/homebrew/opt/fzf
+
 " incsearch
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)

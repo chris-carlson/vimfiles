@@ -1,4 +1,4 @@
-rm -Recurse -Force bundle
+rm -r -f bundle
 mkdir bundle
 cd bundle
 git clone https://github.com/jiangmiao/auto-pairs
