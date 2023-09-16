@@ -24,10 +24,14 @@ nnoremap <Leader>c[ vf[%c
 nnoremap <Leader>d[ vf[%d
 nnoremap <Leader>y[ vf[%y
 nnoremap <Leader>v[ vf[%
-nnoremap <Leader>c{ V^f{%c
-nnoremap <Leader>d{ V^f{%d
-nnoremap <Leader>y{ V^f{%y^f{%
-nnoremap <Leader>v{ V^f{%
+nnoremap <Leader>c{ v^f{%c
+nnoremap <Leader>d{ v^f{%d
+nnoremap <Leader>y{ v^f{%y^f{%
+nnoremap <Leader>v{ v^f{%
+nnoremap <Leader>C{ V^f{%c
+nnoremap <Leader>D{ V^f{%d
+nnoremap <Leader>Y{ V^f{%y^f{%
+nnoremap <Leader>V{ V^f{%
 nnoremap <Leader>c<lt> vf<lt>%c
 nnoremap <Leader>d<lt> vf<lt>%d
 nnoremap <Leader>y<lt> vf<lt>%y
@@ -99,7 +103,7 @@ set cmdheight=1
 set wildmenu
 
 " Ignore compiled files in autocomplete
-set wildignore=*~,*.class,*.jar,*.map,*.pyc,*.xlsx,*\\dist\\*,*\\node_modules\\*,*\\build\\*,*\\target\\*,*\\.idea\\*
+set wildignore=*~,*.class,*.d.ts,*.gif,*.jar,*.jpeg,*.jpg,*.lock,*.map,*.min.css,*.min.js,*.png,*.pyc,*.pyd,*.xcf,*.xlsx,.DS_Store,*.Trash,*/.git/*,*/.idea/*,*/.m2/*,*/.vscode/*,*/__pycache__/*,*/build/*,*/dist/*,*/node_modules/*,*/target/*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " File Commands
@@ -345,7 +349,7 @@ nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
 nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
 
 " Add a line above/below in insertion mode
-inoremap <silent> <C-Enter> <Esc>o
+inoremap <silent> <D-Enter> <Esc>o
 inoremap <silent> <S-Enter> <Esc>O
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -374,7 +378,7 @@ nnoremap <Leader>yp "0p
 nnoremap <Leader>yP "0P
 
 " Yank and paste line, then increment number
-nnoremap <silent> <Leader>p+ yyp<C-A>
+nnoremap <silent> <Leader>p+ yyp<D-A>
 
 " Paste external file path
 nnoremap <Leader>pp' "+gphr'F"r'vf':s/\\/\\\\/g<CR>:noh<CR>$
@@ -436,6 +440,8 @@ call pathogen#infect()
 
 " ultisnips
 let g:UltiSnipsSnippetDirectories=["ultisnips"]
+let g:UltiSnipsJumpForwardTrigger="<D-j>"
+let g:UltiSnipsJumpBackwardTrigger="<D-k>"
 
 " youcompleteme
 let g:ycm_auto_hover = ''
