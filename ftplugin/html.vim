@@ -41,3 +41,5 @@ nnoremap <buffer> <Localleader>dii 2ldt}
 nnoremap <buffer> <Localleader>dai d2f}
 nnoremap <buffer> <Localleader>yii 2lyt}
 nnoremap <buffer> <Localleader>yai y2f}
+
+nnoremap <buffer> <Localleader>l %!xmllint --html --format --recover -<CR>:w<CR>
