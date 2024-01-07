@@ -157,11 +157,11 @@ nnoremap <Leader>vg ggVG
 nnoremap <Leader>yg ggyG
 
 " Change/delete/highlight/yank from current line until/through next blank line
-nnoremap <Leader>cn V/\(\n\{2}\\|\%$\)<CR>c<Esc>:noh<CR>S
-nnoremap <Leader>dn V/\(\n\{2}\\|\%$\)<CR>d:noh<CR>
-nnoremap <Leader>Dn V/\(\n\{2}\\|\%$\)<CR>d"_dd:noh<CR>
-nnoremap <Leader>vn V/\(\n\{2}\\|\%$\)<CR>
-nnoremap <Leader>yn V/\(\n\{2}\\|\%$\)<CR>yn^:noh<CR>
+nnoremap <Leader>cn V/\n\{2}<CR>c
+nnoremap <Leader>dn V/\n\{2}<CR>d
+nnoremap <Leader>Dn V/\n\{2}<CR>ddd
+nnoremap <Leader>vn V/\n\{2}<CR>
+nnoremap <Leader>yn V/\n\{2}<CR>y
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -207,7 +207,7 @@ filetype plugin indent on
 nnoremap <Leader>i, i,<Space><Esc>hi
 nnoremap <Leader>i. i.<Esc>i
 nnoremap <Leader>i_ i_<Esc>i
-nnoremap <Leader>ip i\\<Esc>hi
+nnoremap <Leader>ip i/<Esc>hi
 nnoremap <Leader>i+ i<Space>+<Space><Esc>2hi
 nnoremap <Leader>i= i<Space>=<Space><Esc>2hi
 nnoremap <Leader>i' i''<Space>+<Space><Esc>3hi
@@ -227,15 +227,15 @@ let maplocalleader = '_'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Change/delete/yank until next capital letter
-nnoremap <silent> <Leader>c~ v/\u<CR>hd:noh<CR>i
-nnoremap <silent> <Leader>d~ v/\u<CR>hd:noh<CR>
-nnoremap <silent> <Leader>y~ v/\u<CR>hy:noh<CR>
+nnoremap <silent> <Leader>c~ v/\u<CR>hdi
+nnoremap <silent> <Leader>d~ v/\u<CR>hd
+nnoremap <silent> <Leader>y~ v/\u<CR>hy
 
 " Toggle case of current letter and enter insertion mode
 nnoremap <Leader>~i ~hi
 
 " Delete until next capital letter and make it lowercase
-nnoremap <Leader>~d v/\u<CR>hd~h:noh<CR>
+nnoremap <Leader>~d v/\u<CR>hd~h
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Line operations
@@ -265,10 +265,7 @@ nnoremap <Leader>; A;<Esc>
 nnoremap <Leader>S S<Esc>
 
 " Delete part of a file path
-nnoremap <Leader>dp d2f\
-
-" Double up backslashes in a line
-nnoremap <silent> <Leader>2\ :s/\\/\\\\/g<CR>:noh<CR>
+nnoremap <Leader>dp df/
 
 " Move to start of next/previous wrapped line
 nnoremap g+ gjg^
@@ -314,8 +311,8 @@ nnoremap <Leader>w<lt> f<lt>l
 nnoremap <Leader>b<lt> hF<lt>l
 nnoremap <Leader>w> f>l
 nnoremap <Leader>b> hF>l
-nnoremap <Leader>w/ f\l
-nnoremap <Leader>b/ hF\l
+nnoremap <Leader>w/ f/l
+nnoremap <Leader>b/ hF/l
 nnoremap <Leader>w: f:l
 nnoremap <Leader>b: hF:l
 nnoremap <Leader>w# f#l
@@ -324,33 +321,18 @@ nnoremap <Leader>w- f-l
 nnoremap <Leader>b- hF-l
 nnoremap <Leader>w= f=l
 nnoremap <Leader>b= hF=l
-
-" Move to next word after the last given character
-nnoremap <Leader>e_ $F_l
-nnoremap <Leader>e. $F.l
-nnoremap <Leader>ep $?\(\\\\\\|\/\)\@<=.<CR>:noh<CR>
-
-" Move to next/previous part of a file path
-nnoremap <silent> <Leader>wp /\(\w:\(\\\(\\\)\=\\|\/\)\)\\|\(\(\(\\\(\\\)\=\\|\/\)\)\@<=[A-Za-z_.]\)<CR>:noh<CR>
-nnoremap <silent> <Leader>bp ?\(\w:\(\\\(\\\)\=\\|\/\)\)\\|\(\(\(\\\(\\\)\=\\|\/\)\)\@<=[A-Za-z_.]\)<CR>:noh<CR>
+nnoremap <Leader>w' f'l
+nnoremap <Leader>b' hF'l
+nnoremap <Leader>w" f"l
+nnoremap <Leader>b" hF"l
 
 " Move to next/previous capital letter
-nnoremap <silent> <Leader>w~ /\u<CR>:noh<CR>
-nnoremap <silent> <Leader>b~ ?\u<CR>:noh<CR>
-
-" Move to start/end of next/previous single/double quote string
-nnoremap <silent> <Leader>w' /'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
-nnoremap <silent> <Leader>b' h?'.\{-}\(\\\)\@<!'<CR>:noh<CR>l
-nnoremap <silent> <Leader>w" /".\{-}\(\\\)\@<!"<CR>:noh<CR>l
-nnoremap <silent> <Leader>b" h?".\{-}\(\\\)\@<!"<CR>:noh<CR>l
+nnoremap <silent> <Leader>w~ /\u<CR>
+nnoremap <silent> <Leader>b~ ?\u<CR>
 
 " Move to the line after/before the next/previous blank line
-nnoremap <silent> <Leader>]] /\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
-nnoremap <silent> <Leader>[[ ?\(\n\{2,}\(\s\+\)\=\\|\%^\)\zs\S<CR>:noh<CR>^
-
-" Add a line above/below in insertion mode
-inoremap <silent> <D-Enter> <Esc>o
-inoremap <silent> <S-Enter> <Esc>O
+nnoremap <Leader>wn /\n\{2}<CR>/\w<CR>
+nnoremap <Leader>bn ?\n\{2}<CR>n/\w<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Paste
@@ -379,10 +361,6 @@ nnoremap <Leader>yP "0P
 
 " Yank and paste line, then increment number
 nnoremap <silent> <Leader>p+ yyp<D-A>
-
-" Paste external file path
-nnoremap <Leader>pp' "+gphr'F"r'vf':s/\\/\\\\/g<CR>:noh<CR>$
-nnoremap <Leader>pp" "+gphvF":s/\\/\\\\/g<CR>:noh<CR>$
 
 " Paste to a list
 nnoremap <Leader>p, a,<Space><Esc>p
